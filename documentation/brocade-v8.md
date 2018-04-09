@@ -4,11 +4,11 @@
 Download the ZIP below, which contains the firmware files and documentation you'll need:  
 
 [```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/priv37/brokeaids/08030r.zip)  
-```Zip Updated: 04-08-2018```  
+```ZIP Updated: 04-08-2018```  
 
 Connect to the switches serial port on the front using a program like Putty (9600 8N1), and connect the dedicated management port on the rear to your network.  
 
-You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://tftpd32.jounin.net/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to server files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030r.bin``` - the other image with an S in it is switching only, with less features.
+You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://tftpd32.jounin.net/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030r.bin``` - the other image with an S in it is switching only, with less features.
 
 Power on the switch while watching your serial terminal - it will have a prompt saying ```Hit b to enter the boot monitor``` - press ```b``` quickly and you'll be dropped into the bootloader prompt, now we can upgrade the software. If you missed the prompt and it boots the OS instead, pull power and try again.
 
@@ -75,6 +75,8 @@ reload
 ```
 Once the switch comes back up, enter the configure terminal level and give the switch a friendly name:
 ```
+enable
+configure terminal
 hostname intertubes
 ```
 We need to give the switch an IP. By default, all ports are in VLAN 1, so it will behave like a typical switch. First we need to give VLAN 1 its own virtual interface:
@@ -83,7 +85,7 @@ vlan 1
 router-interface ve 1
 exit
 ```
-Now we need to assign that virtual interface an address:
+Now we need to assign that virtual interface an address. Choose an IP that is unused in your subnet, and out of your DHCP server range (ping it first to be sure it's unused):
 ```
 interface ve 1
 ip address 192.168.1.2/24
@@ -135,8 +137,8 @@ ip ssh pub-key-file tftp 192.168.1.49 public.key
 ```
 You shouldn't need to be told basic key management if you're following this section, but just in case - copy your private key to the proper location on the *nix machine you'll be SSH'ing from, or if you're on windows, load it using [pageant](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Now when you SSH to the switch, it will authenticate using your private key.
 
-## ## Saving & Conclusions
-Whenever you make changes (like above) they take effect immediately, however thye are not saved to onboard flash. So if you reboot the switch, they will be lost. To permanently save them to onboard flash, use the following command:
+## Saving & Conclusions
+Whenever you make changes (like above) they take effect immediately, however they are not saved to onboard flash. So if you reboot the switch, they will be lost. To permanently save them to onboard flash, use the following command:
 ```
 write memory
 ```
@@ -163,7 +165,7 @@ Give a port a friendly name:
 ```
 interface ethernet 1/1/1
 port-name freenas
-show interface brief ethernet 1/1/1
+show interfaces brief ethernet 1/1/1
 exit
 ```
 Show the running configuration:
@@ -191,7 +193,7 @@ conf t
 There is also tab help and completion. To see all the commands available at the current CLI level, just hit tab. To see the options available for a certain command, just type that command (like ```ip```) then hit tab.
 
 ## Advanced Configuration
-### ## Default Route & DNS
+### Default Route & DNS
 To give the switch a default route and a DNS server so it can reach external hostnames and IP's (to ping external servers or to update time via NTP etc), do the following. replace the IP with the IP of your gateway/router/etc. Assuming you are still at the ```configure terminal``` level:
 
 ```
