@@ -242,4 +242,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.1 (04-09-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.2 (04-09-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
