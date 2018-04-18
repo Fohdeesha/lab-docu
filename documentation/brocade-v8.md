@@ -1,10 +1,25 @@
+
 # Setting up v8 FastIron devices (FCX ICX etc)
 
 ## Updating The Software
-Download the ZIP below, which contains the firmware files and documentation you'll need:  
+Download the ZIP below, which contains the firmware files and documentation you'll need. The folder is labelled FCX, but the files apply to both FCX and the ICX6610 (they run identical BL and OS):  
 
 [```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/priv37/brokeaids/08030r.zip)  
+```SW version: 08030r```  
 ```ZIP Updated: 04-08-2018```  
+
+
+*NOTE:* If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
+
+```
+#Skip this section if the switch has not been configured
+enable
+copy tftp flash 192.168.1.8 grz10100.bin bootrom  
+copy tftp flash 192.168.1.8 FCXR08030r.bin primary
+reload
+```
+
+Otherwise if this is a new switch that has not been configured: do the following:  
 
 Connect to the switches serial port on the front using a program like Putty (9600 8N1), and connect the dedicated management port on the rear to your network.  
 
@@ -37,7 +52,7 @@ reset
 
 ## Initial Configuration
 
-Now that it's booted into the full OS, check that the version matches what you just flashed:
+Now that it's booted into the full OS you may get ***TFTP timed out*** errors in the console, this is normal. We'll fix that in the next section. Check that the version matches what you just flashed:
 ```
 show version
 ```
@@ -242,4 +257,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.2 (04-09-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.3 (04-18-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
