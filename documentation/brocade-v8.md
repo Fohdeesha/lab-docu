@@ -1,10 +1,11 @@
 
+
 # Setting up v8 FastIron devices (FCX ICX etc)
 
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need. The folder is labelled FCX, but the files apply to both FCX and the ICX6610 (they run identical BL and OS):  
 
-[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/priv37/brokeaids/08030r.zip)  
+[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030r.zip)  
 ```SW version: 08030r```  
 ```ZIP Updated: 04-08-2018```  
 
@@ -16,6 +17,8 @@ Download the ZIP below, which contains the firmware files and documentation you'
 enable
 copy tftp flash 192.168.1.8 grz10100.bin bootrom  
 copy tftp flash 192.168.1.8 FCXR08030r.bin primary
+##update the PoE firmware if you have PoE model
+inline power install-firmware all tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
 reload
 ```
 
@@ -108,7 +111,20 @@ exit
 ```
 The switch now has an IP. Unplug your ethernet cable from the rear isolated management port, and plug it into any of the normal ports on the front. You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
 
-## If No Access Protection Is Required
+## Update PoE Firmware
+If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just put the ```fcx_poeplus_02.1.0.b004.fw``` file on your TFTP server and pull it in:
+```
+exit
+inline power install-firmware all tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
+#after a minute  or so, hit enter to return to cli
+reload
+#once it's booted back into the OS:
+enable
+configure terminal
+```
+That's it!
+
+## If Access Protection Is NOT Required
 If you do **not** want to password protect access to the switch (you're using it in a lab), follow this section. If you'd like to password protect it, skip to the next section.
 
 Allow SSH login with no passwords configured:
@@ -116,7 +132,7 @@ Allow SSH login with no passwords configured:
 ip ssh permit-empty-passwd yes
 ```
 
-## If  Access Protection Is Required
+## If Access Protection IS Required
 If you do want to secure access to the switch, follow this section. If not, skip it.  
 
 To secure the switch, we need to create an account - "root" can be any username string you wish:
@@ -257,4 +273,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.3 (04-18-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.4 (04-28-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
