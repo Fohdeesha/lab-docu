@@ -13,7 +13,7 @@ Download the ZIP below, which contains the firmware files and documentation you'
 *NOTE:* If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
 
 ```
-#Skip this section if the switch has not been configured
+#Skip this whole block if the switch has not yet been configured
 enable
 copy tftp flash 192.168.1.8 grz10100.bin bootrom  
 copy tftp flash 192.168.1.8 FCXR08030r.bin primary
