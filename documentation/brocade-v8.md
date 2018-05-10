@@ -7,6 +7,7 @@ Download the ZIP below, which contains the firmware files and documentation you'
 
 [```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030r.zip)  
 ```SW version: 08030r```  
+```Applicable Hardware: FCX & ICX6610```  
 ```ZIP Updated: 04-08-2018```  
 
 
@@ -18,7 +19,7 @@ enable
 copy tftp flash 192.168.1.8 grz10100.bin bootrom  
 copy tftp flash 192.168.1.8 FCXR08030r.bin primary
 ##update the PoE firmware if you have PoE model
-inline power install-firmware all tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
+inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
 reload
 ```
 
@@ -115,7 +116,7 @@ The switch now has an IP. Unplug your ethernet cable from the rear isolated mana
 If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just put the ```fcx_poeplus_02.1.0.b004.fw``` file on your TFTP server and pull it in:
 ```
 exit
-inline power install-firmware all tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
+inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
 #after a minute  or so, hit enter to return to cli
 reload
 #once it's booted back into the OS:
@@ -273,4 +274,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.4 (04-28-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.5 (05-10-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
