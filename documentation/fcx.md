@@ -6,6 +6,7 @@ Download the ZIP below, which contains the firmware files and documentation you'
 [```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030s.zip)  
 ```SW version: 08030s```  
 ```ZIP Updated: 06-10-2018```  
+```MD5: ba19aac64d9601c16efa58233ea318f8```  
 
 
 **NOTE:** If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
@@ -272,4 +273,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.6 (06-10-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.7 (06-10-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
