@@ -1,0 +1,15 @@
+site_name: FBOM Docs
+theme:
+  name: 'material'
+  palette:
+    primary: 'red'
+    accent: 'light blue'
+
+dev_addr: 192.168.1.8:8000
+pages:
+    - Home: index.md
+    - Brocade:
+        - 'FCX/ICX6610': 'fcx.md'
+        - 'ICX6430/ICX6450': 'icx64xx.md'
+
+

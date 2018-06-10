@@ -1,33 +1,32 @@
 
 
-# Setting up v8 FastIron devices (FCX ICX etc)
+# Setting up Brocade FCX & ICX6610
 
 ## Updating The Software
-Download the ZIP below, which contains the firmware files and documentation you'll need. The folder is labelled FCX, but the files apply to both FCX and the ICX6610 (they run identical BL and OS):  
+Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
-[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030r.zip)  
-```SW version: 08030r```  
-```Applicable Hardware: FCX & ICX6610```  
-```ZIP Updated: 04-08-2018```  
+[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030s.zip)  
+```SW version: 08030s```  
+```ZIP Updated: 06-10-2018```  
 
 
-*NOTE:* If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
+**NOTE:** If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
 
 ```
-#Skip this whole block if the switch has not yet been configured
+#Skip this whole block if the switch has not yet been configured using this guide!
 enable
 copy tftp flash 192.168.1.8 grz10100.bin bootrom  
-copy tftp flash 192.168.1.8 FCXR08030r.bin primary
-##update the PoE firmware if you have PoE model
+copy tftp flash 192.168.1.8 FCXR08030s.bin primary
+##update the PoE firmware if you have PoE model.
 inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
 reload
 ```
 
-Otherwise if this is a new switch that has not been configured: do the following:  
+**Otherwise** if this is a new/used switch that has not been configured, do the following:  
 
-Connect to the switches serial port on the front using a program like Putty (9600 8N1), and connect the dedicated management port on the rear to your network.  
+Connect to the switches serial port on the front using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
 
-You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://tftpd32.jounin.net/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030r.bin``` - the other image with an S in it is switching only, with less features.
+You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://tftpd32.jounin.net/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030s.bin``` - the other image with an S in it is switching only, with less features.
 
 Power on the switch while watching your serial terminal - it will have a prompt saying ```Hit b to enter the boot monitor``` - press ```b``` quickly and you'll be dropped into the bootloader prompt, now we can upgrade the software. If you missed the prompt and it boots the OS instead, pull power and try again.
 
@@ -45,7 +44,7 @@ copy tftp flash 192.168.1.49 grz10100.bin boot
 After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server, and change the filename to match if necessary: 
 
 ```
-copy tftp flash 192.168.1.49 FCXR08030r.bin primary
+copy tftp flash 192.168.1.49 FCXR08030s.bin primary
 ```
 It will take a little longer. When it finishes, tell the switch to reboot, then it will fully boot into the updated OS:
 
@@ -110,7 +109,7 @@ interface ve 1
 ip address 192.168.1.2/24
 exit
 ```
-The switch now has an IP. Unplug your ethernet cable from the rear isolated management port, and plug it into any of the normal ports on the front. You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
+The switch now has an IP. Unplug your ethernet cable from the isolated management port, and plug it into any of the normal ports on the front. You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
 
 ## Update PoE Firmware
 If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just put the ```fcx_poeplus_02.1.0.b004.fw``` file on your TFTP server and pull it in:
@@ -119,6 +118,7 @@ exit
 inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
 #after a minute  or so, hit enter to return to cli
 reload
+#you'll probably get a message that it hasn't finished. it can take up to 10 minutes
 #once it's booted back into the OS:
 enable
 configure terminal
@@ -274,4 +274,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.5 (05-10-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.6 (06-10-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
