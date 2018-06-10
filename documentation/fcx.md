@@ -1,5 +1,3 @@
-
-
 # Setting up Brocade FCX & ICX6610
 
 ## Updating The Software
