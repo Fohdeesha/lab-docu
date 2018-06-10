@@ -9,7 +9,7 @@ dev_addr: 192.168.1.8:8000
 pages:
     - Home: index.md
     - Brocade:
-        - 'FCX, ICX6610': 'fcx.md'
-        - 'ICX6430, ICX6450': 'icx64xx.md'
+        - 'FCX / ICX6610': 'fcx.md'
+        - 'ICX6430 / ICX6450': 'icx64xx.md'
 
 
