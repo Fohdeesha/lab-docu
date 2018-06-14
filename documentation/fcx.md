@@ -23,7 +23,7 @@ reload
 
 **Otherwise** if this is a new/used switch that has not been configured, do the following:  
 
-Connect to the switches serial port on the front using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
+Connect to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
 
 You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://tftpd32.jounin.net/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030s.bin``` - the other image with an S in it is switching only, with less features.
 
