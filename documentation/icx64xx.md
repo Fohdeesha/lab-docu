@@ -96,7 +96,10 @@ exit
 copy tftp flash 192.168.1.8 kxz10105.bin bootrom  
 copy tftp flash 192.168.1.8 ICX64R08030s.bin primary
 ```
-Once it finishes, reload the switch and it will come back up with the latest layer 3 firmware.
+Once it finishes, reload the switch and it will come back up with the latest layer 3 firmware:
+```
+reload
+```
 
 
 
