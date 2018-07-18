@@ -132,17 +132,18 @@ Allow SSH login with no passwords configured:
 ip ssh permit-empty-passwd yes
 ```
 
-## If Access Protection IS Required
-If you do want to secure access to the switch, follow this section. If not, skip it.  
+## If Access Protection IS Required (or WEB-UI Access)
+If you do want to secure access to the switch, or use the (limited) web UI, follow this section. If not, skip it.  
 
 To secure the switch, we need to create an account - "root" can be any username string you wish:
 ```
 username root password yourpasshere
 ```
-We also need to tell it to use our new local user account(s) to authorize attempts to log in as well as attempts to enter the ```enable``` CLI level:
+We also need to tell it to use our new local user account(s) to authorize attempts to log in, use the webpage, as well as attempts to enter the ```enable``` CLI level:
 ```
 aaa authentication login default local
 aaa authentication enable default local
+aaa authentication login default local
 ```
 Enable authentication for telnet access as well:
 ```
@@ -273,4 +274,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.7 (06-10-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.8 (07-18-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
