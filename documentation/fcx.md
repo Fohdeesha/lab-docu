@@ -143,9 +143,11 @@ We also need to tell it to use our new local user account(s) to authorize attemp
 ```
 aaa authentication login default local
 aaa authentication enable default local
-aaa authentication login default local
+aaa authentication web default local
 ```
-Enable authentication for telnet access as well:
+If you wanted to use the WEB UI, you can now log into it using the credentials you created above.  
+
+You should enable authentication for telnet access as well:
 ```
 enable telnet authentication
 ```
