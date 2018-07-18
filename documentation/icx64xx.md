@@ -142,19 +142,22 @@ Allow SSH login with no passwords configured:
 ip ssh permit-empty-passwd yes
 ```
 
-## If Access Protection IS Required
-If you do want to secure access to the switch, follow this section. If not, skip it.  
+## If Access Protection IS Required (or WEB-UI Access)
+If you do want to secure access to the switch, or use the (limited) web UI, follow this section. If not, skip it.  
 
 To secure the switch, we need to create an account - "root" can be any username string you wish:
 ```
 username root password yourpasshere
 ```
-We also need to tell it to use our new local user account(s) to authorize attempts to log in as well as attempts to enter the ```enable``` CLI level:
+We also need to tell it to use our new local user account(s) to authorize attempts to log in, use the webpage, as well as attempts to enter the ```enable``` CLI level:
 ```
 aaa authentication login default local
 aaa authentication enable default local
+aaa authentication web default local
 ```
-Enable authentication for telnet access as well:
+If you wanted to use the WEB UI, you can now log into it using the credentials you created above.  
+
+You should enable authentication for telnet access as well:
 ```
 enable telnet authentication
 ```
