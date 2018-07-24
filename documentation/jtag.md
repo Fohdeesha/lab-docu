@@ -35,7 +35,6 @@ On an LB6M, the connection should look like this:
 Now that everything is plugged in and the BDI2000 is powered, power up the switch.  
 
 **Startup Order Summary:**  
-
 1. Connect ethernet to the BDI2000  
 2. Connect the power brick to the BDI2000  
 3. Connect the BDI2000 to the switch JTAG header  
