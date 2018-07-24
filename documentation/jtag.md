@@ -69,8 +69,12 @@ fff80030: 4e6ab6ae 07030000 74727a30 37333030    Nj......trz07300
 
 If you get something similar to above, the JTAG session is working.  
 
-Now we tell it to copy the bootloader section of flash to a file on your TFTP server named `badboot.bin` - this is an important step as it will let me see exactly what in the bootloader got corrupted and how. Remember that for a tftp server on linux, this file needs to already exist (but be empty) and have permissions of 777.  
-
+Now we tell it to copy the corrupted flash bootloader to a file on your TFTP server named `badboot.bin` - this is an important step as it will let me see exactly what in the bootloader got corrupted:
+```
+dump 0xfff80000 0x00080000 badboot.bin
+```  
+>Note: if you get an error here, it is most likely related to TFTP permissions (it can't write the file on your TFTP server). See the intro paragraph for linux TFTP permission information.
+>
 Once that finishes, we can write the new bootloader. First we must erase the bootloader section of flash properly before we can write to it:
 ```
 erase 0xfff80000 0x20000 4
@@ -83,9 +87,13 @@ When that finishes, connect a serial console cable to the LB6M switch (while it 
 ```
 reset run
 ```
-The switch should boot normally and you should see it's usual boot text in your serial console. If you don't see any text in your serial window and the switch seems like it's still bricked, halt it again from the JTAG window by running `reset halt` and follow the above erasing and flashing steps again as you must have skipped something.  
+The switch should boot normally and you should see it's usual boot text in your serial console. 
+>If you don't see any text in your serial window and the switch seems like it's still bricked, halt it again from the JTAG window by running `reset halt` and follow the above erasing and flashing steps again as you must have skipped something.  
 
-Now that it's working and running, unplug the switch power first! When the switch is off and powered down, then unplug the power cable from the BDI2000, then disconnect it from the JTAG header, and you are done. **PLEASE SEND ME THE badboot.bin FILE FROM YOUR TFTP SERVER!** This will allow me to see exactly what got corrupted on your switch.
+Once you have confirmed it has booted succesfully - shut the switch down - do not run it for very long with the top off - once the ASIC is initialized it gets VERY hot without any airflow being forced over it.
+>This is not an issue when initially booting the switch with JTAG, as the CPU is halted before it has a chance to bring the ASIC online. it is only once the switch boots succesfully in which it will begin heating.  
+
+Unplug the switch power first! When the switch is off and powered down, then unplug the power cable from the BDI2000, then disconnect it from the JTAG header, and you are done. **PLEASE SEND ME THE badboot.bin FILE FROM YOUR TFTP SERVER!** This will allow me to see exactly what got corrupted on your switch.
 
 **Shutdown Order Summary:**  
 1. Power down the switch (unplug power)  
