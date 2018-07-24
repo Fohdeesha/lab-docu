@@ -11,5 +11,5 @@ pages:
     - Brocade:
         - 'FCX / ICX6610': 'fcx.md'
         - 'ICX6430 / ICX6450': 'icx64xx.md'
-
+        - 'JTAG Recovery': 'jtag.md'
 
