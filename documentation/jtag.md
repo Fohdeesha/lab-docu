@@ -15,6 +15,8 @@ If you plug it into the wall and nothing happens (it shouldn't), unplug it from 
 
 Now very carefully connect the other end of the power brick to the BDI2000 (the power brick should not be plugged into the wall yet) - plug it into the top set of power pins, matching the red and green stripes. MAKE SURE TO GET THIS RIGHT! See the following picture for the correct way:  
 
+![bdi-power](http://fohdeesha.com/data/other/bdipower.jpg)
+
 Once you are sure it is plugged in correctly, and it is also connected to your network via ethernet, plug the power brick into an outlet - the BDI2000 should power up.  
 
 Using a telnet capable program like putty, telnet to the BDI2000 unit - it has been preconfigured with an IP of 192.168.0.2 - You should get output like the below, saying it's waiting for a target:
@@ -27,10 +29,13 @@ TARGET: waiting for target Vcc
 
 Now you must connect the BDI2000 to your switch. Make sure the switch is unplugged and powered off! Find the 16-pin JTAG header on the switch. On the JTAG header, `1` should be printed on one side of the header to indicate pin number 1. Find which side of the header that `1` is on.  
 
-Orient, then plug in the cable so pin #1 is on the left side, like this:
+Plug in the cable so pin #1 is on the left side, like this:  
 
+![bdi-pins](http://fohdeesha.com/data/other/bdipins.jpg)
 
-On an LB6M, the connection should look like this:
+On an LB6M, the connection should look like this:  
+
+![bdi-lb6m](http://fohdeesha.com/data/other/bdilb6m.jpg)
 
 Now that everything is plugged in and the BDI2000 is powered, power up the switch.  
 
@@ -45,7 +50,6 @@ Now that everything is plugged in and the BDI2000 is powered, power up the switc
 When the switch powers up, you should get some new output in your telnet connection to the unit, similar to the below:
 
 ```
-...
 - TARGET: resetting target passed  
 - TARGET: processing target startup ....  
 - TARGET: processing target startup passed
@@ -86,4 +90,4 @@ Now that it's working and running, unplug the switch power first! When the switc
 **Shutdown Order Summary:**  
 1. Power down the switch (unplug power)  
 2. Power down the BDI2000 (unplug power brick)  
-3. Disconnect the BDI2000 16 pin cable from the JTAG header   
+3. Disconnect the BDI2000 16 pin cable from the JTAG header  
