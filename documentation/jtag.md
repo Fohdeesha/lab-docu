@@ -74,7 +74,7 @@ Now we tell it to copy the corrupted flash bootloader to a file on your TFTP ser
 dump 0xfff80000 0x00080000 badboot.bin
 ```  
 >Note: if you get an error here, it is most likely related to TFTP permissions (it can't write the file on your TFTP server). See the intro paragraph for linux TFTP permission information.
->
+
 Once that finishes, we can write the new bootloader. First we must erase the bootloader section of flash properly before we can write to it:
 ```
 erase 0xfff80000 0x20000 4
