@@ -90,7 +90,7 @@ reset run
 The switch should boot normally and you should see it's usual boot text in your serial console. 
 >If you don't see any text in your serial window and the switch seems like it's still bricked, halt it again from the JTAG window by running `reset halt` and follow the above erasing and flashing steps again as you must have skipped something.  
 
-Once you have confirmed it has booted succesfully - shut the switch down - do not run it for very long with the top off - once the ASIC is initialized it gets VERY hot without any airflow being forced over it.
+Once you have confirmed it has booted succesfully - unplug/power off the switch - do not run it for very long with the top off - once the ASIC is initialized it gets VERY hot without any airflow being forced over it.
 >This is not an issue when initially booting the switch with JTAG, as the CPU is halted before it has a chance to bring the ASIC online. it is only once the switch boots succesfully in which it will begin heating.  
 
 Unplug the switch power first! When the switch is off and powered down, then unplug the power cable from the BDI2000, then disconnect it from the JTAG header, and you are done. **PLEASE SEND ME THE badboot.bin FILE FROM YOUR TFTP SERVER!** This will allow me to see exactly what got corrupted on your switch.
