@@ -125,10 +125,14 @@ If your switch is the PoE model, you need to update the PoE controller firmware.
 ```
 exit
 inline power install-firmware stack-unit 1 tftp 192.168.1.8 icx64xx_poeplus_02.1.0.b004.fw
-#after a minute  or so, hit enter to return to cli
+#after a few seconds, hit enter to return to cli
+#save changes you made from the previous section
+write memory
+#reload the switch
 reload
 #you'll probably get a message that it hasn't finished. it can take up to 10 minutes
-#once it's booted back into the OS:
+#run "show log" occasionally to monitor the update progress
+#once you're rebooted it back into the OS:
 enable
 configure terminal
 ```

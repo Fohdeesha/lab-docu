@@ -115,10 +115,14 @@ If your switch is the PoE model, you need to update the PoE controller firmware.
 ```
 exit
 inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
-#after a minute  or so, hit enter to return to cli
+#after a few seconds, hit enter to return to cli
+#save changes you made from the previous section
+write memory
+#reload the switch
 reload
 #you'll probably get a message that it hasn't finished. it can take up to 10 minutes
-#once it's booted back into the OS:
+#run "show log" occasionally to monitor the update progress
+#once you're rebooted it back into the OS:
 enable
 configure terminal
 ```
@@ -276,4 +280,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.8 (07-18-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v0.9 (07-30-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
