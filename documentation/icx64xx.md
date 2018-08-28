@@ -35,14 +35,26 @@ Now at the boot prompt, we tell the switch to clear all current configs and old 
 ```
 factory set-default
 ```
-**Note:** To confirm this action, you must send CAPITAL `Y` - sending a lowercase `y` will just make it abort.   
+To confirm this action, you must send CAPITAL `Y` - sending a lowercase `y` will just make it abort.   
 
 Now just tell the switch to reboot:
 
 ```
 reset
 ```
-It will boot into the full OS and you can continue on below.
+It will boot into the full OS and you can continue to the next section.  
+
+**Note:**: if you get an error stating `factory set-default` is not a valid command, this means your switch has a very old bootloader. To clear the existing passworded config in this case, do the following:
+```
+#only follow this section if factory set-default did not work
+no password
+boot
+#it will boot the OS. Once booted:
+enable  
+erase startup-config  
+reload
+#it will boot fresh with a clear config, then you can move to the next section
+```
 
 
 ## Initial Configuration & update
@@ -61,6 +73,8 @@ ip dhcp-client disable
 write memory
 exit
 ```
+>**Note:** If during the `ip dhcp-client disable` command you get an invalid input error, your switch probably came with the layer 2 only firmware loaded. In that case, just run `ip address 192.168.1.55/24` (replace the IP) - this will give it a temporary IP, so it can load the layer 3 firmware. Then skip down to the `Load The New Images` section below, and use those commands to copy in the latest layer 3 firmware and reload. Once the switch comes back up, **don't forget** to come back and follow this **Initial Configuration** section all the way through now that you have the proper firmware!
+
 Now just reload the switch so it comes back up without an IP assigned to a port via DHCP:
 
 ```
@@ -86,22 +100,19 @@ ip address 192.168.1.55/24
 exit
 write mem
 ```
-**Note:** If during the `router-interface ve 1` command earlier you get an error about the command not existing, your switch probably came with the layer2 only firmware loaded. In that case, `exit` until you are back at the normal `config` level prompt, and just run `ip address 192.168.1.55/24` - this will give it an IP, so it can load the firmware file in the instructions directly below. However once you have flashed the new software and rebooted, follow this `Initial Configuration` section again from the top, to give it an IP under the new layer 3 firmware.
 
 ## Load The New Images
 
-Now that the switch has an IP address, we can TFTP in the new images:
+Now that the switch has an IP address, we can TFTP in the new images, then reload:
 ```
 exit
 copy tftp flash 192.168.1.8 kxz10105.bin bootrom  
 copy tftp flash 192.168.1.8 ICX64R08030s.bin primary
-```
-Once it finishes, reload the switch and it will come back up with the latest layer 3 firmware:
-```
 reload
 ```
+>Note: if you skipped to this section because your switch had layer 2 firmware on it and a note in the previous section instructed you to, go back above and go through the whole **Initial Configuration & update** section once the switch finishes rebooting.  
 
-
+The switch will reload, loading the new software. Continue on to the **Configuration Details** section below.
 
 ## Configuring Details
 
@@ -241,6 +252,7 @@ conf t
 There is also tab help and completion. To see all the commands available at the current CLI level, just hit tab. To see the options available for a certain command, just type that command (like ```ip```) then hit tab.
 
 ## Advanced Configuration
+
 ### Default Route & DNS
 To give the switch a default route and a DNS server so it can reach external hostnames and IP's (to ping external servers or to update time via NTP etc), do the following. replace the IP with the IP of your gateway/router/etc. Assuming you are still at the ```configure terminal``` level:
 
