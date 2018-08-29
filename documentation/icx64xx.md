@@ -26,7 +26,7 @@ reload
 
 Connect to the switches serial/console port on the front using a program like Putty (9600 8N1), and connect any of the normal switch ports to your network (do NOT use the dedicated management port).
 
-You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://tftpd32.jounin.net/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```ICX64R08030s.bin``` - the other image with an S in it is switching only, with less features.  
+You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```ICX64R08030s.bin``` - the other image with an S in it is switching only, with less features.  
 
 Power on the switch while watching your serial terminal - start smashing the `b` key until you're dropped into the bootloader prompt, which looks like `ICX64XX-boot>>` . If you missed the prompt and it boots the OS instead, pull power and try again.  
 
