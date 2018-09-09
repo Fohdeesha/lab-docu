@@ -3,10 +3,10 @@
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
-[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030s.zip)  
-```SW version: 08030s```  
-```ZIP Updated: 06-10-2018```  
-```MD5: ba19aac64d9601c16efa58233ea318f8```  
+[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030sa.zip)  
+```SW version: 08030sa```  
+```ZIP Updated: 09-09-2018```  
+```MD5: 20bda46728cb4154785f028424c84c06```  
 
 
 **NOTE:** If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
@@ -15,7 +15,7 @@ Download the ZIP below, which contains the firmware files and documentation you'
 #Skip this whole block if the switch has not yet been configured using this guide!
 enable
 copy tftp flash 192.168.1.8 grz10100.bin bootrom  
-copy tftp flash 192.168.1.8 FCXR08030s.bin primary
+copy tftp flash 192.168.1.8 FCXR08030sa.bin primary
 ##update the PoE firmware if you have PoE model.
 inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
 reload
@@ -25,7 +25,7 @@ reload
 
 Connect to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
 
-You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030s.bin``` - the other image with an S in it is switching only, with less features.
+You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030sa.bin``` - the other image with an S in it is switching only, with less features.
 
 Power on the switch while watching your serial terminal - it will have a prompt saying ```Hit b to enter the boot monitor``` - press ```b``` quickly and you'll be dropped into the bootloader prompt, now we can upgrade the software. If you missed the prompt and it boots the OS instead, pull power and try again.
 
@@ -43,7 +43,7 @@ copy tftp flash 192.168.1.49 grz10100.bin boot
 After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server, and change the filename to match if necessary: 
 
 ```
-copy tftp flash 192.168.1.49 FCXR08030s.bin primary
+copy tftp flash 192.168.1.49 FCXR08030sa.bin primary
 ```
 It will take a little longer. When it finishes, tell the switch to reboot, then it will fully boot into the updated OS:
 
