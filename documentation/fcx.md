@@ -3,7 +3,7 @@
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
-[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/08030sa.zip)  
+[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/08030sa.zip)  
 ```SW version: 08030sa```  
 ```ZIP Updated: 09-09-2018```  
 ```MD5: 20bda46728cb4154785f028424c84c06```  
