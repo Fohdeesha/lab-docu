@@ -5,8 +5,8 @@ Download the ZIP below, which contains the firmware files and documentation you'
 
 [```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/08030sa.zip)  
 ```SW version: 08030sa```  
-```ZIP Updated: 09-09-2018```  
-```MD5: 20bda46728cb4154785f028424c84c06```  
+```ZIP Updated: 09-14-2018```  
+```MD5: 7128f9ed898fc4ef5ffdb028cd629b24```  
 
 
 **NOTE:** If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
