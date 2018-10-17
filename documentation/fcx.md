@@ -45,9 +45,10 @@ After a few seconds it should finish, then we can flash the main OS. Replace the
 ```
 copy tftp flash 192.168.1.49 FCXR08030sa.bin primary
 ```
-It will take a little longer. When it finishes, tell the switch to reboot, then it will fully boot into the updated OS:
+It will take a little longer. When it finishes, we need to erase the current config & any passwords, then tell the switch to reboot into the full OS:
 
 ```
+factory set-default
 reset
 ```
 
@@ -61,15 +62,6 @@ show version
 Towards the top of the output, it should say ```SW: Version XX.X.XXX``` - it should be the v8 version you flashed.  
 
 Now to make any changes we must enter the enable level:
-```
-enable
-```
-We need to erase the existing startup config from the past owner, then reboot:
-```
-erase startup-config
-reload
-```
-It will reboot. Once it's back up, enter the enable CLI level again:
 ```
 enable
 ```
