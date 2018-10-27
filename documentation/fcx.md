@@ -266,10 +266,10 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 
 
 ### Thanks:
-[**FBOM**](http://fbom.club/)  
+[**Fohdeesha**](http://fohdeesha.com/)  
 
 
 ### Contributing:
-The markdown source for these guides is hosted on [**our Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
+The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v0.9 (07-30-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.0 (10-27-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 

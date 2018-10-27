@@ -290,4 +290,13 @@ telnet@Route2(config)#sh optic 5
 5       32.7460 C  -002.6688 dBm -002.8091 dBm    5.472 mA
         Normal      Normal        Normal         Normal
 ```
-You'll need to pick up some official Brocade or Foundry optics on ebay, or buy some flashed optics from FiberStore.
+You'll need to pick up some official Brocade or Foundry optics on ebay, or buy some flashed optics from FiberStore.  
+
+### Thanks:
+[**Fohdeesha**](http://fohdeesha.com/)  
+
+
+### Contributing:
+The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
+
+```Documentation version:``` [ v1.0 (10-27-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
