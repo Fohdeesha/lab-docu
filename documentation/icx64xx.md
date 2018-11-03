@@ -128,7 +128,8 @@ write memory
 reload
 #you'll probably get a message that it hasn't finished. it can take up to 10 minutes
 #run "show log" occasionally to monitor the update progress
-#once you're rebooted it back into the OS:
+#try the "reload" command again once it's reached 100%
+#once you've rebooted back into the OS:
 enable
 configure terminal
 ```
@@ -284,4 +285,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.2 (11-03-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.3 (11-03-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
