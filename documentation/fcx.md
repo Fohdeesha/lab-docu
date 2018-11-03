@@ -8,22 +8,8 @@ Download the ZIP below, which contains the firmware files and documentation you'
 ```ZIP Updated: 11-03-2018```  
 ```MD5: 0c02f16a73f75ffd0d30d4cb0085cad0```  
 
-
-**NOTE:** If this switch has already been set up and configured with an IP and you just want to update the software/BL, use the files in the ZIP above to update the switch from inside the booted OS using:
-
-```
-#Skip this whole block if the switch has not yet been configured using this guide!
-enable
-copy tftp flash 192.168.1.8 grz10100.bin bootrom  
-copy tftp flash 192.168.1.8 FCXR08030sa.bin primary
-##update the PoE firmware if you have PoE model.
-inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
-reload
-```
-
-**Otherwise** if this is a new/used switch that has not been configured, do the following:  
-
-Connect to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
+ 
+**Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
 
 You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030sa.bin``` - the other image with an S in it is switching only, with less features.
 
@@ -272,4 +258,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.1 (11-03-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.2 (11-03-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
