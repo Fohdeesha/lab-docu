@@ -89,7 +89,7 @@ interface ve 1
 ip address 192.168.1.2/24
 exit
 ```
-The switch now has an IP. Unplug your ethernet cable from the isolated management port, and plug it into any of the normal ports on the front. You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
+The switch now has an IP. **Unplug your ethernet cable from the isolated management port, and plug it into any of the normal ports on the front.** You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
 
 ## Update PoE Firmware
 If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just do the following:
