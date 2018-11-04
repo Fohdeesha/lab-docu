@@ -1,5 +1,7 @@
 # Setting up Brocade FCX & ICX6610
 
+**Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the lefthand menu.
+
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
