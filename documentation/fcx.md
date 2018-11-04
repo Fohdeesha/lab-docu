@@ -5,7 +5,7 @@
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
-[```Brocade v8 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/08030sa.zip)  
+[```Brocade v8030 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/8030sa.zip)  
 ```SW version: 08030sa```  
 ```ZIP Updated: 11-03-2018```  
 ```MD5: 0c02f16a73f75ffd0d30d4cb0085cad0```  
@@ -261,4 +261,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.3 (11-03-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.4 (11-04-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
