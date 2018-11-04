@@ -1,3 +1,4 @@
+
 # Setting up Brocade FCX & ICX6610
 
 **Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the lefthand menu.
@@ -13,7 +14,7 @@ Download the ZIP below, which contains the firmware files and documentation you'
  
 **Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
 
-You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the image with "R" in the file name to the server as well. For example, ```FCXR08030sa.bin``` - the other image with an S in it is switching only, with less features.
+You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the OS image to the same place. If you have a PoE model, copy over the PoE firmware from the `PoE Firmware` folder to your TFTP directory as well.
 
 Power on the switch while watching your serial terminal - it will have a prompt saying ```Hit b to enter the boot monitor``` - press ```b``` quickly and you'll be dropped into the bootloader prompt, now we can upgrade the software. If you missed the prompt and it boots the OS instead, pull power and try again.
 
@@ -91,7 +92,7 @@ exit
 The switch now has an IP. Unplug your ethernet cable from the isolated management port, and plug it into any of the normal ports on the front. You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
 
 ## Update PoE Firmware
-If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just put the ```fcx_poeplus_02.1.0.b004.fw``` file on your TFTP server and pull it in:
+If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just do the following:
 ```
 exit
 inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
@@ -107,7 +108,7 @@ reload
 enable
 configure terminal
 ```
-That's it!
+Now you have the latest PoE firmware, and can continue on.
 
 ## If Access Protection Is NOT Required
 If you do **not** want to password protect access to the switch (you're using it in a lab), follow this section. If you'd like to password protect it, skip to the next section.
@@ -201,7 +202,7 @@ To remove configuration options, put a ```no``` in front of them at the appropri
 no hostname intertubes
 ```
 ## Tips
-To exit the CLI level you are at, use exit. So assuming you are still at the ```configure terminal``` level, type the following to exit back to the ```enable``` level:
+To exit the CLI level you are at, use `exit`. So assuming you are still at the ```configure terminal``` level, type the following to exit back to the ```enable``` level:
 ```
 exit
 ```
@@ -209,7 +210,7 @@ Commands can also be shortened, as long as they are still unique. So to re-enter
 ```
 conf t
 ```
-There is also tab help and completion. To see all the commands available at the current CLI level, just hit tab. To see the options available for a certain command, just type that command (like ```ip```) then hit tab.
+There is also tab help and completion. To see all the commands available at the current CLI level, just hit tab. To see the options available for a certain command, just type that command (like ```ip```) then hit tab a couple times.
 
 ## Advanced Configuration
 ### Default Route & DNS
@@ -237,7 +238,11 @@ To quickly enable SNMPv2 (read only), follow the below. SNMP v3 is available but
 snmp-server community public ro
 ```
 
-
+### Saving
+If you made any of the above extra changes, remember they have not been saved to onboard flash yet. Do so:
+```
+write memory
+```
 
 ## SFP/Optics Information
 Brocade does not restrict the use of optics by manufacturer, they'll take anything given it's the right protocol. However optical monitoring information is disabled unless it sees Brocade or Foundry optics.  
@@ -261,4 +266,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.4 (11-04-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.5 (11-04-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
