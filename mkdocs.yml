@@ -2,11 +2,11 @@ site_name: Fohdeesha Docs
 theme:
   name: 'material'
   palette:
-    primary: 'red'
-    accent: 'light blue'
+    primary: 'blue'
+    accent: 'red'
 
 dev_addr: 192.168.1.8:8000
-pages:
+nav:
     - Home: index.md
     - Brocade:
         - 'FCX / ICX6610': 'fcx.md'
