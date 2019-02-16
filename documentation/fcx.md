@@ -28,8 +28,7 @@ Now we can update the bootloader. Replace the IP with the IP of your tftp server
 ```
 copy tftp flash 192.168.1.49 grz10100.bin boot
 ```
-
-After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server, and change the filename to match if necessary: 
+After a few seconds it should finish. If it fails with "TFTP timed out", ```ping 192.168.1.49``` can be used to test connectivity. After updating the bootloader, we can flash the main OS. Again, change the filename to match if necessary: 
 
 ```
 copy tftp flash 192.168.1.49 FCXR08030sa.bin primary
