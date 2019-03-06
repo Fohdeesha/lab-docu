@@ -3,10 +3,10 @@
 ## Preparation 
 Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
-[```Brocade v8030 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/8030sa.zip)  
-```SW version: 08030sa```  
-```ZIP Updated: 11-03-2018```  
-```MD5: 0c02f16a73f75ffd0d30d4cb0085cad0```  
+[```Brocade v8030 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/8030t.zip)  
+```SW version: 08030t```  
+```ZIP Updated: 03-06-2019```  
+```MD5: 848d637f007071d04d198f04e04c52a9```  
 
 
 **Connect** to the switches serial/console port on the front using a program like Putty (9600 8N1), and connect any of the normal switch ports to your network (do NOT use the dedicated management port).
@@ -98,7 +98,7 @@ Now that the switch has an IP address, we can TFTP in the new images, then reloa
 ```
 exit
 copy tftp flash 192.168.1.8 kxz10105.bin bootrom  
-copy tftp flash 192.168.1.8 ICX64R08030sa.bin primary
+copy tftp flash 192.168.1.8 ICX64R08030t.bin primary
 reload
 ```
 >Note: if you skipped to this section because your switch had layer 2 firmware on it and a note in the previous section instructed you to, go back above and go through the whole **Initial Configuration & update** section once the switch finishes rebooting.  
@@ -297,4 +297,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.7 (12-04-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.8 (03-06-19)](https://github.com/Fohdeesha/lab-docu/commits/master) 

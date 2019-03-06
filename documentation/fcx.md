@@ -6,10 +6,10 @@
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
-[```Brocade v8030 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/8030sa.zip)  
-```SW version: 08030sa```  
-```ZIP Updated: 11-03-2018```  
-```MD5: 0c02f16a73f75ffd0d30d4cb0085cad0```  
+[```Brocade v8030 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/8030t.zip)  
+```SW version: 08030t```  
+```ZIP Updated: 03-06-2019```  
+```MD5: 848d637f007071d04d198f04e04c52a9```  
 
  
 **Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
@@ -32,7 +32,7 @@ copy tftp flash 192.168.1.49 grz10100.bin boot
 After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server, and change the filename to match if necessary: 
 
 ```
-copy tftp flash 192.168.1.49 FCXR08030sa.bin primary
+copy tftp flash 192.168.1.49 FCXR08030t.bin primary
 ```
 It will take a little longer. When it finishes, we need to erase the current config & any passwords, then tell the switch to reboot into the full OS:
 
@@ -266,4 +266,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.6 (11-08-18)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.7 (03-06-19)](https://github.com/Fohdeesha/lab-docu/commits/master) 
