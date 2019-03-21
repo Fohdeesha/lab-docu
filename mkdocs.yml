@@ -11,6 +11,7 @@ nav:
     - Brocade:
         - 'FCX / ICX6610': 'fcx.md'
         - 'ICX6430 / ICX6450': 'icx64xx.md'
+        - 'ICX6650': 'icx6650.md'
         - 'ICX7150': 'icx7150.md'
         - 'ICX7250': 'icx7250.md'
         - 'JTAG Recovery': 'jtag.md'
