@@ -105,7 +105,7 @@ reload
 
 The switch will reload, loading the new software. Continue on to the **Configuration Details** section below.
 
-## Configuring Details
+## Configuration Details
 
 Your switch should now be freshly booted with the latest layer 3 firmware image and bootloader. First give the switch a name:
 
