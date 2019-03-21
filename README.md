@@ -1,6 +1,6 @@
 
 # Lab-Docu
-Documentation used by FBOM for various network and server gear  
+Documentation used by STH & FBOM for various network and server gear  
 
 The raw markdown source in this repo is intended to be built using [MkDocs](http://www.mkdocs.org/) - not displayed on GitHub.  
 
