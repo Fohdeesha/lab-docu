@@ -78,8 +78,8 @@ Then simply bind each of your application instances to the first address in each
 
 ```
 Instance 1 - 2620:57:e000:400::1/64
-Instance 2 - 2620:57:e000:401::2/64
-Instance 3 - 2620:57:e000:402::/64
+Instance 2 - 2620:57:e000:401::1/64
+Instance 3 - 2620:57:e000:402::1/64
 etc etc etc
 ```
 
