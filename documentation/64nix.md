@@ -25,7 +25,7 @@ ipv6 route 2620:57:e000:400::/56 2620:57:e000:e::12
 
 The destination is your chosen `2620:57:e000:400::/56` subnet, the next-hop is the server end of the transit subnet, `2620:57:e000:e::12`
 
-### On server, give it it's own address in the transit subnet:
+### Give the server its own address in the transit subnet:
 **Note**: this should be one address up from what the router (ICX7750) has.
 
 ```
