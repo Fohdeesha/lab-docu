@@ -38,8 +38,8 @@ iface eth1 inet6 static
         gateway 2620:57:e000:e::11
         autoconf 0
 ```
-Now run the below command to assign the entire /56 to the server's loopback interface:
-**Note:** this uses Linux's [AnyIP](https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/) feature.
+Now run the below command to assign the entire /56 to the server's loopback interface:  
+**Note:** this uses Linux's [AnyIP](https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/) feature  
 
 `ip -6 route add local 2620:57:e000:400::/56 dev lo`
 
