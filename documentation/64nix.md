@@ -41,8 +41,8 @@ iface eth1 inet6 static
 
 ### Assign an entire /56 to a linux server 
 
-Run the below command to assign the entire /56 to the server's loopback interface:  
-**Note:** this uses Linux's [AnyIP](https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/) feature  
+Run the below command to assign the entire /56 to the server's loopback interface:   
+**Note:** this uses Linux's [AnyIP](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ab79ad14a2d51e95f0ac3cef7cd116a57089ba82) feature:  
 
 `ip -6 route add local 2620:57:e000:400::/56 dev lo`
 
