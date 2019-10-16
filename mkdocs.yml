@@ -15,4 +15,5 @@ nav:
         - 'ICX7150': 'icx7150.md'
         - 'ICX7250': 'icx7250.md'
         - 'JTAG Recovery': 'jtag.md'
-
+    - Other:
+        - 'Multiple /64s *nix': '64nix.md'
