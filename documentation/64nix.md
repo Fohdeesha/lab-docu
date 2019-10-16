@@ -72,7 +72,7 @@ iface eth1 inet6 static
 ### Finding all the /64s to bind to
 If your application needs to be bound to each /64, stick our `2620:57:e000:400::/56` subnet into [this calculator](https://subnettingpractice.com/ipv6_subnetting.html), and choose /64s from the dropdown then press calculate:
 
-![eeprom](../../data/other/64nix-1.png) 
+![calculator](../../data/other/brocade/64nix-1.png) 
 
 Then simply bind each of your application instances to the first address in each /64 - For instance:
 
