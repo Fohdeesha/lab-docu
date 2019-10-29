@@ -16,11 +16,11 @@ nav:
         - 'ICX7250 / ICX7450': 'icx7250.md'
         - 'JTAG LB6M': 'jtag.md'
         - 'JTAG ICX6610': 'jtag6610.md'
-        - 'Hidden Dev Stuff': hidden.md
-        - 'Accessing Linux': linux.md
-        - 'Extracting Firmware': firmware.md
-        - 'Extracting Licenses': extract.md
-        - 'ICX6610 Stack Ports': stack-ports.md
-        - 'EEPROM Unlocks': eeprom.md
+        - 'Hidden Dev Stuff': `hidden.md`
+        - 'Accessing Linux': `linux.md`
+        - 'Extracting Firmware': `firmware.md`
+        - 'Extracting Licenses': `extract.md`
+        - 'ICX6610 Stack Ports': `stack-ports.md`
+        - 'EEPROM Unlocks': `eeprom.md`
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
