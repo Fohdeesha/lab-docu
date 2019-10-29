@@ -99,3 +99,5 @@ Unplug the switch power first! When the switch is off and powered down, then unp
 1. Power down the switch (unplug power)  
 2. Power down the BDI2000 (unplug power brick)  
 3. Disconnect the BDI2000 16 pin cable from the JTAG header  
+
+Put the switch cover back on. Now that your switch is booting into the bootloader, you can go and follow the [flashing guide](https://brokeaid.com/#booting-brocade)  - start from the **Booting Brocade** section as linked.
