@@ -51,7 +51,7 @@ Now you just need to stick those strings in an XML file, like `newlicense.xml` -
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <lic:licenseInfo xmlns:lic="http://license.brocade.com/licensefile">
   <licenseHeader>
-    <serialNumber>dbuHKIIjMxI</serialNumber>
+    <serialNumber>CgHlvVduSMX</serialNumber>
     <productNumber>ICX6450-PREM-LIC-SW</productNumber>
     <description>ICX6450-PREM-LIC-SW</description>
     <version xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
@@ -59,7 +59,7 @@ Now you just need to stick those strings in an XML file, like `newlicense.xml` -
   </licenseHeader>
   <license>
     <featureName>ICX6450-PREM-LIC-SW</featureName>
-    <featureVersion>dbuHKIIjMxI</featureVersion>
+    <featureVersion>CgHlvVduSMX</featureVersion>
     <licKey>*B 9iCL80dHxLmvid3SxhIuk9zsalx630zHSpadlLlIfSTblqCSlSejIw5zibzBIyafEOvCrobl:OL8lwN4Rzd9zQCNIhsd,ASV0Bzgks5rlLMCwk,kA:mkdOCzZvVENVUluHX2</licKey>
   </license>
 </lic:licenseInfo>
