@@ -90,7 +90,7 @@ setenv diag_mode_enable
 saveenv
 reset
 ```
-#### ICX7650:
+#### ICX7650
 ```
 setenv diag_mode_on 1
 saveenv
