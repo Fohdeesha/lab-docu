@@ -13,9 +13,8 @@ nav:
         - 'ICX6430 / ICX6450': 'icx64xx.md'
         - 'ICX6650': 'icx6650.md'
         - 'ICX7150': 'icx7150.md'
-        - 'ICX7250': 'icx7250.md'
-        - 'ICX7450': 'icx7250.md'
-        - 'JTAG Recovery LB6M': 'jtag.md'
-        - 'JTAG Recovery ICX6610': 'jtag6610.md'
+        - 'ICX7250 / ICX7450': 'icx7250.md'
+        - 'JTAG LB6M': 'jtag.md'
+        - 'JTAG ICX6610': 'jtag6610.md'
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
