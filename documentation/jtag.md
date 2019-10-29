@@ -1,10 +1,10 @@
-# PowerPC JTAG Recovery
-This is a brief guide to recover corrupt bootloaders on PowerPC 85xx switches using a BDI2000. 
+# PowerPC JTAG Recovery (LB6M)
+This is a brief guide to recover corrupt bootloaders on PowerPC 85xx switches (LB6M) using a BDI2000. 
 
 ## Preparation
 Start by downloading [this ZIP](http://fohdeesha.com/data/other/jtag-recovery.zip).
 
-Put all the files from the zip into the root of your TFTP server - the JTAG unit has been preprogrammed to look for a TFTP server at 192.168.0.1  - make sure the TFTP server is running at this address.
+Put all the files from the zip into the root of your TFTP server - the JTAG unit has been preprogrammed to look for a TFTP server at the address you specified before the unit was shipped - make sure said TFTP server is running with above files before powering the BDI2000.
 
 If the TFTP server is running on linux, you need to create an empty file in the TFTP root called `badboot.bin` - and give it write permission by running `CHMOD 777 badboot.bin` - this allows the JTAG unit to write to this file. if you are using a windows TFTP server, this shouldn't be necessary.
 
@@ -13,13 +13,11 @@ If you are outside the US, please plug the power brick into the wall first WITHO
 
 If you plug it into the wall and nothing happens (it shouldn't), unplug it from the wall. Now plug your ethernet cable into the BDI2000 (which should still be powered off).  
 
-Now very carefully connect the other end of the power brick to the BDI2000 (the power brick should not be plugged into the wall yet) - plug it into the top set of power pins, matching the red and green stripes. MAKE SURE TO GET THIS RIGHT! See the following picture for the correct way:  
-
-![bdi-power](http://fohdeesha.com/data/other/bdipower.jpg)
+Now plug in the power supply to the BDI2000. Be gentle and make sure the key on the plug is facing the correct way - I had to hack up that power supply out of parts as it did not come with one.
 
 Once you are sure it is plugged in correctly, and it is also connected to your network via ethernet, plug the power brick into an outlet - the BDI2000 should power up.  
 
-Using a telnet capable program like putty, telnet to the BDI2000 unit - it has been preconfigured with an IP of 192.168.0.2 - You should get output like the below, saying it's waiting for a target:
+Using a telnet capable program like putty, telnet to the BDI2000 unit - it has been preconfigured with the IP you specified before shipping - You should get output like the below, saying it's waiting for a target:
 
 ```
 TARGET: waiting for target Vcc
@@ -27,7 +25,7 @@ TARGET: waiting for target Vcc
 TARGET: waiting for target Vcc
 ```
 
-Now you must connect the BDI2000 to your switch. Make sure the switch is unplugged and powered off! Find the 16-pin JTAG header on the switch. On the JTAG header, `1` should be printed on one side of the header to indicate pin number 1. Find which side of the header that `1` is on.  
+Now you must connect the BDI2000 to the LB6M. Make sure the switch is unplugged and powered off! Find the 16-pin JTAG header on the switch. On the JTAG header, `1` should be printed on one side of the header to indicate pin number 1. Find which side of the header that `1` is on.  
 
 Plug in the cable so pin #1 is on the left side, like this:  
 
