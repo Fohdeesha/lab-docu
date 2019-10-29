@@ -20,7 +20,7 @@ You can also buy a cheap [EEPROM Programmer](https://www.amazon.com/gp/product/B
 **Note:** These are raw HEX bytes (not ASCII) to be written starting at the beginning of the EEPROM. So your EEPROM programmer/contents should look like this:  
 
 
-![eeprom](store/eeprom.png)
+![eeprom](https://fohdeesha.com/data/other/eepromguide/eeprom.png)
 
 
 ## EEPROM Unlock Strings
