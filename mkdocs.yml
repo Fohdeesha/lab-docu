@@ -2,8 +2,8 @@ site_name: Fohdeesha Docs
 theme:
   name: 'material'
   palette:
-    primary: 'deep orange'
-    accent: 'blue'
+    primary: 'blue'
+    accent: 'red'
 
 dev_addr: 192.168.1.8:8000
 nav:
