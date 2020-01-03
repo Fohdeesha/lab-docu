@@ -44,7 +44,7 @@ reset
 ```
 #only follow this section if factory set-default did not work
 no password
-boot
+boot system flash primary
 #it will boot the OS. Once booted:
 enable  
 erase startup-config  
