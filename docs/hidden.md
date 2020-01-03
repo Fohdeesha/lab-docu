@@ -1,3 +1,4 @@
+
 # Hidden Brocade Dev Stuff
 This is a collection of hidden tools, modes, and commands buried inside Brocade FastIron products. 
 
@@ -25,14 +26,8 @@ FCX3(config)#dm
 ```
 There's hundreds of other options. These are low level debug commands, so if you don't know what they do you can easily break your switch.  
 
-**Note:** There are most likely many other commands that are hidden so they do not show up under tab completion, like the commands above do. An example of some of these that I have managed to find are below:
-```
-dm license get
-dm license exempt
-dm license reset
-dm license version
-dm license vls
-```
+**Note:** There around ~700 commands that are completely hidden, they will not even show up using tab autocomplete like the above `dm` commands do. [Click here](https://fohdeesha.com/data/other/brocade/FastIron-Hidden.txt) for a full list of these commands. Many of these might delete your config, your licenses, lock the switch up, etc.
+
 ## Hidden OS Console
 This only works over a serial connection. It will not work over telnet/ssh/etc. Connect to a FastIron device over serial, and once it's fully booted and running, press ```ctrl+y```, let go, then press ```m```. Then hit enter. It should drop you down to the OS console:
 ```
@@ -104,4 +99,5 @@ reset
 ```
 
 #### ICX7150, ICX7750, ICX7850
+Unknown, but most likely one of the three above. If you try all three, make sure to undo each one (follow the `back to normal` bit) before moving onto the next attempt.
 Unknown, but most likely one of the three above. If you try all three, make sure to undo each one (follow the `back to normal` bit) before moving onto the next attempt.
