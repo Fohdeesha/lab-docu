@@ -1,4 +1,5 @@
 
+
 # Setting up Brocade FCX & ICX6610
 
 **Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the lefthand menu.
@@ -6,7 +7,7 @@
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need.  
 
-[```Brocade v8030 Firmware/Docu Zip```](http://fohdeesha.com/data/other/brocade/8030t.zip)  
+[```Brocade v8030 Firmware/Docu Zip```](https://fohdeesha.com/data/other/brocade/8030t.zip)  
 ```SW version: 08030t```  
 ```ZIP Updated: 03-21-2019```  
 ```MD5: 6f4b1c6b2f1faf4c8c5d1f647b6505f2```  
@@ -261,6 +262,13 @@ If you made any of the above extra changes, remember they have not been saved to
 write memory
 ```
 
+## Noise Tips (ICX6610)
+The ICX66610 power supply bricks came in 3 revisions: A, B, and C. These will have an affect on how loud the switch is. Generally with an A revision PSU anywhere, even combined with a B or C revision in the other PSU slot, the PSU fans will run louder.  
+
+The switch will be much quieter if you can find and run B and/or C revision bricks. There's no difference noise wise between B and C. Most sellers do not list the revision so you have to check the ebay pictures [for the revision marking.](https://fohdeesha.com/data/other/brocade/psu-rev.jpg)  
+
+Also, it seems the PSU and fan tray position also affect fan speed. If you are running 1 PSU and fan tray, position them in the furthest left slots, when looking at the switch from the rear. If you have 2 PSUs and 1 fan tray, position the fan tray in the furthest left fan tray slot when looking at the rear of the switch. 
+
 ## SFP/Optics Information
 Brocade does not restrict the use of optics by manufacturer, they'll take anything given it's the right protocol. However optical monitoring information is disabled unless it sees Brocade or Foundry optics.  
 
@@ -277,7 +285,7 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 
 
 ### Thanks:
-[**Fohdeesha**](http://fohdeesha.com/)  
+[**Fohdeesha**](https://fohdeesha.com/)  
 
 
 ### Contributing:
