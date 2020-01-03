@@ -3,5 +3,5 @@ This is the home of all public documentation by Jon Sands. Originally planned as
 
 Other documentation I have written:
 
- - [Brokeaid Crossflashing](http://brokeaid.com/)
+ - [Brokeaid Crossflashing](https://brokeaid.com/)
  - [Xen Orchestra](https://xen-orchestra.com/docs/)
