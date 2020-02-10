@@ -18,7 +18,7 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 
 **Better Performance:** the plain LSI IT firmware in this guide drastically increases the max [queue depth](https://www.settlersoman.com/what-is-storage-queue-depth-qd-and-why-is-it-so-important/) of the adapter. For instance on the H310 Mini, it goes from 25 with the stock Dell RAID firmware to 600 with the LSI IT firmware. This can mean drastic improvements in IOPS with heavy SSD configurations for example.
 
-**Different Driver:** The stock Dell firmware (MegaRAID-based) uses the MegaRAID driver in Linux/FreeBSD/etc. In some distributions this can cause issues, for example FreeNAS has issues pulling SMART data from drives connected to a MegaRAID controller. After crossflashing to IT mode, the card is used by the OS via the much simpler mpt3sas driver.
+**Different Driver:** The stock Dell firmware (MegaRAID-based) uses the MegaRAID driver in Linux/FreeBSD/etc. In some distributions this can cause issues, for example FreeNAS has issues pulling SMART data from drives connected to a MegaRAID controller. After crossflashing to IT mode, the card is used by the OS via the much simpler mpt2sas driver.
 
 ## Preparation
 Download the ZIP below which contains two ISOs. One is a freeDOS live boot image, the other is a Debian live boot image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) or similar - up to you.  
