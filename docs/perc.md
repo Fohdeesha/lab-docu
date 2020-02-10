@@ -10,7 +10,7 @@ Please note that we're not the first to do this by far, a few eBay sellers figur
 ## Thanks
 [**Jon Sands**](http://fohdeesha.com/)  
 [**Arkadius**](https://phoxden.net/)  
-[**WildOne69**](???)  
+**WildOne69**  
 [**Various STH Members**](https://forums.servethehome.com/index.php?threads/perc-h710-mini-to-it-mode.25448/page-3)  
 ## Why
 
