@@ -24,10 +24,10 @@ nav:
         - 'EEPROM Unlocks': eeprom.md
     - PERC Mini:
         - 'Introduction': 'perc.md'
-		- 'H310': 'H310.md'
-		- 'H710 B0': 'H710-B0.md'
-		- 'H710 D1': 'H710-D1.md'
-		- 'H710P B0': 'H710P-B0.md'
-		- 'H710P D1': 'H710P-D1.md'
+        - 'H310': 'H310.md'
+        - 'H710 B0': 'H710-B0.md'
+        - 'H710 D1': 'H710-D1.md'
+        - 'H710P B0': 'H710P-B0.md'
+        - 'H710P D1': 'H710P-D1.md'
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
