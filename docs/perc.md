@@ -26,10 +26,11 @@ Download the ZIP below which contains two ISOs. One is a freeDOS live boot image
 [```Mini Mono Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
 ```Version: v1.0```  
 ```ZIP Updated: 02-09-2020```  
-```MD5: 6f4b1c6b2f1faf4c8c5d1f647b6505f2```  
+```MD5: 6f4b1c6b2f1faf4c8c5d1f647b6505f2```   
+
+>Note: If you **know** you have an H310 (**not** an H710), skip all of the below and jump right to the [H310 Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
 ## Finding Your Card Revision
->Note: If you **know** you have an H310, you can skip all of this and jump right to the [H310 Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.
 
 Ensure there is only one LSI-based adapter in your system. If there are others besides the mini PERC card, remove them! Boot the server off the FreeDOS ISO. Once it's booted, just run the following command, which will spit out the name and revision of your card:
 ```
