@@ -31,3 +31,5 @@ nav:
         - 'H710P D1': 'H710P-D1.md'
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
+
+google_analytics: ['UA-2400722-7', 'fohdeesha.com']
