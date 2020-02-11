@@ -1,0 +1,3 @@
+#!/bin/sh
+/opt/MegaRAID/MegaCli/MegaCli64 -AdpAllInfo -a0 | grep SAS\ Address
+
