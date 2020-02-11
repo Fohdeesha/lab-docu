@@ -32,7 +32,9 @@ Download the ZIP below which contains two ISOs. One is a freeDOS live boot image
 
 ## Finding Your Card Revision
 
-Ensure there is only one LSI-based adapter in your system. If there are others besides the mini PERC card, remove them! Boot the server off the FreeDOS ISO. Once it's booted, just run the following command, which will spit out the name and revision of your card:
+Ensure there is only one LSI-based adapter in your system. If there are others besides the mini PERC card, remove them! Also in the server BIOS settings, under Integrated Devices, ensure both `SR-IOV Global Enable` and `I/OAT DMA Engine` are disabled. They are disabled by default, so unless you've changed them in the past you should be good.  
+
+Boot the server off the FreeDOS ISO. Once it's booted, just run the following command, which will spit out the name and revision of your card:
 ```
 info
 ```
@@ -73,4 +75,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.4 (02-11-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.5 (02-11-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
