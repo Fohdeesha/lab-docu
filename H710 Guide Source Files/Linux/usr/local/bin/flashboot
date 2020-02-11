@@ -1,0 +1,2 @@
+#!/bin/sh
+/root/sas2flash -c 0 -b $1
