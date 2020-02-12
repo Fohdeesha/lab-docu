@@ -23,6 +23,8 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 ## Preparation
 Download the ZIP below which contains two ISOs. One is a freeDOS live boot image, the other is a Debian live boot image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) or similar - up to you.  
 
+>Note: do **note** use UNetbootin to burn the images. It messes with any present isolinux files when burning FreeDOS and does not burn the ISO untouched, it will not boot properly. If you're on linux, just use [dd](https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal).
+
 [```Mini Mono Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
 ```Version: v1.0```  
 ```ZIP Updated: 02-11-2020```  
@@ -75,4 +77,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.5 (02-11-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.6 (02-12-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
