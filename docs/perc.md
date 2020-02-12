@@ -1,3 +1,4 @@
+
 # H310/H710/H710P Mini IT Mode Crossflashing
 This guide allows you to crossflash 12th gen Dell Mini Mono cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious.  **If you have the full size cards, do NOT use this guide.** The following cards are supported:
 
@@ -23,7 +24,7 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 ## Preparation
 Download the ZIP below which contains two ISOs. One is a freeDOS live boot image, the other is a Debian live boot image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) or similar - up to you.  
 
->Note: do **note** use UNetbootin to burn the images. It messes with any present isolinux files when burning FreeDOS and does not burn the ISO untouched, it will not boot properly. If you're on linux, just use [dd](https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal).
+>Note: UNetbootin nor Etcher nor `dd` work to burn the FreeDOS image to a USB drive. For users on linux who can't use Rufus, just mount the ISO via iDRAC virtual media which works fine. If you need an iDRAC enterprise license to unlock virtual console/media, [contact me](mailto:jon@fohdeesha.com). We're working on modifying the ISO so it works with these other tools.
 
 [```Mini Mono Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
 ```Version: v1.0```  
