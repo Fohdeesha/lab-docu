@@ -1,2 +1,2 @@
 @echo off
-megacli.exe -adpallinfo -a0 > infodump.txt
+megacli.exe -adpallinfo -a0 -NoLog > infodump.txt
