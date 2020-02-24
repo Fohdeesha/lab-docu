@@ -1,4 +1,3 @@
-
 # H310/H710/H710P Mini IT Mode Crossflashing
 This guide allows you to crossflash 12th gen Dell Mini Mono cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious.  **If you have the full size cards, do NOT use this guide.** The following cards are supported:
 
@@ -22,28 +21,24 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 **Different Driver:** The stock Dell firmware (MegaRAID-based) uses the MegaRAID driver in Linux/FreeBSD/etc. In some distributions this can cause issues, for example FreeNAS has issues pulling SMART data from drives connected to a MegaRAID controller. After crossflashing to IT mode, the card is used by the OS via the much simpler mpt3sas driver.
 
 ## Preparation
-Download the ZIP below which contains two ISOs. One is a freeDOS live boot image, the other is a Debian live boot image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) or similar - up to you.  
+Ensure there is only one LSI-based adapter in your system. If there are others besides the mini PERC card, remove them! Also in the server BIOS settings, under Integrated Devices, ensure both `SR-IOV Global Enable` and `I/OAT DMA Engine` are **disabled**. They are disabled by default, so unless you've changed them in the past you should be good.  
 
->Note: UNetbootin nor Etcher nor `dd` work to burn the FreeDOS image to a USB drive. For users on linux who can't use Rufus, just mount the ISO via iDRAC virtual media which works fine. If you need an iDRAC enterprise license to unlock virtual console/media, [contact me](mailto:jon@fohdeesha.com). We're working on modifying the ISO so it works with these other tools.
+Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.  
 
 [```Mini Mono Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
-```Version: v1.0```  
-```ZIP Updated: 02-11-2020```  
-```MD5: d50b038c31c0a4fbd955e1141ad2d299```   
+```Version: v1.1```  
+```ZIP Updated: 02-24-2020```  
+```MD5: 559ad62aa259db97b537f0939d45783f```   
 
 >Note: If you **know** you have an H310 (**not** an H710), skip all of the below and jump right to the [H310 Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
 ## Finding Your Card Revision
-
-Ensure there is only one LSI-based adapter in your system. If there are others besides the mini PERC card, remove them! Also in the server BIOS settings, under Integrated Devices, ensure both `SR-IOV Global Enable` and `I/OAT DMA Engine` are disabled. They are disabled by default, so unless you've changed them in the past you should be good.  
 
 Boot the server off the FreeDOS ISO. Once it's booted, just run the following command, which will spit out the name and revision of your card:
 ```
 info
 ```
 ![percflash1](https://fohdeesha.com/data/other/perc/percinfo.png)
-
->Note: the `grep.exe: Memory Exhausted` error is normal. This is because running `grep` under DOS goes against God's design
 
 If it displays an **H310 Mini**, proceed to the [H310 Guide](https://fohdeesha.com/docs/H310/)  
 If it displays an **H710 Mini B0** revision, proceed to the [H710 (B0) Guide](https://fohdeesha.com/docs/H710-B0/)  
@@ -78,4 +73,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.6 (02-12-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.7 (02-24-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
