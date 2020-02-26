@@ -22,7 +22,7 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 **Different Driver:** The stock Dell firmware (MegaRAID-based) uses the MegaRAID driver in Linux/FreeBSD/etc. In some distributions this can cause issues, for example FreeNAS has issues pulling SMART data from drives connected to a MegaRAID controller. After crossflashing to IT mode, the card is used by the OS via the much simpler mpt3sas driver.
 
 ## Preparation
-Ensure there is only one LSI-based adapter in your system. If there are others besides the mini PERC card, remove them! Also in the server BIOS settings, under Integrated Devices, ensure both `SR-IOV Global Enable` and `I/OAT DMA Engine` are **disabled**. They are disabled by default, so unless you've changed them in the past you should be good.  
+Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! Also in the server BIOS settings, under Integrated Devices, ensure both `SR-IOV Global Enable` and `I/OAT DMA Engine` are **disabled**. They are disabled by default, so unless you've changed them in the past you should be good.  
 
 **Remove the RAID battery** from the adapter. The IT firmware has no cache for the battery to back, in fact the IT firmware will have no clue the battery is there if you leave it connected. To make matters worse, in rare cases some people observed the battery holding old Dell code in the card's RAM and it made their crossflash process a pain. Just unplug/remove the battery and store it somewhere in case you return to Dell firmware.
 
@@ -31,7 +31,7 @@ Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the
 [```Mini Mono Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
 ```Version: v1.2```  
 ```ZIP Updated: 02-26-2020```  
-```MD5: 559ad62aa259db97b537f0939d45783f```   
+```MD5: 0c4693c7a98fda64e01f25bc10a5f3a6```   
 
 >Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
