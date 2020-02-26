@@ -1,9 +1,10 @@
-# H310/H710/H710P Mini IT Mode Crossflashing
-This guide allows you to crossflash 12th gen Dell Mini Mono cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious.  **If you have the full size cards, do NOT use this guide.** The following cards are supported:
+# H310/H710/H710P Mini & Full Size IT Crossflashing
+This guide allows you to crossflash 12th gen Dell Mini Mono & full size cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious. The following cards are currently supported (if you have a model not listed, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown)):
 
 * H310 Mini Mono
 * H710 Mini Mono
 * H710P Mini Mono
+* H710 Full Size
 
 Please note that we're not the first to do this by far, a few eBay sellers figured this out and have kept it a secret in order to crossflash these themselves, then sell hundreds of them for 4x the cost of the original cards. In the spirit of open source, this guide is intended to allow users to save money and do it themselves. If you're lazy and want a pre-flashed card, [eBay](https://www.ebay.com/sch/theartofserver/m.html) is still an option.
 
@@ -23,14 +24,16 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 ## Preparation
 Ensure there is only one LSI-based adapter in your system. If there are others besides the mini PERC card, remove them! Also in the server BIOS settings, under Integrated Devices, ensure both `SR-IOV Global Enable` and `I/OAT DMA Engine` are **disabled**. They are disabled by default, so unless you've changed them in the past you should be good.  
 
+**Remove the RAID battery** from the adapter. The IT firmware has no cache for the battery to back, in fact the IT firmware will have no clue the battery is there if you leave it connected. To make matters worse, in rare cases some people observed the battery holding old Dell code in the card's RAM and it made their crossflash process a pain. Just unplug/remove the battery and store it somewhere in case you return to Dell firmware.
+
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.  
 
 [```Mini Mono Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
-```Version: v1.1```  
-```ZIP Updated: 02-24-2020```  
+```Version: v1.2```  
+```ZIP Updated: 02-26-2020```  
 ```MD5: 559ad62aa259db97b537f0939d45783f```   
 
->Note: If you **know** you have an H310 (**not** an H710), skip all of the below and jump right to the [H310 Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
+>Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
 ## Finding Your Card Revision
 
@@ -45,6 +48,7 @@ If it displays an **H710 Mini B0** revision, proceed to the [H710 (B0) Guide](ht
 If it displays an **H710 Mini D1** revision, proceed to the [H710 (D1) Guide](https://fohdeesha.com/docs/H710-D1/)  
 If it displays an **H710P Mini B0** revision, proceed to the [H710P (B0) Guide](https://fohdeesha.com/docs/H710P-B0/)  
 If it displays an **H710P Mini D1** revision, proceed to the [H710P (D1) Guide](https://fohdeesha.com/docs/H710P-D1/)  
+If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (B0) Guide](https://fohdeesha.com/docs/H710-B0-full/)  
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot.
 
@@ -53,17 +57,22 @@ The main difference between the B0 and D1 revisions is the D1 will link at PCIe 
 
 Regardless, since they're the same price used, you may as well grab the D1 revision. Note that many ebay sellers just stick popular part numbers in the listing title, so try to verify in the actual auction images that the label states the correct part number. Note that most sellers omit the leading `0` so you'll get more results doing the same:
 
-**H710 B0 Part Numbers:**  
+**H710 B0 Full Size Part Numbers:**  
+- These full size cards are still $$$ for some reason  
+- Unless you already have one just buy an actual LSI card for half the price  
+- 017MXW  
+
+**H710 B0 Mini Part Numbers:**  
 - 0MCR5X  
 - 0FRH64  
 
-**H710 D1 Part Numbers:**    
+**H710 D1 Mini Part Numbers:**    
 - 05CT6D  
 
-**H710P B0 Part Numbers:**  
+**H710P B0 Mini Part Numbers:**  
 - 0TTVVV  
 
-**H710P D1 Part Numbers:**  
+**H710P D1 Mini Part Numbers:**  
 - 0TY8F9  
 
 **Unknown:**  
@@ -73,4 +82,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.7 (02-24-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v1.8 (02-26-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
