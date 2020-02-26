@@ -28,7 +28,7 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.  
 
-[```Mini Mono Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
+[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
 ```Version: v1.2```  
 ```ZIP Updated: 02-26-2020```  
 ```MD5: 0c4693c7a98fda64e01f25bc10a5f3a6```   
