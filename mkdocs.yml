@@ -29,7 +29,7 @@ nav:
         - 'H710 D1 Mini': 'H710-D1.md'
         - 'H710P B0 Mini': 'H710P-B0.md'
         - 'H710P D1 Mini': 'H710P-D1.md'
-        - 'H710 B0 Fullsize': 'H710-B0-full.md'
+        - 'H710 B0 Full Size': 'H710-B0-full.md'
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
 
