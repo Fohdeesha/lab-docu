@@ -1,6 +1,6 @@
 @echo off
-echo Revert B0 H710 To Dell Firmware
-pause If your card is not B0, hit ctrl+c now!! Otherwise hit enter
+echo Revert B0 H710 mini To Dell Firmware
+pause If your card is not B0 mini, hit ctrl+c now!! Otherwise hit enter
 pause Press any key to clean adapter flash
 megarec -cleanflash 0 710STK.rom
 echo Flashing Dell Image Complete

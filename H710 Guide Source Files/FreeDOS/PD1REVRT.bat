@@ -1,6 +1,6 @@
 @echo off
-echo Revert D1 H710P To Dell Firmware
-pause If your card is not D1 P, hit ctrl+c now!! Otherwise hit enter
+echo Revert D1 H710P mini To Dell Firmware
+pause If your card is not D1 P mini, hit ctrl+c now!! Otherwise hit enter
 pause Press any key to clean adapter flash
 megarec -cleanflash 0 710PSTK.rom
 echo Flashing Dell Image Complete

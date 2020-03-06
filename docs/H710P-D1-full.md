@@ -1,0 +1,102 @@
+# H710P D1 Full Size IT Mode Flashing
+Continued instructions for flashing the H710P Full Size (D1 Revision). You should only continue here after following the [Introduction Page](https://fohdeesha.com/docs/perc/). If you haven't done so already, go back.
+
+## Verify & SAS
+You should still be in the FreeDOS live boot image. Double check you are on the right guide by running the following command again:
+```
+info
+```
+Your output should exactly match the below:
+```
+Product Name : PERC H710P Adapter
+ChipRevision : D1
+SAS Address  : xxxx (will differ)
+```
+If so, continue on! If not, stop and go back to the [introduction page](https://fohdeesha.com/docs/perc/) and get on the right guide.  
+
+You also need to note the SAS address of the card from the above output so we can program it back later. Take a screenshot of the console, or otherwise note down the address so you can write it back at the end of the guide. It's not a huge deal if you lose it, but it's easiest to program back the original address instead of generating a new one.
+
+## Cleaning The Card
+Still in FreeDOS, run the following command to wipe the flash on the card and get rid of all Dell firmware. This will also flash the required SBR:
+```
+BGPD1CRS
+```
+Follow the prompts. If it finishes without error, it's time to reboot into Linux. Get the Linux live ISO from the ZIP ready to boot from, then tell FreeDOS to reboot:
+```
+reboot
+```
+
+## Linux Time
+You should now be booted into the Linux ISO from the ZIP. Use the following credentials to login: **user/live**  
+
+We highly recommend SSH'ing to the live ISO so you can copy/paste commands and not have to use the iDRAC virtual console. To do so, run the following to find the IP of the install:
+```
+ipinfo
+```
+It should spit out an IP. SSH to it, using the same **user/live** credentials. This is not required and you can continue on using the iDRAC (or physical) console, but it will be slightly more inconvenient. 
+
+## Flashing IT Firmware
+Now, still in Linux, we need to change to the root user:
+```
+sudo su -
+```
+Now we run the flashing script. Issue the following command to begin the process:
+```
+D1-H710
+```
+It should automatically do everything required to flash the card. If you don't get any unexpected errors and it completes, we need to reboot and program the SAS address back to finish. See the following note.
+
+**Note:** For some reason, the very first boot after crossflashing the card will cause a kernel panic - I believe it's iDRAC not letting go of something (I was able to see the card put in a fault state via the debug UART when this happens). This only happens the first reboot after crossflashing. When you boot back into the live ISO and get the panic, either let it reboot itself, or use iDRAC to force a reboot. After that boot back into the live ISO again and all will be well.  
+## Programming SAS Address Back
+
+Now rebooted back into the live Linux image, just run the following commands, filling in the example address with your own, that you noted down earlier:
+```
+sudo su -
+setsas 500605b123456777
+```
+It should succeed without errors. That's it! You can run the following command to get some info about your new card. You should be able to see your SAS address and the same firmware version:
+```
+info
+```
+
+```
+        Controller Number              : 0
+        Controller                     : SAS2308_2(D1)
+        PCI Address                    : 00:02:00:00
+        SAS Address                    : 0000000-0-0000-0000
+        NVDATA Version (Default)       : 14.01.00.06
+        NVDATA Version (Persistent)    : 14.01.00.06
+        Firmware Product ID            : 0x2214 (IT)
+        Firmware Version               : 20.00.07.00
+        NVDATA Vendor                  : LSI
+        NVDATA Product ID              : SAS9207-8i
+        BIOS Version                   : N/A
+        UEFI BSD Version               : N/A
+        FCODE Version                  : N/A
+        Board Name                     : SAS9207-8i
+        Board Assembly                 : N/A
+        Board Tracer Number            : N/A
+
+```
+Unless you also need to flash boot images for booting off the card, you can now ditch all the live images and reboot back into your normal system, and enjoy your IT mode card. 
+
+## Optional: Boot Images
+>Note: flashing these can add up to 2 minutes to server boot time if you have a lot of drives. Be sure you need them!  
+
+If you need to boot from drives connected to this adapter, you'll need to flash a boot image to it. Otherwise, skip it. This is what gives you the "press blahblah to enter the LSI boot configuration utility" text when the server boots. To flash the regular BIOS boot image:
+```
+flashboot /root/Bootloaders/mptsas2.rom
+```
+If you want to UEFI boot from drives connected to this adapter, you need to flash the UEFI boot image (the card can have both UEFI and BIOS boot images flashed):
+```
+flashboot /root/Bootloaders/x64sas2.rom
+```
+You can now ditch the live images and boot back into your normal system.
+
+## Optional: Reverting
+If for some reason you need to revert back to the stock Dell PERC firmware, that's easy. Boot back into the FreeDOS live image, and run the following command:
+```
+BGPD1RVT
+```
+That's it! When it finishes, just reboot back to your normal system with the `reboot` command.
+>Note: This uses the unmodified latest Dell firmware `21.3.5-0002,A09` extracted from the update EXE found [here](https://www.dell.com/support/home/us/en/04/drivers/driversdetails?driverid=mfgkt).
