@@ -33,7 +33,7 @@ Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the
 [```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
 ```Version: v1.3```  
 ```ZIP Updated: 03-06-2020```  
-```MD5: 0c4693c7a98fda64e01f25bc10a5f3a6```   
+```MD5: 150e7f0bb71809a13c46966aa67c2727```   
 
 >Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
