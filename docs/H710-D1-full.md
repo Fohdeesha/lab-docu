@@ -1,5 +1,5 @@
-# H710P D1 Full Size IT Mode Flashing
-Continued instructions for flashing the H710P Full Size (D1 Revision). You should only continue here after following the [Introduction Page](https://fohdeesha.com/docs/perc/). If you haven't done so already, go back.
+# H710 D1 Full Size IT Mode Flashing
+Continued instructions for flashing the H710 Full Size (D1 Revision). You should only continue here after following the [Introduction Page](https://fohdeesha.com/docs/perc/). If you haven't done so already, go back.
 
 ## Verify & SAS
 You should still be in the FreeDOS live boot image. Double check you are on the right guide by running the following command again:
@@ -8,7 +8,7 @@ info
 ```
 Your output should exactly match the below:
 ```
-Product Name : PERC H710P Adapter
+Product Name : PERC H710 Adapter
 ChipRevision : D1
 SAS Address  : xxxx (will differ)
 ```
@@ -19,7 +19,7 @@ You also need to note the SAS address of the card from the above output so we ca
 ## Cleaning The Card
 Still in FreeDOS, run the following command to wipe the flash on the card and get rid of all Dell firmware. This will also flash the required SBR:
 ```
-BGPD1CRS
+BIGD1CRS
 ```
 Follow the prompts. If it finishes without error, it's time to reboot into Linux. Get the Linux live ISO from the ZIP ready to boot from, then tell FreeDOS to reboot:
 ```
@@ -95,7 +95,7 @@ You can now ditch the live images and boot back into your normal system.
 ## Optional: Reverting
 If for some reason you need to revert back to the stock Dell PERC firmware, that's easy. Boot back into the FreeDOS live image, and run the following command:
 ```
-BGPD1RVT
+BIGD1RVT
 ```
 That's it! When it finishes, just reboot back to your normal system with the `reboot` command.
->Note: This uses the unmodified latest Dell firmware `21.3.5-0002,A09` extracted from the update EXE found [here](https://www.dell.com/support/home/us/en/04/drivers/driversdetails?driverid=mfgkt).
+>Note: This uses the unmodified latest Dell firmware `21.3.5-0002,A09` extracted from the update EXE found [here](https://www.dell.com/support/home/us/en/04/drivers/driversdetails?driverid=9mhj5&).
