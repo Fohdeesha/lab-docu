@@ -66,6 +66,11 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 - Unless you already have one just buy an actual LSI card for half the price  
 - 017MXW  
 
+**H710 D1 Full Size Part Numbers:**  
+- These full size cards are still $$$ for some reason  
+- Unless you already have one just buy an actual LSI card for half the price  
+- 0PX45J  
+
 **H710P D1 Full Size Part Numbers:**  
 - These full size cards are still $$$ for some reason  
 - Unless you already have one just buy an actual LSI card for half the price  
@@ -91,4 +96,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v2.0 (03-07-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v2.1 (03-07-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
