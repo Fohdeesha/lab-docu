@@ -30,10 +30,10 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.  
 
-[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
+[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash-v1.4.zip)  
 ```Version: v1.4```  
 ```ZIP Updated: 03-07-2020```  
-```MD5: 7741176dce72d6fcb2f992b28d5872d9```   
+```MD5: a268c7cf9adfb1da1d385bd8b196e375```   
 
 >Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
@@ -45,12 +45,13 @@ info
 ```
 ![percflash1](https://fohdeesha.com/data/other/perc/percinfo.png)
 
-If it displays an **H310 Mini**, proceed to the [H310 Guide](https://fohdeesha.com/docs/H310/)  
-If it displays an **H710 Mini B0** revision, proceed to the [H710 (B0) Guide](https://fohdeesha.com/docs/H710-B0/)  
-If it displays an **H710 Mini D1** revision, proceed to the [H710 (D1) Guide](https://fohdeesha.com/docs/H710-D1/)  
-If it displays an **H710P Mini B0** revision, proceed to the [H710P (B0) Guide](https://fohdeesha.com/docs/H710P-B0/)  
-If it displays an **H710P Mini D1** revision, proceed to the [H710P (D1) Guide](https://fohdeesha.com/docs/H710P-D1/)  
+If it displays an **H310 Mini**, proceed to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/)  
+If it displays an **H710 Mini B0** revision, proceed to the [H710 Mini (B0) Guide](https://fohdeesha.com/docs/H710-B0/)  
+If it displays an **H710 Mini D1** revision, proceed to the [H710 Mini (D1) Guide](https://fohdeesha.com/docs/H710-D1/)  
+If it displays an **H710P Mini B0** revision, proceed to the [H710P Mini (B0) Guide](https://fohdeesha.com/docs/H710P-B0/)  
+If it displays an **H710P Mini D1** revision, proceed to the [H710P Mini (D1) Guide](https://fohdeesha.com/docs/H710P-D1/)  
 If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (B0) Guide](https://fohdeesha.com/docs/H710-B0-full/)  
+If it displays an **H710 Adapter D1** revision, proceed to the [H710 Full Size (D1) Guide](https://fohdeesha.com/docs/H710-D1-full/)  
 If it displays an **H710P Adapter D1** revision, proceed to the [H710P Full Size (D1) Guide](https://fohdeesha.com/docs/H710P-D1-full/)  
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot.
