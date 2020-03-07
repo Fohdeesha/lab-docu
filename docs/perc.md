@@ -31,9 +31,9 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.  
 
 [```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash.zip)  
-```Version: v1.3```  
-```ZIP Updated: 03-06-2020```  
-```MD5: 150e7f0bb71809a13c46966aa67c2727```   
+```Version: v1.4```  
+```ZIP Updated: 03-07-2020```  
+```MD5: 7741176dce72d6fcb2f992b28d5872d9```   
 
 >Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
@@ -90,4 +90,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v1.9 (03-06-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v2.0 (03-07-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
