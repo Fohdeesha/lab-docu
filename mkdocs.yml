@@ -22,6 +22,9 @@ nav:
         - 'Extracting Licenses': extract.md
         - 'ICX6610 Stack Ports': stack-ports.md
         - 'EEPROM Unlocks': eeprom.md
+    - Dell Storage:
+        - 'MD1200/MD1220': 'md1200.md'
+        - 'SC200/SC220': 'sc200.md'
     - PERC Mini:
         - 'Introduction': 'perc.md'
         - 'H310 Mini': 'H310.md'
