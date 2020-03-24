@@ -85,13 +85,13 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 
 **H710P B0 Mini Part Numbers:**  
 - 0TTVVV  
+- 0N3V6G  
 
 **H710P D1 Mini Part Numbers:**  
 - 0TY8F9  
 
 **Unknown:**  
 - 0PK2W9  
-- 0N3V6G  
 
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
