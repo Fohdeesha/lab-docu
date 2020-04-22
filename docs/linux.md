@@ -88,3 +88,4 @@ dev        ftp        lib        root       tftpboot   var
 / #
 ```
 
+**Note:** If your ICX7xxx series switch asks for a root linux password, try `fibranne` or `wYbRaMWrYIJgg` - if neither of those work for some reason, you can append `single` to your bootargs and it will boot linux in single-user mode which will not ask for a password, eg `setenv extra_bootargs noautostart single`
