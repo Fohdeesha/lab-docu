@@ -88,4 +88,3 @@ dev        ftp        lib        root       tftpboot   var
 / #
 ```
 
-**Note:** If your ICX7xxx series switch asks for a root password, it's `wYbRaMWrYIJgg`
