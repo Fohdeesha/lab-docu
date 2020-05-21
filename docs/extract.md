@@ -1,5 +1,3 @@
-
-
 # Extracting Licenses
 
 **Note:** This is intended for those who are curious, or who have licenses you legitimately own installed on a switch, but have lost the original license files. This is for the ICX6xxx series and is unnecessary on the ICX7xxx series with honor-based licensing (no license files to lose).
@@ -88,4 +86,6 @@ Now run the following in the bootloader:
 ```
 dd f4000000 8388608  
 ```
-It will start printing the raw flash contents line by line in your serial window, and putty will be logging it. This will take about 10 hours, so go to bed. In the morning, reboot the switch, and take a look at your putty log file. Search it for our `*B` string just like above, and you will eventually find your license strings.
+It will start printing the raw flash contents line by line in your serial window for a second, then stop. When it stops, press enter (NOT space), to make it continue dumping without user input, so it will dump overnight, and putty will be logging it.  
+
+This will take about 10 hours, so go to bed. In the morning, reboot the switch, and take a look at your putty log file. The dump will only be in raw hex, not ASCII - so to find your license strings you need to search the dump for `2a4220` which is the license start string `*B ` in hex. Once you find that, copy the following several blocks of hex values and paste them all into an online hex to ASCII converter, and you should get your string. Make sure you don't paste the leading memory address bits like `f40001e0:` into the converter.
