@@ -1,6 +1,7 @@
-
-# H310/H710/H710P Mini & Full Size IT Crossflashing
+# H310/H710/H710P Mini & Full Size IT Crossflashing  
 This guide allows you to crossflash 12th gen Dell Mini Mono & full size cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious. The following cards are currently supported (if you have a model not listed, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown)):
+
+>WARNING: Do not follow any of these guides on a blade chassis (like an M620 or M820). They use different perc mini cards with different PCI values, the files in this guide will brick them. I am working on generating the correct files to crossflash these cards as well, so check back.  
 
 * H310 Mini Mono
 * H710 Mini Mono
