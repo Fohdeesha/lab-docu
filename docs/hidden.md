@@ -100,4 +100,3 @@ reset
 
 #### ICX7150, ICX7750, ICX7850
 Unknown, but most likely one of the three above. If you try all three, make sure to undo each one (follow the `back to normal` bit) before moving onto the next attempt.
-Unknown, but most likely one of the three above. If you try all three, make sure to undo each one (follow the `back to normal` bit) before moving onto the next attempt.
