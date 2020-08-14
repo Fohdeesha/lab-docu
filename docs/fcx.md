@@ -1,5 +1,3 @@
-
-
 # Setting up Brocade FCX & ICX6610
 
 **Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the lefthand menu.
@@ -41,16 +39,15 @@ It will take a little longer. When it finishes, we need to erase the current con
 factory set-default
 reset
 ```
-**Note:** If you get an error stating `factory set-default` is not a valid command, this means your switch has a very old bootloader. To clear the existing passworded config in this case, do the following:
+**Note:** If you get an error stating `factory set-default` is not a valid command, this means your switch has a very old bootloader. In that case since we just flashed the latest bootloader, we just have to tell the switch to reset. Then it will load the new bootloader, and the command will work:
 ```
 #only follow this section if factory set-default did not work
-no password
-boot system flash primary
-#it will boot the OS. Once booted:
-enable  
-erase startup-config  
-reload
-#it will boot fresh with a clear config, then you can move to the next section
+reset
+#hit b a bunch so it drops into the bootloader again
+#now it's booted the latest bootloader, so the command will work: 
+factory set-default
+reset
+#let it fully boot like normal and move to the next section
 ```
 
 **Note:** If your switch says that it is part of a stack even after doing the above, then you will need to unstack it before being able to configure and update it. You'll see several prompts when booting that it is a stack member and the command menu will show stack specific commands (ex: stack, simulate-non-stacking-unit). You can unstack your switch by running the following command:
@@ -93,7 +90,7 @@ Once the switch comes back up, enter the configure terminal level and give the s
 ```
 enable
 configure terminal
-hostname intertubes
+hostname beefbox
 ```
 We need to give the switch an IP. By default, all ports are in VLAN 1, so it will behave like a typical switch. First we need to give VLAN 1 its own virtual interface:
 ```
@@ -217,7 +214,7 @@ show log
 
 To remove configuration options, put a ```no``` in front of them at the appropriate CLI level:
 ```
-no hostname intertubes
+no hostname beefbox
 ```
 
 ## Noise Info (ICX6610)
@@ -293,4 +290,4 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v2.0 (01-03-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v2.1 (08-14-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
