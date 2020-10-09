@@ -8,14 +8,14 @@ This guide allows you to crossflash 12th gen Dell Mini Mono & full size cards to
 * H710P Mini Mono
 * H710 Full Size
 * H710P Full Size
-
-Please note that we're not the first to do this, a few eBay sellers figured this out and have kept it a secret in order to crossflash these themselves, then sell hundreds of them for 4x the cost of the original cards. In the spirit of open source, this guide is intended to allow users to save money and do it themselves. If you're lazy and want a pre-flashed card, [eBay](https://www.ebay.com/sch/theartofserver/m.html) is still an option.
+* H810 Full Size
 
 ## Thanks
 [**Jon Sands**](http://fohdeesha.com/)  
 [**fourlynx**](mailto:fourlynx@phoxden.net)  
 **WildOne69**  
 [**Various STH Members**](https://forums.servethehome.com/index.php?threads/perc-h710-mini-to-it-mode.25448/page-3)  
+
 ## Why
 
 There's two main reasons to do this, assuming you don't need the hardware RAID functionalities of the stock firmware:  
@@ -55,6 +55,7 @@ If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (
 If it displays an **H710 Adapter D1** revision, proceed to the [H710 Full Size (D1) Guide](https://fohdeesha.com/docs/H710-D1-full/)  
 If it displays an **H710P Adapter B0** revision, proceed to the [H710P Full Size (B0) Guide](https://fohdeesha.com/docs/H710P-B0-full/)  
 If it displays an **H710P Adapter D1** revision, proceed to the [H710P Full Size (D1) Guide](https://fohdeesha.com/docs/H710P-D1-full/)  
+If it displays an **H810 Adapter D1** revision, proceed to the [H810 Full Size (D1) Guide](https://fohdeesha.com/docs/H810-D1-full/)  
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
 
