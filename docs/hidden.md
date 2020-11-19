@@ -1,4 +1,3 @@
-
 # Hidden Brocade Dev Stuff
 This is a collection of hidden tools, modes, and commands buried inside Brocade FastIron products. 
 
@@ -23,8 +22,9 @@ FCX3(config)#dm
   cancel-flash-timeout          set flash timeout to default
   clear_boot_count              Clear crash dump
   cpld-reg-dump                 Dump the CPLD register
+--More--
 ```
-There's hundreds of other options. These are low level debug commands, so if you don't know what they do you can easily break your switch.  
+There's hundreds of options. These are low level debug commands, so if you don't know what they do you can easily break your switch.  
 
 **Note:** There's around ~700 commands that are completely hidden, they will not even show up using tab autocomplete like the above `dm` commands do. [Click here](https://fohdeesha.com/data/other/brocade/FastIron-Hidden.txt) for a full list of these commands. Many of these might delete your config, your licenses, lock the switch up, etc.
 
@@ -57,40 +57,38 @@ You'll note the options are nearly identical to what's available in the bootload
 
 All the newer switches that run linux (ICX6450, ICX6650, ICX7xxx) use u-boot as the bootloader. However it runs in a very locked down mode with only a few commands available. Thankfully after contacting Arris (who own Ruckus, who now owns Brocade), they published their u-boot [source code](https://sourceforge.net/arris/wiki/Projects/).  
 
-From analyzing their u-boot source, we are able to find some hidden environment variables that will force the switch to boot into fully unlocked u-boot. To do so, run the following in the bootloader:
+From analyzing their u-boot source, we are able to find some hidden routines that will force the switch to boot into fully unlocked u-boot. To do so, run the following in the bootloader:
 
 #### ICX6430 & ICX6450
 ```
-setenv pp_init_enable 1
-setenv diag_cmd_on 1
-saveenv
+manufacturing_diag enable
 reset
 ## it will reboot into fully unlocked u-boot
+## be sure to stop it in the bootloader (smash b)
 
 ## set it back to normal
-setenv pp_init_enable
-setenv diag_cmd_on
-saveenv
+manufacturing_diag disable
 reset
 ```
-#### ICX6650 & ICX7250 & ICX7450
+#### ICX6650 & ICX7150 & ICX7250 & ICX7450 & ICX7750
 ```
-setenv diag_mode_enable 1
-saveenv
+diagmode enable
 reset
 ## it will reboot into fully unlocked u-boot
+## be sure to stop it in the bootloader (smash b)
 
 ## set it back to normal
-setenv diag_mode_enable
-saveenv
+diagmode disable
 reset
 ```
-#### ICX7650
+
+#### ICX7650 & ICX7850
 ```
 setenv diag_mode_on 1
 saveenv
 reset
 ## it will reboot into fully unlocked u-boot
+## be sure to stop it in the bootloader (smash b)
 
 ## set it back to normal
 setenv diag_mode_on
@@ -98,5 +96,5 @@ saveenv
 reset
 ```
 
-#### ICX7150, ICX7750, ICX7850
-Unknown, but most likely one of the three above. If you try all three, make sure to undo each one (follow the `back to normal` bit) before moving onto the next attempt.
+#### ICX7550
+Unknown, but most likely one of the above - just try each one until the command takes.
