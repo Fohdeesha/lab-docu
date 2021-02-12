@@ -32,10 +32,10 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.  
 
-[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash-v1.6.zip)  
-```Version: v1.6```  
-```ZIP Updated: 10-09-2020```  
-```MD5: 82bc38e9a19ae0e26803bbdc485d9194```   
+[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash-v1.7.zip)  
+```Version: v1.7```  
+```ZIP Updated: 02-12-2021```  
+```MD5: 0d7418fab916262342730dffa7890937```   
 
 >Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
@@ -56,6 +56,7 @@ If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (
 If it displays an **H710 Adapter D1** revision, proceed to the [H710 Full Size (D1) Guide](https://fohdeesha.com/docs/H710-D1-full/)  
 If it displays an **H710P Adapter B0** revision, proceed to the [H710P Full Size (B0) Guide](https://fohdeesha.com/docs/H710P-B0-full/)  
 If it displays an **H710P Adapter D1** revision, proceed to the [H710P Full Size (D1) Guide](https://fohdeesha.com/docs/H710P-D1-full/)  
+If it displays an **H810 Adapter B0** revision, proceed to the [H810 Full Size (B0) Guide](https://fohdeesha.com/docs/H810-B0-full/)  
 If it displays an **H810 Adapter D1** revision, proceed to the [H810 Full Size (D1) Guide](https://fohdeesha.com/docs/H810-D1-full/)  
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
@@ -85,6 +86,11 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 - Unless you already have one just buy an actual LSI card for half the price  
 - 07GCGT  
 
+**H810 B0 Full Size Part Numbers:**  
+- These full size cards are still $$$ for some reason  
+- Unless you already have one just buy an actual LSI card for half the price  
+- 0HVCWY  
+
 **H810 D1 Full Size Part Numbers:**  
 - These full size cards are still $$$ for some reason  
 - Unless you already have one just buy an actual LSI card for half the price  
@@ -110,4 +116,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v2.3 (10-09-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v2.3 (02-12-2021)](https://github.com/Fohdeesha/lab-docu/commits/master) 
