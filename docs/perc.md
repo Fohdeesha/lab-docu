@@ -2,8 +2,6 @@
 
 This guide allows you to crossflash 12th gen Dell Mini Mono & full size cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious. The following cards are currently supported (if you have a model not listed, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown)):
 
->WARNING: Do not follow any of these guides on a blade chassis (like an M620 or M820). They use different perc mini cards with different PCI values, the files in this guide will brick them. I am working on generating the correct files to crossflash these cards as well, so check back.  
-
 * H310 Mini Mono
 * H710 Mini Mono
 * H710P Mini Mono
@@ -32,10 +30,10 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.  
 
-[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash-v1.7.zip)  
-```Version: v1.7```  
-```ZIP Updated: 02-12-2021```  
-```MD5: 0d7418fab916262342730dffa7890937```   
+[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash-v1.8.zip)  
+```Version: v1.8```  
+```ZIP Updated: 02-23-2021```  
+```MD5: 577cef6f3969f04475d50ceb71d8f52d```   
 
 >Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.  
 
@@ -47,9 +45,12 @@ info
 ```
 ![percflash1](https://fohdeesha.com/data/other/perc/percinfo.png)
 
+>WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" guide for your specific card model below. For example, the **H710 Mini (D1) Blade Guide**. Following any of the "normal" guides on a blade server will brick the PERC
+
 If it displays an **H310 Mini**, proceed to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/)  
 If it displays an **H710 Mini B0** revision, proceed to the [H710 Mini (B0) Guide](https://fohdeesha.com/docs/H710-B0/)  
 If it displays an **H710 Mini D1** revision, proceed to the [H710 Mini (D1) Guide](https://fohdeesha.com/docs/H710-D1/)  
+If it displays an **H710 Mini D1** revision **and it's in a blade server**, proceed to the [H710 Mini (D1) Blade Guide](https://fohdeesha.com/docs/H710-D1-Blade/)  
 If it displays an **H710P Mini B0** revision, proceed to the [H710P Mini (B0) Guide](https://fohdeesha.com/docs/H710P-B0/)  
 If it displays an **H710P Mini D1** revision, proceed to the [H710P Mini (D1) Guide](https://fohdeesha.com/docs/H710P-D1/)  
 If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (B0) Guide](https://fohdeesha.com/docs/H710-B0-full/)  
@@ -103,6 +104,9 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 **H710 D1 Mini Part Numbers:**    
 - 05CT6D  
 
+**H710 D1 Mini For Blades Part Numbers:**    
+- 062P9H  
+
 **H710P B0 Mini Part Numbers:**  
 - 0TTVVV  
 - 0N3V6G  
@@ -116,4 +120,4 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 ### Contributing:
 The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
 
-```Documentation version:``` [ v2.3 (02-12-2021)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v2.4 (02-23-2021)](https://github.com/Fohdeesha/lab-docu/commits/master) 

@@ -30,6 +30,7 @@ nav:
         - 'H310 Mini': 'H310.md'
         - 'H710 B0 Mini': 'H710-B0.md'
         - 'H710 D1 Mini': 'H710-D1.md'
+        - 'H710 D1 Mini Blade': 'H710-D1-Blade.md'
         - 'H710P B0 Mini': 'H710P-B0.md'
         - 'H710P D1 Mini': 'H710P-D1.md'
         - 'H710 B0 Full Size': 'H710-B0-full.md'
@@ -43,3 +44,4 @@ nav:
         - 'Multiple /64s *nix': '64nix.md'
 
 google_analytics: ['UA-2400722-7', 'fohdeesha.com']
+
