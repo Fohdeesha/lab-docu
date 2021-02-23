@@ -100,3 +100,5 @@ D1BLDRVT
 ```
 That's it! When it finishes, just reboot back to your normal system with the `reboot` command.
 >Note: This uses the unmodified latest Dell firmware `21.3.5-0002,A09` extracted from the update EXE found [here](https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=xy0p0).
+
+>Thank you to homer133 from STH for collecting the required files for me on his blade system!
