@@ -62,6 +62,54 @@ If it displays an **H810 Adapter D1** revision, proceed to the [H810 Full Size (
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
 
+## Extra: Disable ThirdPartyPCIFanResponse
+
+>Warning: Use this at your own risk.  Modifying thermal settings can cause unforeseen circumstances.  If you are running your server in a warm environment, it is probably best to leave this alone.
+
+The LSI firmware is not supported by Dell.  This will cause the iDRAC to no longer keep track of the drive temperatures.  This is confirmed with the error PCI3018 in the Lifecycle Log and the fans being set to a static speed of about 30%.  The fan speed acts as a failsafe to prevent any disks from possibly overheating.  
+
+To correct this behavior, you can disable the "ThirdPartyPCIFanResponse" feature by using IPMItool or RACADM.  IPMItool is built into the live image so this will usually be the easiest option.  If you are no longer booted into the live image, use the RACADM option instead to disable via SSH.
+
+### Option 1: Disable ThirdPartyPCIFanResponse using IPMItool via Linux Shell
+
+IPMItool is built into the live image.  Otherwise, you will need to install IPMItool in a Linux environment first.
+
+To disable ThirdPartyPCIFanResponse, run the following command in the Linux shell:
+```
+ipmitool –I open raw 0x30 0xce 0 0x16 5 0 0 0 5 0 1 0 0
+```
+
+To verify if the option is enabled or not, run this command in the Linux shell:
+```
+ipmitool –I open raw 0x30 0xce 1 0x16 5 0 0 0
+```
+
+If you need to enable the feature again, run this command in the Linux shell:
+```
+ipmitool –I open raw 0x30 0xce 0 0x16 5 0 0 0 5 0 0 0 0
+```
+
+### Option 2: Disable ThirdPartyPCIFanResponse using RACADM via SSH
+
+Connect to port 22 on your iDRAC's IP address using your preferred SSH client.
+
+To disable ThirdPartyPCIFanResponse, run the following command via the SSH client:
+```
+racadm set system.thermalsettings.ThirdPartyPCIFanResponse 0
+```
+
+To verify if the option is enabled or not, run this command via the SSH client:
+```
+racadm getsystem.thermalsettings.ThirdPartyPCIFanResponse
+```
+
+If you need to enable the feature again, run this command via the SSH client:
+```
+racadm set system.thermalsettings.ThirdPartyPCIFanResponse 1
+```
+
+>Note: This information was collected from the Dell White Paper "Disabling a Third-Party PCIe Card Cooling Response with Dell PowerEdge Servers" which can be referenced here: https://fohdeesha.com/data/other/perc/ThirdPartyPCIFanResponse.pdf .  The relevant information can be found on pages 6 and 7.
+
 ## Extra: Revision Info & Part Numbers
 The main difference between the B0 and D1 revisions is the D1 will link at PCIe 3.0 speeds, instead of PCIe 2.0. This will almost certainly never cause a bottleneck unless you have every SAS port on the card connected to very fast SSDs that all get hammered at the same time. Even then, you're likely to reach the card's processor limitations before the bus bandwidth limit. The difference with the *P* cards (H710P) is more cache (1GB vs 512MB), but this is totally irrelevant when running the card flashed to IT mode as the cache is not used.
 
