@@ -108,7 +108,7 @@ If you need to enable the feature again, run this command via the SSH client:
 racadm set system.thermalsettings.ThirdPartyPCIFanResponse 1
 ```
 
->Note: This information was collected from the Dell White Paper "Disabling a Third-Party PCIe Card Cooling Response with Dell PowerEdge Servers" which can be referenced here: https://fohdeesha.com/data/other/perc/ThirdPartyPCIFanResponse.pdf .  The relevant information can be found on pages 6 and 7.
+>Note: This information was collected from the Dell White Paper "Disabling a Third-Party PCIe Card Cooling Response with Dell PowerEdge Servers" which can be referenced here: https://fohdeesha.com/data/other/perc/ThirdPartyPCIFanResponse.pdf .
 
 ## Extra: Revision Info & Part Numbers
 The main difference between the B0 and D1 revisions is the D1 will link at PCIe 3.0 speeds, instead of PCIe 2.0. This will almost certainly never cause a bottleneck unless you have every SAS port on the card connected to very fast SSDs that all get hammered at the same time. Even then, you're likely to reach the card's processor limitations before the bus bandwidth limit. The difference with the *P* cards (H710P) is more cache (1GB vs 512MB), but this is totally irrelevant when running the card flashed to IT mode as the cache is not used.
