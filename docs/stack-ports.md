@@ -1,9 +1,9 @@
 
 # ICX6610 Stack Ports
 ## Upgrading The Software
-Thankfully in FastIron release 08.0.10 and up, Brocade quietly removed the "stack-only" restriction on the rear 40gbE ports.  
+Thankfully in FastIron release 08.0.10 and up, Brocade quietly removed the "stack-only" restriction on the rear 40gbE ports.
 
-This means the first step is to update to the latest release. This link has instructions and a ZIP of the latest images - [FastIron Upgrade & Config Guide](https://fohdeesha.com/docs/fcx/).  
+This means the first step is to update to the latest release. This link has instructions and a ZIP of the latest images - [FastIron Upgrade & Config Guide](https://fohdeesha.com/docs/fcx/).
 
 However you're not done yet!
 

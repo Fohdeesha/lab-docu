@@ -1,5 +1,5 @@
 # Hidden Brocade Dev Stuff
-This is a collection of hidden tools, modes, and commands buried inside Brocade FastIron products. 
+This is a collection of hidden tools, modes, and commands buried inside Brocade FastIron products.
 
 ## Hidden Commands
 
@@ -24,7 +24,7 @@ FCX3(config)#dm
   cpld-reg-dump                 Dump the CPLD register
 --More--
 ```
-There's hundreds of options. These are low level debug commands, so if you don't know what they do you can easily break your switch.  
+There's hundreds of options. These are low level debug commands, so if you don't know what they do you can easily break your switch.
 
 **Note:** There's around ~700 commands that are completely hidden, they will not even show up using tab autocomplete like the above `dm` commands do. [Click here](https://fohdeesha.com/data/other/brocade/FastIron-Hidden.txt) for a full list of these commands. Many of these might delete your config, your licenses, lock the switch up, etc.
 
@@ -55,7 +55,7 @@ You'll note the options are nearly identical to what's available in the bootload
 
 ## Hidden Bootloader Modes
 
-All the newer switches that run linux (ICX6450, ICX6650, ICX7xxx) use u-boot as the bootloader. However it runs in a very locked down mode with only a few commands available. Thankfully after contacting Arris (who own Ruckus, who now owns Brocade), they published their u-boot [source code](https://sourceforge.net/arris/wiki/Projects/).  
+All the newer switches that run linux (ICX6450, ICX6650, ICX7xxx) use u-boot as the bootloader. However it runs in a very locked down mode with only a few commands available. Thankfully after contacting Arris (who own Ruckus, who now owns Brocade), they published their u-boot [source code](https://sourceforge.net/arris/wiki/Projects/).
 
 From analyzing their u-boot source, we are able to find some hidden routines that will force the switch to boot into fully unlocked u-boot. To do so, run the following in the bootloader:
 
