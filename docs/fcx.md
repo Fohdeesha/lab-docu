@@ -3,15 +3,15 @@
 **Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the lefthand menu.
 
 ## Updating The Software
-Download the ZIP below, which contains the firmware files and documentation you'll need.  
+Download the ZIP below, which contains the firmware files and documentation you'll need.
 
-[```Brocade v8030 Firmware/Docu Zip```](https://fohdeesha.com/data/other/brocade/8030t.zip)  
-```SW version: 08030t```  
-```ZIP Updated: 03-21-2019```  
-```MD5: 6f4b1c6b2f1faf4c8c5d1f647b6505f2```  
+[```Brocade v8030 Firmware/Docu Zip```](https://fohdeesha.com/data/other/brocade/8030t.zip)
+```SW version: 08030t```
+```ZIP Updated: 03-21-2019```
+```MD5: 6f4b1c6b2f1faf4c8c5d1f647b6505f2```
 
- 
-**Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
+
+**Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).
 
 You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the OS image to the same place. If you have a PoE model, copy over the PoE firmware from the `PoE Firmware` folder to your TFTP directory as well.
 
@@ -28,7 +28,7 @@ Now we can update the bootloader. Replace the IP with the IP of your tftp server
 copy tftp flash 192.168.1.49 grz10100.bin boot
 ```
 
-After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server, and change the filename to match if necessary: 
+After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server, and change the filename to match if necessary:
 
 ```
 copy tftp flash 192.168.1.49 FCXR08030t.bin primary
@@ -44,7 +44,7 @@ reset
 #only follow this section if factory set-default did not work
 reset
 #hit b a bunch so it drops into the bootloader again
-#now it's booted the latest bootloader, so the command will work: 
+#now it's booted the latest bootloader, so the command will work:
 factory set-default
 reset
 #let it fully boot like normal and move to the next section
@@ -63,7 +63,7 @@ Now that it's booted into the full OS you may get ***TFTP timed out*** errors in
 ```
 show version
 ```
-Towards the top of the output, it should say ```SW: Version XX.X.XXX``` - it should be the v8 version you flashed.  
+Towards the top of the output, it should say ```SW: Version XX.X.XXX``` - it should be the v8 version you flashed.
 
 Now to make any changes we must enter the enable level:
 ```
@@ -134,7 +134,7 @@ ip ssh permit-empty-passwd yes
 ```
 
 ## If Access Protection IS Required (or WEB-UI Access)
-If you do want to secure access to the switch, or use the (limited) web UI, follow this section. If not, skip it.  
+If you do want to secure access to the switch, or use the (limited) web UI, follow this section. If not, skip it.
 
 To secure the switch, we need to create an account - "root" can be any username string you wish:
 ```
@@ -146,7 +146,7 @@ aaa authentication login default local
 aaa authentication enable default local
 aaa authentication web default local
 ```
-If you wanted to use the WEB UI, you can now log into it using the credentials you created above.  
+If you wanted to use the WEB UI, you can now log into it using the credentials you created above.
 
 You should enable authentication for telnet access as well:
 ```
@@ -164,7 +164,7 @@ If you have followed the above to set up authentication, and also wish to disabl
 ip ssh key-authentication yes
 ip ssh password-authentication no
 ```
-Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key. 
+Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.
 
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
 ```
@@ -177,9 +177,9 @@ Whenever you make changes (like above) they take effect immediately, however the
 ```
 write memory
 ```
-Your switch now has a basic configuration, as well as an IP address you can telnet or SSH to for further configuration.  
+Your switch now has a basic configuration, as well as an IP address you can telnet or SSH to for further configuration.
 
-Some more useful general commands:  
+Some more useful general commands:
 
 Show chassis information like fan and temperature status:
 ```
@@ -218,11 +218,11 @@ no hostname beefbox
 ```
 
 ## Noise Info (ICX6610)
-The ICX66610 power supply bricks came in 3 revisions: A, B, and C. These will have an affect on how loud the switch is. Generally with an A revision PSU anywhere, even combined with a B or C revision in the other PSU slot, the PSU fans will run louder.  
+The ICX66610 power supply bricks came in 3 revisions: A, B, and C. These will have an affect on how loud the switch is. Generally with an A revision PSU anywhere, even combined with a B or C revision in the other PSU slot, the PSU fans will run louder.
 
-The switch will be much quieter if you can find and run B and/or C revision bricks. There's no difference noise wise between B and C. Most sellers do not list the revision so you have to check the ebay pictures [for the revision marking.](https://fohdeesha.com/data/other/brocade/psu-rev.jpg)  
+The switch will be much quieter if you can find and run B and/or C revision bricks. There's no difference noise wise between B and C. Most sellers do not list the revision so you have to check the ebay pictures [for the revision marking.](https://fohdeesha.com/data/other/brocade/psu-rev.jpg)
 
-Also, it seems the PSU and fan tray position also affect fan speed. If you are running 1 PSU and fan tray, position them in the furthest left slots, when looking at the switch from the rear. If you have 2 PSUs and 1 fan tray, position the fan tray in the furthest left fan tray slot when looking at the rear of the switch. 
+Also, it seems the PSU and fan tray position also affect fan speed. If you are running 1 PSU and fan tray, position them in the furthest left slots, when looking at the switch from the rear. If you have 2 PSUs and 1 fan tray, position the fan tray in the furthest left fan tray slot when looking at the rear of the switch.
 
 
 ## Tips
@@ -269,7 +269,7 @@ write memory
 ```
 
 ## SFP/Optics Information
-Brocade does not restrict the use of optics by manufacturer, they'll take anything given it's the right protocol. However optical monitoring information is disabled unless it sees Brocade or Foundry optics.  
+Brocade does not restrict the use of optics by manufacturer, they'll take anything given it's the right protocol. However optical monitoring information is disabled unless it sees Brocade or Foundry optics.
 
 So if you want to see information like this :
 
@@ -284,10 +284,10 @@ You'll need to pick up some official Brocade or Foundry optics on ebay, or buy s
 
 
 ### Thanks:
-[**Fohdeesha**](https://fohdeesha.com/)  
+[**Fohdeesha**](https://fohdeesha.com/)
 
 
 ### Contributing:
-The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.  
+The markdown source for these guides is hosted on [**my Github repo.**](https://github.com/Fohdeesha/lab-docu) If you have any suggested changes or additions feel free to submit a pull request.
 
-```Documentation version:``` [ v2.1 (08-14-2020)](https://github.com/Fohdeesha/lab-docu/commits/master) 
+```Documentation version:``` [ v2.1 (08-14-2020)](https://github.com/Fohdeesha/lab-docu/commits/master)

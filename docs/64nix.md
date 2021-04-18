@@ -21,7 +21,7 @@ The next IP after this, `2620:57:e000:e::12`, will be given to the server.
 enable
 conf t
 ipv6 route 2620:57:e000:400::/56 2620:57:e000:e::12
-```  
+```
 
 The destination is your chosen `2620:57:e000:400::/56` subnet, the next-hop is the server end of the transit subnet, `2620:57:e000:e::12`
 
@@ -39,14 +39,14 @@ iface eth1 inet6 static
         autoconf 0
 ```
 
-### Assign an entire /56 to a linux server 
+### Assign an entire /56 to a linux server
 
-Run the below command to assign the entire /56 to the server's loopback interface:   
-**Note:** this uses Linux's [AnyIP](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ab79ad14a2d51e95f0ac3cef7cd116a57089ba82) feature:  
+Run the below command to assign the entire /56 to the server's loopback interface:
+**Note:** this uses Linux's [AnyIP](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ab79ad14a2d51e95f0ac3cef7cd116a57089ba82) feature:
 
 `ip -6 route add local 2620:57:e000:400::/56 dev lo`
 
-Your server will now respond to any address in the entire /56 - however most applications and daemons will complain when you try to bind them to an address in this block, since they're not *technically* assigned to any real linux interface. To solve this, enable the `net.ipv6.ip_nonlocal_bind` sysctl:  
+Your server will now respond to any address in the entire /56 - however most applications and daemons will complain when you try to bind them to an address in this block, since they're not *technically* assigned to any real linux interface. To solve this, enable the `net.ipv6.ip_nonlocal_bind` sysctl:
 
 `sysctl -w net.ipv6.ip_nonlocal_bind=1`
 
@@ -56,7 +56,7 @@ Applications can now bind to any IP address in the /56. To make this permanent s
 
 Add the following line and then save it:
 
-`net.ipv6.ip_nonlocal_bind = 1`  
+`net.ipv6.ip_nonlocal_bind = 1`
 
 The `ip -6 route` command we ran earlier to assign the /56 will also disappear on reboot, to make it persist reboots, add it as a `pre-up` command to our network interfaces file, under your transit subnet interface:
 
@@ -75,7 +75,7 @@ iface eth1 inet6 static
 ### Finding all the /64s to bind to
 If your application needs to be bound to each /64, stick our `2620:57:e000:400::/56` subnet into [this calculator](https://subnettingpractice.com/ipv6_subnetting.html), and choose /64s from the dropdown then press calculate:
 
-![calculator](../../data/other/brocade/64nix-1.png) 
+![calculator](../../data/other/brocade/64nix-1.png)
 
 Then simply bind each of your application instances to the first address in each /64 - For instance:
 
