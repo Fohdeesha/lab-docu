@@ -62,7 +62,7 @@ Created:         Fri Jun  7 00:19:54 2019
   -----trimmed-----
 ```
 
-Choose a part to extract to a separate file, putting the image number after the `-p` argument.  
+Choose a part to extract to a separate file, putting the image number after the `-p` argument.
 
 **Note:** The `-T` argument must always be set to `-T flat_dt`, even if you are extracting a different image type, only change the `-p` number:
 ```
@@ -72,7 +72,7 @@ The above example extracts the ramdisk from the above firmware file, which is th
 
 ![7zip](https://fohdeesha.com/data/other/7zip.png)
 
-**Note:** Notice `FastIron.xz` - this is the FastIron binary that gets uncompressed and ran after Linux boots, and this is what provides the FastIron interface you're used to.  
+**Note:** Notice `FastIron.xz` - this is the FastIron binary that gets uncompressed and ran after Linux boots, and this is what provides the FastIron interface you're used to.
 
 ## Packaging Modifications
 With the appropriate tools (such as `mkimage`) you can modify the filesystem/ramdisk, kernel, etc after extraction, and repackage them for flashing back to the switch. You will most likely need to update the checksum for the new FIT package in the brocade metadata. More info on packaging FIT images [here.](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842374/U-Boot+Images)
