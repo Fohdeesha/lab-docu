@@ -1,6 +1,7 @@
 site_name: Fohdeesha Docs
 theme:
   name: 'material'
+  custom_dir: overrides
   palette:
     primary: 'purple'
     accent: 'indigo'
