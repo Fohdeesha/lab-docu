@@ -39,11 +39,11 @@ On an LB6M, the connection should look like this:
 
 Now that everything is plugged in and the BDI2000 is powered, power up the switch.
 
-**Startup Order Summary:**
-1. Connect ethernet to the BDI2000
-2. Connect the power brick to the BDI2000
-3. Connect the BDI2000 to the switch JTAG header
-4. Power on the switch
+**Startup Order Summary:**  
+1. Connect ethernet to the BDI2000  
+2. Connect the power brick to the BDI2000  
+3. Connect the BDI2000 to the switch JTAG header  
+4. Power on the switch  
 
 ## JTAG Commands
 
@@ -95,9 +95,9 @@ Once you have confirmed it has booted succesfully - unplug/power off the switch 
 
 Unplug the switch power first! When the switch is off and powered down, then unplug the power cable from the BDI2000, then disconnect it from the JTAG header, and you are done. **PLEASE SEND ME THE badboot.bin FILE FROM YOUR TFTP SERVER!** This will allow me to see exactly what got corrupted on your switch.
 
-**Shutdown Order Summary:**
-1. Power down the switch (unplug power)
-2. Power down the BDI2000 (unplug power brick)
-3. Disconnect the BDI2000 16 pin cable from the JTAG header
+**Shutdown Order Summary:**  
+1. Power down the switch (unplug power)  
+2. Power down the BDI2000 (unplug power brick)  
+3. Disconnect the BDI2000 16 pin cable from the JTAG header  
 
 Put the switch cover back on. Now that your switch is booting into the bootloader, you can go and follow the [flashing guide](https://brokeaid.com/#booting-brocade)  - start from the **Booting Brocade** section as linked.
