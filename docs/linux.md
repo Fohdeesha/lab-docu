@@ -35,7 +35,7 @@ Enter 'help' for a list of built-in commands.
 
 / #
 ```
-**Note:** If your ICX7xxx series switch asks for a root password, it's `wYbRaMWrYIJgg`
+**Note:** If your ICX7xxx series switch asks for a password, see the note at the bottom of this page
 
  Press tab twice and it'll show you all possible commands (just typing `help` will not show you all commands), there's a couple hundred, most of the utilities you'd expect including `wget`, `curl`, `vi`, and `ftpput`.
 

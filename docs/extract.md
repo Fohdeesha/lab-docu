@@ -84,8 +84,12 @@ If you have a non-linux based switch (eg ICX6610) and you REALLY want to extract
 
 Now run the following in the bootloader:
 ```
+#dump the first 32MB of flash (this is usully enough)
 dd f4000000 8388608
+
+#alternatively, dump the full 64MB flash chip
+dd f4000000 16777216
 ```
 It will start printing the raw flash contents line by line in your serial window for a second, then stop. When it stops, press enter (NOT space), to make it continue dumping without user input, so it will dump overnight, and putty will be logging it.
 
-This will take about 10 hours, so go to bed. In the morning, reboot the switch, and take a look at your putty log file. The dump will only be in raw hex, not ASCII - so to find your license strings you need to search the dump for `2a4220` which is the license start string `*B ` in hex. Once you find that, copy the following several blocks of hex values and paste them all into an online hex to ASCII converter, and you should get your string. Make sure you don't paste the leading memory address bits like `f40001e0:` into the converter.
+This will take about 12 hours per 32MB, so go to bed. In the morning, reboot the switch, and take a look at your putty log file. The dump will only be in raw hex, not ASCII - so to find your license strings you need to search the dump for `2a4220` which is the license start string `*B ` in hex. Once you find that, copy the following several blocks of hex values and paste them all into an online hex to ASCII converter, and you should get your string. Make sure you don't paste the leading memory address bits like `f40001e0:` into the converter.

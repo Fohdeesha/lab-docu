@@ -3,10 +3,10 @@
 ## Preparation
 Download the ZIP below, which contains the firmware files and documentation you'll need.
 
-[```Brocade v8030 Firmware/Docu Zip```](https://fohdeesha.com/data/other/brocade/8030t.zip)
-```SW version: 08030t```
-```ZIP Updated: 03-21-2019```
-```MD5: 6f4b1c6b2f1faf4c8c5d1f647b6505f2```
+[```Brocade v8030 Firmware/Docu Zip```](https://fohdeesha.com/data/other/brocade/8030t.zip)  
+```SW version: 08030t```  
+```ZIP Updated: 03-21-2019```  
+```MD5: 6f4b1c6b2f1faf4c8c5d1f647b6505f2```  
 
 
 **Connect** to the switches serial/console port on the front using a program like Putty (9600 8N1), and connect any of the normal switch ports to your network (do NOT use the dedicated management port).
