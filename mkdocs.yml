@@ -3,7 +3,7 @@ theme:
   name: 'material'
   custom_dir: overrides
   palette:
-    primary: 'purple'
+    primary: 'red'
     accent: 'indigo'
 
 dev_addr: 192.168.1.27:8000
