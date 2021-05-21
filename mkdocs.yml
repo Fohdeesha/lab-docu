@@ -5,7 +5,7 @@ theme:
     primary: 'blue'
     accent: 'red'
 
-dev_addr: 192.168.1.8:8000
+dev_addr: 192.168.1.27:8000
 nav:
     - Home: index.md
     - Brocade:
