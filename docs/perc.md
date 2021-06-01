@@ -66,7 +66,7 @@ If it displays anything that doesn't exactly match the above choices, [contact m
 
 >Warning: Use this at your own risk.  Modifying thermal settings can cause unforeseen circumstances.  If you are running your server in a hot environment, it's probably best to leave this alone
 
-iDRAC does not expect to see a PERC card running LSI firmware - this will cause the iDRAC to no longer see the drive temperatures. In some cases, this will cause the error PCI3018 in the Lifecycle Log, and the fans will be set to a static speed of about 30%. The fan speed acts as a failsafe to prevent any disks from possibly overheating.
+iDRAC does not expect to see a PERC card running LSI firmware - this will cause the iDRAC to no longer see the drive temperatures. In some cases, this will cause the error PCI3018 in the Lifecycle Log, and the fans will be set to a static speed of about 75%. The fan speed acts as a failsafe to prevent any disks from possibly overheating.
 
 If you are affected by this and would like the fan behavior to return to normal, you can disable the `ThirdPartyPCIFanResponse` feature by using IPMItool or RACADM. IPMItool is built into the live image so this will usually be the easiest option.  If you don't want to use the Linux live ISO, you can use the RACADM option to disable it via SSH.
 
