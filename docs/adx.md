@@ -1,1 +1,1 @@
-## COMING VERY SOON
+## [Contact Me](mailto:jon@fohdeesha.com)  
