@@ -16,8 +16,6 @@ On the Brocade FCX, the ```ADV``` license in this guide unlocks the following:
 ## Update The Switch
 To do this, you need the latest bootloader and OS - this is not optional! Follow the update guide to upgrade to the latest firmware image AND bootloader if you haven't already - [FCX Update & Start Guide](http://fohdeesha.com/docs/fcx/)  
 
-**Note:** If this is a new/unconfigured switch, or a switch with an unknown config on it, follow that update guide all the way through to the `Saving & Conclusions` section! This will get the switch in a state that it can TFTP licenses in.
-
 When upgraded and configured, move on to the below.
 
 ## Enter Bootloader
