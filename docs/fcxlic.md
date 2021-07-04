@@ -14,7 +14,7 @@ On the Brocade FCX, the ```ADV``` license in this guide unlocks the following:
 - IPv6-in-IPv4 tunnels - will terminate Hurricane Electric tunnels etc
 
 ## Update The Switch
-To do this, you need the latest bootloader and OS - this is not optional! Follow the update guide to upgrade to the latest firmware image AND bootloader if you haven't already - [FCX Update & Start Guide](http://fohdeesha.com/docs/fcx/)  
+To do this, you need the latest bootloader and OS - this is not optional! Follow the update guide to upgrade to the latest firmware image AND bootloader if you haven't already - [FCX Update & Start Guide](../fcx/)  
 
 When upgraded and configured, move on to the below.
 
