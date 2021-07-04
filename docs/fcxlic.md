@@ -1,13 +1,9 @@
-
 # FCX Licensing
+**DISCLAIMER:** This is intended for educational use only, or in a homelab type environment.  
 
 Brocade switches used to be licensed via a physical EEPROM with a magic string written into it. When the OS booted and saw this magic string, it knew to enable advanced features.  
 
 The FCX was the last Brocade model to use this scheme before moving to keyed software licenses. They even shipped with a blank EEPROM in the socket ready to go. This means we just need to write the magic string to this EEPROM to fully unlock licensed features.
-
-**DISCLAIMER:** This is intended for educational use only, or in a homelab type environment.  
-
-**WARNING:** DO NOT SHARE THIS LINK, GUIDE, OR FILES WITH ANYONE!  The licenses will be blacklisted and this process will be patched out in firmware - do not ruin it for everyone.  
 
 ## What Does This Do?
 On the Brocade FCX, the ```ADV``` license in this guide unlocks the following:
@@ -18,11 +14,9 @@ On the Brocade FCX, the ```ADV``` license in this guide unlocks the following:
 - IPv6-in-IPv4 tunnels - will terminate Hurricane Electric tunnels etc
 
 ## Update The Switch
-To do this, you need the latest bootloader and OS.  
+To do this, you need the latest bootloader and OS - this is not optional! Follow the update guide to upgrade to the latest firmware image AND bootloader if you haven't already - [FCX Update & Start Guide](http://fohdeesha.com/docs/fcx/)  
 
-Follow this link to upgrade to the latest firmware image AND bootloader - [ICX/FCX Update & Start Guide](http://fohdeesha.com/docs/fcx/)  
-
-**Note:** If this is a new/unconfigured switch, or a used switch with an unknown config on it, follow that update guide all the way through to the `Saving & Conclusions` section! This will get the switch in a state that it can TFTP licenses in.
+**Note:** If this is a new/unconfigured switch, or a switch with an unknown config on it, follow that update guide all the way through to the `Saving & Conclusions` section! This will get the switch in a state that it can TFTP licenses in.
 
 When upgraded and configured, move on to the below.
 
