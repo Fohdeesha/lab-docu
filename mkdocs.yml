@@ -16,6 +16,17 @@ nav:
         - 'ICX7150': 'icx7150.md'
         - 'ICX7250 / ICX7450': 'icx7250.md'
     - Brocade Fun:
+		- FCX Licensing: fcxlic.md
+		- ICX6450 Licensing: 6450.md
+		- ICX6610 Licensing: 6610.md
+		- ICX6650 Licensing: 6650.md
+		- ICX7150 Licensing: 7150.md
+		- ICX7250 Licensing: 7250.md
+		- ADX Licensing: adx.md
+		- CES Licensing: ces.md
+		- CER Licensing: cer.md
+		- MLX Licensing: mlx.md
+		- VDX Licensing: vdx.md
         - 'JTAG LB6M': 'jtag.md'
         - 'JTAG ICX6610': 'jtag6610.md'
         - 'Hidden Dev Stuff': hidden.md
