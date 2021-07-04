@@ -1,5 +1,5 @@
 # FCX Licensing
-**DISCLAIMER:** This is intended for educational use only, or in a homelab type environment.  
+**DISCLAIMER:** This is intended for educational use only, or for a homelab type environment.  
 
 Brocade switches used to be licensed via a physical EEPROM with a magic string written into it. When the OS booted and saw this magic string, it knew to enable advanced features.  
 
