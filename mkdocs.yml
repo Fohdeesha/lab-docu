@@ -25,8 +25,6 @@ nav:
         - 'ADX Licensing': 'adx.md'
         - 'CES Licensing': 'ces.md'
         - 'CER Licensing': 'cer.md'
-        - 'MLX Licensing': 'mlx.md'
-        - 'VDX Licensing': 'vdx.md'
         - 'JTAG LB6M': 'jtag.md'
         - 'JTAG ICX6610': 'jtag6610.md'
         - 'Hidden Dev Stuff': 'hidden.md'
