@@ -9,12 +9,13 @@ theme:
 dev_addr: 192.168.1.27:8000
 nav:
     - Home: index.md
-    - Brocade:
+    - Brocade Setup:
         - 'FCX / ICX6610': 'fcx.md'
         - 'ICX6430 / ICX6450': 'icx64xx.md'
         - 'ICX6650': 'icx6650.md'
         - 'ICX7150': 'icx7150.md'
         - 'ICX7250 / ICX7450': 'icx7250.md'
+    - Brocade Fun:
         - 'JTAG LB6M': 'jtag.md'
         - 'JTAG ICX6610': 'jtag6610.md'
         - 'Hidden Dev Stuff': hidden.md
@@ -23,7 +24,7 @@ nav:
         - 'Extracting Licenses': extract.md
         - 'ICX6610 Stack Ports': stack-ports.md
         - 'EEPROM Unlocks': eeprom.md
-    - Dell Storage:
+    - Dell DAS:
         - 'MD1200/MD1220': 'md1200.md'
         - 'SC200/SC220': 'sc200.md'
     - PERC Mini:
