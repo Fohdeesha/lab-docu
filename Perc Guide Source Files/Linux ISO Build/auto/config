@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+lb config noauto \
+    --mode debian \
+    --architectures amd64 \
+    --debian-installer none \
+    --archive-areas "main contrib non-free" \
+    --apt-indices false \
+    --binary-image iso-hybrid \
+    --memtest none \
+    "${@}"
