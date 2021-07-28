@@ -2,7 +2,7 @@
 This is a brief guide to recover corrupt bootloaders on PowerPC 85xx switches (LB6M) using a BDI2000.
 
 ## Preparation
-Start by downloading [this ZIP](https://fohdeesha.com/data/other/jtag-recovery.zip).
+Start by downloading [this ZIP](store/jtag-recovery.zip).
 
 Put all the files from the zip into the root of your TFTP server - the JTAG unit has been preprogrammed to look for a TFTP server at the address you specified before the unit was shipped - make sure said TFTP server is running with above files before powering the BDI2000.
 
@@ -31,11 +31,11 @@ Now you must connect the BDI2000 to the LB6M. Make sure the switch is unplugged 
 
 Plug in the cable so pin #1 is on the left side, like this:
 
-![bdi-pins](https://fohdeesha.com/data/other/bdipins.jpg)
+![bdi-pins](store/bdipins.jpg)
 
 On an LB6M, the connection should look like this:
 
-![bdi-lb6m](https://fohdeesha.com/data/other/bdilb6m.jpg)
+![bdi-lb6m](store/bdilb6m.jpg)
 
 Now that everything is plugged in and the BDI2000 is powered, power up the switch.
 
