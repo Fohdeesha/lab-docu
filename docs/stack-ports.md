@@ -3,7 +3,7 @@
 ## Upgrading The Software
 Thankfully in FastIron release 08.0.10 and up, Brocade quietly removed the "stack-only" restriction on the rear 40gbE ports.
 
-This means the first step is to update to the latest release. This link has instructions and a ZIP of the latest images - [FastIron Upgrade & Config Guide](https://fohdeesha.com/docs/fcx/).
+This means the first step is to update to the latest release. This link has instructions and a ZIP of the latest images - [FastIron Upgrade & Config Guide](fcx.md).
 
 However you're not done yet!
 
@@ -41,5 +41,5 @@ There should no longer be any ```stack-trunk``` commands, or any commands refere
 ## Port Layout
 Keep in mind two of the rear ports are 4x 10gbE breakout only, and the remaining two are 40gbE only. The two 40gbE-only ports will NOT run at 10gbE (for instance with a QSFP to SFP+ adapter), so use these two for 40gbE links only. The extremely professional diagram below shows the port config and their associated port numbers in the OS:
 
-![Port Diagram](https://fohdeesha.com/data/other/icx-ports.png)
+![Port Diagram](store/icx-ports.png)
 

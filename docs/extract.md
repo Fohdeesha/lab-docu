@@ -31,7 +31,7 @@ tftp -p -l system 192.168.1.8
 ```
 >Note: if you are running your TFTP server on linux, you need to create an empty file with this filename (system) in your tftp root directory, and chmod it with 777 so the switch can write to said empty file. Otherwise the switch will give a "file not found" error.
 
-Open the downloaded file on your desktop with something like NotePad++, and it should look like [This](https://fohdeesha.com/data/other/system.png). License strings start with `*B ` and are followed by a string (note, there must be a space after `*B`), and the license string ends where the `NUL` characters begin.
+Open the downloaded file on your desktop with something like NotePad++, and it should look like [This](store/system.png). License strings start with `*B ` and are followed by a string (note, there must be a space after `*B`), and the license string ends where the `NUL` characters begin.
 
 So applying this knowledge, we can extract the following two licenses from that system file in the screenshot. You'll need to remove the newline after the `*B`, so the `*B` and then the string are on the same line. Make sure to leave a space between `*B` and the string as well:
 
@@ -71,7 +71,7 @@ On PowerPC models (FCX, ICX6610) it is more complicated, as they do not run linu
 
 Once you have a file containing a dump of the entire onboard flash, and have opened it in a hex editor, you search it for the characters `*B` - you will eventually come across the license string(s) like so:
 
-![lic strings](https://fohdeesha.com/data/other/ppclic.png)
+![lic strings](store/ppclic.png)
 
 There's our license string, starting with `*B` as always. So, extracted, it looks like this (again, not a real license):
 ```
