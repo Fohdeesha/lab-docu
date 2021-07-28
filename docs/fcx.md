@@ -1,7 +1,5 @@
 # Setting up Brocade FCX & ICX6610
 
-**Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the left-hand menu.
-
 ## Preparation
 If you haven't already, visit the [Brocade Overview](brocade-overview.md) page to download the latest guide package and get it ready to be served via TFTP - this unified package includes all the latest firmware, licenses, and documentation.  
 
