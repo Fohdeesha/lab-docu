@@ -1,6 +1,6 @@
 # Setting up Brocade FCX & ICX6610
 
-**Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the lefthand menu.
+**Note:** This page is for the FCX & ICX6610. If you have a different model, choose it from the left-hand menu.
 
 ## Updating The Software
 Download the ZIP below, which contains the firmware files and documentation you'll need.
@@ -217,13 +217,6 @@ To remove configuration options, put a ```no``` in front of them at the appropri
 no hostname beefbox
 ```
 
-## Noise Info (ICX6610)
-The ICX66610 power supply bricks came in 3 revisions: A, B, and C. These will have an affect on how loud the switch is. Generally with an A revision PSU anywhere, even combined with a B or C revision in the other PSU slot, the PSU fans will run louder.
-
-The switch will be much quieter if you can find and run B and/or C revision bricks. There's no difference noise wise between B and C. Most sellers do not list the revision so you have to check the ebay pictures [for the revision marking.](https://fohdeesha.com/data/other/brocade/psu-rev.jpg)
-
-Also, it seems the PSU and fan tray position also affect fan speed. If you are running 1 PSU and fan tray, position them in the furthest left slots, when looking at the switch from the rear. If you have 2 PSUs and 1 fan tray, position the fan tray in the furthest left fan tray slot when looking at the rear of the switch.
-
 
 ## Tips
 To exit the CLI level you are at, use `exit`. So assuming you are still at the ```configure terminal``` level, type the following to exit back to the ```enable``` level:
@@ -280,4 +273,14 @@ telnet@Route2(config)#sh optic 5
 5       32.7460 C  -002.6688 dBm -002.8091 dBm    5.472 mA
         Normal      Normal        Normal         Normal
 ```
-You'll need to pick up some official Brocade or Foundry optics on ebay, or buy some flashed optics from FiberStore.
+You'll need to pick up some official Brocade or Foundry optics on ebay, or buy some flashed optics from FiberStore.  
+
+## Noise Info (ICX6610)
+The ICX66610 power supply bricks came in 3 revisions: A, B, and C. These will have an affect on how loud the switch is. Generally with an A revision PSU anywhere, even combined with a B or C revision in the other PSU slot, the PSU fans will run louder.
+
+The switch will be much quieter if you can find and run B and/or C revision bricks. There's no difference noise wise between B and C. Most sellers do not list the revision so you have to check the ebay pictures [for the revision marking.](https://fohdeesha.com/data/other/brocade/psu-rev.jpg)
+
+Also, it seems the PSU and fan tray position also affect fan speed. If you are running 1 PSU and fan tray, position them in the furthest left slots, when looking at the switch from the rear. If you have 2 PSUs and 1 fan tray, position the fan tray in the furthest left fan tray slot when looking at the rear of the switch.  
+
+## Licensing Info
+Like other EoL ICX6xxx series switches, the ICX6610 requires license file unlocks for 10gbE port functionality as well as some advanced software features. These licenses are no longer sold. To prevent e-waste and save these from landfills, I am providing free unlocks for use in a homelab or personal environment. Once you've finished the update and configuration process, proceed to the [ICX6610 Licensing](../6610/) section to fully license and unlock your switch. If you have an FCX instead, you can use the [FCX Licensing](../fcxlic/) section.
