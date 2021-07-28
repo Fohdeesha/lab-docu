@@ -1,6 +1,6 @@
 # H310/H710/H710P/H810 Mini & Full Size IT Crossflashing
 
-This guide allows you to crossflash 12th gen Dell Mini Mono & full size cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious. The following cards are currently supported (if you have a model not listed, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown)):
+This guide allows you to crossflash 12th gen Dell Mini Mono & full size cards to LSI IT firmware. Mini Mono refers to the small models that fit in the dedicated "storage slot" on Dell servers. Because iDRAC checks the PCI vendor values of cards in this slot before allowing the server to boot, the generic full-size PERC crossflashing guides do not apply. This guide however solves that issue. [Technical explanation](https://github.com/marcan/lsirec/issues/1#issuecomment-574971959) for those curious. The following cards are supported:
 
 * H310 Mini Mono
 * H710 Mini Mono
@@ -30,12 +30,12 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.
 
-[```Dell Perc Flashing ZIP```](https://fohdeesha.com/data/other/perc/perc-crossflash-v1.9.zip)  
+[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v1.9.zip)  
 ```Version: v1.9```  
 ```ZIP Updated: 07-20-2021```  
 ```MD5: 0af86889219ee9ea963687931836c4fa```  
 
->Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/). Otherwise, continue below.
+>Note: If you **know** you have an H310 Mini (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](H310.md). Otherwise, continue below.
 
 ## Finding Your Card Revision
 
@@ -43,22 +43,22 @@ Boot the server off the FreeDOS ISO. Once it's booted, just run the following co
 ```
 info
 ```
-![percflash1](https://fohdeesha.com/data/other/perc/percinfo.png)
+![percflash1](store/perc/percinfo.png)
 
 >WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" guide for your specific card model below. For example, the **H710 Mini (D1) Blade Guide**. Following any of the "normal" guides on a blade server will brick the PERC
 
-If it displays an **H310 Mini**, proceed to the [H310 Mini Guide](https://fohdeesha.com/docs/H310/)  
-If it displays an **H710 Mini B0** revision, proceed to the [H710 Mini (B0) Guide](https://fohdeesha.com/docs/H710-B0/)  
-If it displays an **H710 Mini D1** revision, proceed to the [H710 Mini (D1) Guide](https://fohdeesha.com/docs/H710-D1/)  
-If it displays an **H710 Mini D1** revision **and it's in a blade server**, proceed to the [H710 Mini (D1) Blade Guide](https://fohdeesha.com/docs/H710-D1-Blade/)  
-If it displays an **H710P Mini B0** revision, proceed to the [H710P Mini (B0) Guide](https://fohdeesha.com/docs/H710P-B0/)  
-If it displays an **H710P Mini D1** revision, proceed to the [H710P Mini (D1) Guide](https://fohdeesha.com/docs/H710P-D1/)  
-If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (B0) Guide](https://fohdeesha.com/docs/H710-B0-full/)  
-If it displays an **H710 Adapter D1** revision, proceed to the [H710 Full Size (D1) Guide](https://fohdeesha.com/docs/H710-D1-full/)  
-If it displays an **H710P Adapter B0** revision, proceed to the [H710P Full Size (B0) Guide](https://fohdeesha.com/docs/H710P-B0-full/)  
-If it displays an **H710P Adapter D1** revision, proceed to the [H710P Full Size (D1) Guide](https://fohdeesha.com/docs/H710P-D1-full/)  
-If it displays an **H810 Adapter B0** revision, proceed to the [H810 Full Size (B0) Guide](https://fohdeesha.com/docs/H810-B0-full/)  
-If it displays an **H810 Adapter D1** revision, proceed to the [H810 Full Size (D1) Guide](https://fohdeesha.com/docs/H810-D1-full/)  
+If it displays an **H310 Mini**, proceed to the [H310 Mini Guide](H310.md)  
+If it displays an **H710 Mini B0** revision, proceed to the [H710 Mini (B0) Guide](H710-B0.md)  
+If it displays an **H710 Mini D1** revision, proceed to the [H710 Mini (D1) Guide](H710-D1.md)  
+If it displays an **H710 Mini D1** revision **and it's in a blade server**, proceed to the [H710 Mini (D1) Blade Guide](H710-D1-Blade.md)  
+If it displays an **H710P Mini B0** revision, proceed to the [H710P Mini (B0) Guide](H710P-B0.md)  
+If it displays an **H710P Mini D1** revision, proceed to the [H710P Mini (D1) Guide](H710P-D1.md)  
+If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (B0) Guide](H710-B0-full.md)  
+If it displays an **H710 Adapter D1** revision, proceed to the [H710 Full Size (D1) Guide](H710-D1-full.md)  
+If it displays an **H710P Adapter B0** revision, proceed to the [H710P Full Size (B0) Guide](H710P-B0-full.md)  
+If it displays an **H710P Adapter D1** revision, proceed to the [H710P Full Size (D1) Guide](H710P-D1-full.md)  
+If it displays an **H810 Adapter B0** revision, proceed to the [H810 Full Size (B0) Guide](H810-B0-full.md)  
+If it displays an **H810 Adapter D1** revision, proceed to the [H810 Full Size (D1) Guide](H810-D1-full.md)  
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
 
@@ -108,7 +108,7 @@ If you need to enable the feature again, run this command via the SSH client:
 racadm set system.thermalsettings.ThirdPartyPCIFanResponse 1
 ```
 
->Note: The above commands were pulled from the following Dell White Paper: [Disabling a Third-Party PCIe Card Cooling Response with Dell PowerEdge Servers](https://fohdeesha.com/data/other/perc/ThirdPartyPCIFanResponse.pdf)
+>Note: The above commands were pulled from the following Dell White Paper: [Disabling a Third-Party PCIe Card Cooling Response with Dell PowerEdge Servers](store/perc/ThirdPartyPCIFanResponse.pdf)
 
 ## Extra: Revision Info & Part Numbers
 The main difference between the B0 and D1 revisions is the D1 will link at PCIe 3.0 speeds, instead of PCIe 2.0. This will almost certainly never cause a bottleneck unless you have every SAS port on the card connected to very fast SSDs that all get hammered at the same time. Even then, you're likely to reach the card's processor limitations before the bus bandwidth limit. The difference with the *P* cards (H710P) is more cache (1GB vs 512MB), but this is totally irrelevant when running the card flashed to IT mode as the cache is not used.
