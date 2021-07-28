@@ -1,5 +1,7 @@
 # Assigning tons of /64s to *nix machines (telehouse-NY)
 
+don't even ask what this was for it's gross
+
 ### Get a /125 transit net for the connection to the server:
 `2620:57:e000:e::10/125`
 
@@ -41,8 +43,8 @@ iface eth1 inet6 static
 
 ### Assign an entire /56 to a linux server
 
-Run the below command to assign the entire /56 to the server's loopback interface:
-**Note:** this uses Linux's [AnyIP](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ab79ad14a2d51e95f0ac3cef7cd116a57089ba82) feature:
+Run the below command to assign the entire /56 to the server's loopback interface:  
+**Note:** this uses Linux's [AnyIP](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ab79ad14a2d51e95f0ac3cef7cd116a57089ba82) feature  
 
 `ip -6 route add local 2620:57:e000:400::/56 dev lo`
 
@@ -75,7 +77,7 @@ iface eth1 inet6 static
 ### Finding all the /64s to bind to
 If your application needs to be bound to each /64, stick our `2620:57:e000:400::/56` subnet into [this calculator](https://subnettingpractice.com/ipv6_subnetting.html), and choose /64s from the dropdown then press calculate:
 
-![calculator](../../data/other/brocade/64nix-1.png)
+![calculator](store/64nix-1.png)
 
 Then simply bind each of your application instances to the first address in each /64 - For instance:
 
