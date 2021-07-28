@@ -1,4 +1,5 @@
 site_name: Fohdeesha Docs
+site_url: ""
 theme:
   name: 'material'
   custom_dir: overrides
@@ -33,9 +34,6 @@ nav:
         - 'Extracting Licenses': 'extract.md'
         - 'ICX6610 Stack Ports': 'stack-ports.md'
         - 'EEPROM Unlocks': 'eeprom.md'
-    - Dell DAS:
-        - 'MD1200/MD1220': 'md1200.md'
-        - 'SC200/SC220': 'sc200.md'
     - PERC Mini:
         - 'Introduction': 'perc.md'
         - 'H310 Mini': 'H310.md'
@@ -50,6 +48,9 @@ nav:
         - 'H710P D1 Full Size': 'H710P-D1-full.md'
         - 'H810 B0 Full Size': 'H810-B0-full.md'
         - 'H810 D1 Full Size': 'H810-D1-full.md'
+    - Dell DAS:
+        - 'MD1200/MD1220': 'md1200.md'
+        - 'SC200/SC220': 'sc200.md'
 
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
