@@ -70,7 +70,7 @@ dumpimage -T flat_dt -p 3 -i trimmed.bin ramdisk.zip
 ```
 The above example extracts the ramdisk from the above firmware file, which is the main filesystem for the switch. If you open up the resulting `ramdisk.zip` with 7zip or similar, you'll be able to explore the switch filesystem, including the interesting init scripts under `/etc/`:
 
-![7zip](https://fohdeesha.com/data/other/7zip.png)
+![7zip](store/7zip.png)
 
 **Note:** Notice `FastIron.xz` - this is the FastIron binary that gets uncompressed and ran after Linux boots, and this is what provides the FastIron interface you're used to.
 

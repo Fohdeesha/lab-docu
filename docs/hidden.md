@@ -26,7 +26,7 @@ FCX3(config)#dm
 ```
 There's hundreds of options. These are low level debug commands, so if you don't know what they do you can easily break your switch.
 
-**Note:** There's around ~700 commands that are completely hidden, they will not even show up using tab autocomplete like the above `dm` commands do. [Click here](https://fohdeesha.com/data/other/brocade/FastIron-Hidden.txt) for a full list of these commands. Many of these might delete your config, your licenses, lock the switch up, etc.
+**Note:** There's around ~700 commands that are completely hidden, they will not even show up using tab autocomplete like the above `dm` commands do. [Click here](store/FastIron-Hidden.txt) for a full list of these commands. Many of these might delete your config, your licenses, lock the switch up, etc.
 
 ## Hidden OS Console
 This only works over a serial connection. It will not work over telnet/ssh/etc. Connect to a FastIron device over serial, and once it's fully booted and running, press ```ctrl+y```, let go, then press ```m```. Then hit enter. It should drop you down to the OS console:
