@@ -2,7 +2,7 @@
 
 For the ICX7xxx series, no actual licenses are required. Around the release of FastIron v8060, they enabled honor-based licensing. This means you can simply install and unlock a valid license yourself with the `license install` command. That's it! Congratulations Ruckus, you did it. Just be sure to be running the recent firmware from this guide first.  
 
->If you are using these switches in a commercial environment, or to otherwise turn a profit, you should *really* purchase a license entitlement from Ruckus - it's only fair
+>If you are using these switches in a commercial environment, or to otherwise turn a profit, you should *really* purchase a license entitlement from Ruckus - it's only fair!
 
 ## License The ICX7150-C12P
 Run the following to unlock all the features of the ICX7150-C12P:
