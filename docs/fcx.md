@@ -3,9 +3,7 @@
 ## Preparation
 If you haven't already, visit the [Brocade Overview](brocade-overview.md) page to download the latest guide package and get it ready to be served via TFTP - this unified package includes all the latest firmware, licenses, and documentation.  
 
-**Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).
-
-You need to set up a temporary TFTP server - I recommend [Tftpd32 Portable Edition](http://www.tftpd64.com/tftpd32_download.html) if you're on Windows and don't want to install anything. Point the server to an empty folder to serve files from. From the ZIP, copy the bootloader from the ```Boot``` folder into your tftp server directory. Then, from the ```Images``` folder, copy over the OS image to the same place. If you have a PoE model, copy over the PoE firmware from the `PoE Firmware` folder to your TFTP directory as well.
+**Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
 
 Power on the switch while watching your serial terminal - it will have a prompt saying ```Hit b to enter the boot monitor``` - press ```b``` quickly and you'll be dropped into the bootloader prompt, now we can upgrade the software. If you missed the prompt and it boots the OS instead, pull power and try again.
 
@@ -14,16 +12,14 @@ At the boot prompt, we need to give it a temporary IP in the subnet of your netw
 ```
 ip address 192.168.1.50/24
 ```
-Now we can update the bootloader. Replace the IP with the IP of your tftp server, and replace the filename with the name of the file you copied out of the boot folder if it differs:
-
+Now we can update the bootloader. Replace the IP with the IP of your tftp server:
 ```
-copy tftp flash 192.168.1.49 grz10100.bin boot
+copy tftp flash 192.168.1.8 ICX6610-FCX/grz10100.bin boot
 ```
 
-After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server, and change the filename to match if necessary:
-
+After a few seconds it should finish, then we can flash the main OS. Replace the IP with the IP of your tftp server:
 ```
-copy tftp flash 192.168.1.49 FCXR08030t.bin primary
+copy tftp flash 192.168.1.8 ICX6610-FCX/FCXR08030u.bin primary
 ```
 It will take a little longer. When it finishes, we need to erase the current config & any passwords, then tell the switch to reboot into the full OS:
 
@@ -53,9 +49,9 @@ You can then continue on to the below.
 
 Now that it's booted into the full OS you may get ***TFTP timed out*** errors in the console, this is normal. We'll fix that in the next section. Check that the version matches what you just flashed:
 ```
-show version
+show version | include SW
 ```
-Towards the top of the output, it should say ```SW: Version XX.X.XXX``` - it should be the v8 version you flashed.
+It should say `SW: Version 08.0.30uT7f3`.
 
 Now to make any changes we must enter the enable level:
 ```
@@ -67,11 +63,11 @@ configure terminal
 ```
 Now tell it to generate an RSA keypair - this enables SSH access:
 ```
-crypto key generate rsa
+crypto key generate rsa modulus 2048
 ```
 
 ## Configuring Network Details
-First we need to disable DHCP so it doesn't automatically grab an address and attempt to load a config via tftp, then reload so it takes effect:
+First we need to disable the DHCP client so it doesn't automatically grab an address and attempt to load a config via tftp, then reload so it takes effect and stops spamming your console:
 ```
 ip dhcp-client disable
 write memory
@@ -93,7 +89,7 @@ exit
 Now we need to assign that virtual interface an address. Choose an IP that is unused in your subnet, and out of your DHCP server range (ping it first to be sure it's unused):
 ```
 interface ve 1
-ip address 192.168.1.2/24
+ip address 192.168.1.50/24
 exit
 ```
 The switch now has an IP. **Unplug your ethernet cable from the isolated management port, and plug it into any of the normal ports on the front.** You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
@@ -102,7 +98,7 @@ The switch now has an IP. **Unplug your ethernet cable from the isolated managem
 If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just do the following:
 ```
 exit
-inline power install-firmware stack-unit 1 tftp 192.168.1.8 fcx_poeplus_02.1.0.b004.fw
+inline power install-firmware stack-unit 2 tftp 192.168.1.8 ICX6610-FCX/fcx_poeplus_02.1.0.b004.fw
 #after a few seconds, hit enter to return to cli
 #save changes you made from the previous section
 write memory
@@ -156,11 +152,11 @@ If you have followed the above to set up authentication, and also wish to disabl
 ip ssh key-authentication yes
 ip ssh password-authentication no
 ```
-Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.
+Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key. Note that the ICX6xxx series do *not* support 4096 bit keys - when using `ssh-keygen` or `puttygen` etc, you must create 2048 bit keys.
 
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
 ```
-ip ssh pub-key-file tftp 192.168.1.49 public.key
+ip ssh pub-key-file tftp 192.168.1.8 public.key
 ```
 You shouldn't need to be told basic key management if you're following this section, but just in case - copy your private key to the proper location on the *nix machine you'll be SSH'ing from, or if you're on windows, load it using [pageant](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Now when you SSH to the switch, it will authenticate using your private key.
 
