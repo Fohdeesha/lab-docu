@@ -1,6 +1,4 @@
 # FCX Licensing
-**DISCLAIMER:** This is intended for educational use only, or for a homelab type environment.  
-
 Brocade switches used to be licensed via a physical EEPROM with a magic string written into it. When the OS booted and saw this magic string, it knew to enable advanced features.  
 
 The FCX was the last Brocade model to use this scheme before moving to keyed software licenses. They even shipped with a blank EEPROM in the socket ready to go. This means we just need to write the magic string to this EEPROM to fully unlock licensed features.
