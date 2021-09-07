@@ -119,11 +119,13 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 - These full size cards are still $$$ for some reason  
 - Unless you already have one just buy an actual LSI card for half the price  
 - 017MXW  
+- 0NHD8V  
 
 **H710 D1 Full Size Part Numbers:**  
 - These full size cards are still $$$ for some reason  
 - Unless you already have one just buy an actual LSI card for half the price  
 - 0PX45J  
+- 0VM02C
 
 **H710P B0 Full Size Part Numbers:**  
 - These full size cards are still $$$ for some reason  
