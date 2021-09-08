@@ -63,6 +63,7 @@ configure terminal
 ```
 Now tell it to generate an RSA keypair - this enables SSH access:
 ```
+crypto key zeroize
 crypto key generate rsa modulus 2048
 ```
 
@@ -98,7 +99,7 @@ The switch now has an IP. **Unplug your ethernet cable from the isolated managem
 If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just do the following:
 ```
 exit
-inline power install-firmware stack-unit 2 tftp 192.168.1.8 ICX6610-FCX/fcx_poeplus_02.1.0.b004.fw
+inline power install-firmware stack-unit 1 tftp 192.168.1.8 ICX6610-FCX/fcx_poeplus_02.1.0.b004.fw
 #after a few seconds, hit enter to return to cli
 #save changes you made from the previous section
 write memory
@@ -114,7 +115,7 @@ configure terminal
 Now you have the latest PoE firmware, and can continue on.
 
 ## If Access Protection Is NOT Required
-If you do **not** want to password protect access to the switch (you're using it in a lab), follow this section. If you'd like to password protect it, skip to the next section.
+If you do **not** want to password protect access to the switch (you're using it in a lab), follow this section. If you'd like to password protect it, skip this section.
 
 Allow SSH login with no passwords configured:
 ```
@@ -128,10 +129,9 @@ To secure the switch, we need to create an account - "root" can be any username 
 ```
 username root password yourpasshere
 ```
-We also need to tell it to use our new local user account(s) to authorize attempts to log in, use the webpage, as well as attempts to enter the ```enable``` CLI level:
+We also need to tell it to use our new local user account(s) to authorize attempts to log in or access the web UI:
 ```
 aaa authentication login default local
-aaa authentication enable default local
 aaa authentication web default local
 ```
 If you wanted to use the WEB UI, you can now log into it using the credentials you created above.
