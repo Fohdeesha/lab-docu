@@ -3,7 +3,7 @@
 ## Preparation
 If you haven't already, visit the [Brocade Overview](brocade-overview.md) page to download the latest guide package and get it ready to be served via TFTP - this unified package includes all the latest firmware, licenses, and documentation.  
 
-**Connect** to the switches serial/console port using a program like Putty (9600 8N1), and connect the dedicated management port to your network (do not use a "normal" port).  
+**Connect** to the serial/console port on the front using a program like Putty (9600 8N1), then connect the **management ethernet port** to your network (do NOT use any of the regular switch ports yet).
 
 Power on the switch while watching your serial terminal - it will have a prompt saying ```Hit b to enter the boot monitor``` - press ```b``` quickly and you'll be dropped into the bootloader prompt, now we can upgrade the software. If you missed the prompt and it boots the OS instead, pull power and try again.
 
@@ -45,43 +45,24 @@ stack unconfigure clean
 ```
 You can then continue on to the below.
 
+
 ## Initial Configuration
 
-Now that it's booted into the full OS you may get ***TFTP timed out*** errors in the console, this is normal. We'll fix that in the next section. Check that the version matches what you just flashed:
-```
-show version | include SW
-```
-It should say `SW: Version 08.0.30uT7f3`.
-
-Now to make any changes we must enter the enable level:
+Now that it's booted into the full OS you may get  **_TFTP timed out_**  errors in the console, this is normal. just hit enter until they go away. We'll fix that in the next section. Now to make any changes we must enter the enable level:
 ```
 enable
 ```
-To make configuration changes, we must then enter the configure CLI level:
+Now we enter the configure terminal level to make config changes:
+
 ```
 configure terminal
 ```
-Now tell it to generate an RSA keypair - this enables SSH access:
-```
-crypto key zeroize
-crypto key generate rsa modulus 2048
-```
-
-## Configuring Network Details
-First we need to disable the DHCP client so it doesn't automatically grab an address and attempt to load a config via tftp, then reload so it takes effect and stops spamming your console:
+Now we turn off the DHCP client, so it doesn't automatically grab an IP and look for a TFTP config (the cause of the earlier timeout messages):
 ```
 ip dhcp-client disable
-write memory
-exit
-reload
 ```
-Once the switch comes back up, enter the configure terminal level and give the switch a friendly name:
-```
-enable
-configure terminal
-hostname beefbox
-```
-We need to give the switch an IP. By default, all ports are in VLAN 1, so it will behave like a typical switch. First we need to give VLAN 1 its own virtual interface:
+Now we give the switch its permanent IP address. By default, all ports are in VLAN 1, so it will behave like a typical switch. First we need to give VLAN 1 its own virtual interface:
+
 ```
 vlan 1
 router-interface ve 1
@@ -90,13 +71,24 @@ exit
 Now we need to assign that virtual interface an address. Choose an IP that is unused in your subnet, and out of your DHCP server range (ping it first to be sure it's unused):
 ```
 interface ve 1
-ip address 192.168.1.50/24
+ip address 192.168.1.55/24
 exit
+write mem
 ```
-The switch now has an IP. **Unplug your ethernet cable from the isolated management port, and plug it into any of the normal ports on the front.** You can now telnet to it and no longer need serial access. It also supports SSH access, but you need to follow the rest of the guide first.
+## Configuration Details
+
+Now your switch is set up for basic switching, and has an IP address you can use to manage the switch.  **Note:**  You should now unplug your ethernet connection from the dedicated management port, and instead connect it to any of the  **regular switch ports**. Then continue below to give the switch a friendly name:
+```
+hostname intertubes
+```
+Now tell it to generate an RSA keypair - this is the first step to enable SSH access:
+```
+crypto key zeroize
+crypto key generate rsa modulus 2048
+```
 
 ## Update PoE Firmware
-If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this step. Assuming you completed the previous section and the switch now has in-band network access, just do the following:
+If your switch is the PoE model, you need to update the PoE controller firmware. If it's a non-PoE model, skip this section. Assuming you completed the previous section and the switch now has in-band network access, just do the following:
 ```
 exit
 inline power install-firmware stack-unit 1 tftp 192.168.1.8 ICX6610-FCX/fcx_poeplus_02.1.0.b004.fw
@@ -134,7 +126,7 @@ We also need to tell it to use our new local user account(s) to authorize attemp
 aaa authentication login default local
 aaa authentication web default local
 ```
-If you wanted to use the WEB UI, you can now log into it using the credentials you created above.
+If you wanted to use the web UI, you can now log into it using the credentials you created above.
 
 You should enable authentication for telnet access as well:
 ```
@@ -152,7 +144,8 @@ If you have followed the above to set up authentication, and also wish to disabl
 ip ssh key-authentication yes
 ip ssh password-authentication no
 ```
-Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key. Note that the ICX6xxx series do *not* support 4096 bit keys - when using `ssh-keygen` or `puttygen` etc, you must create 2048 bit keys.
+Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.  
+>The ICX6xxx series do *not* support 4096 bit keys - when using `ssh-keygen` or `puttygen` etc, you must create 2048 bit keys.
 
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
 ```
