@@ -5,7 +5,7 @@ theme:
   name: 'material'
   custom_dir: overrides
   palette:
-    primary: 'light blue'
+    primary: 'deep orange'
     accent: 'cyan'
 
 dev_addr: 192.168.1.27:8000
