@@ -19,6 +19,8 @@ nav:
         - 'ICX6650': 'icx6650.md'
         - 'ICX7150': 'icx7150.md'
         - 'ICX7250 / ICX7450': 'icx7250.md'
+        - 'ICX6xxx Advanced': 'icx6xxx-adv.md'
+        - 'ICX7xxx Advanced': 'icx7xxx-adv.md'
     - Brocade Fun:
         - 'FCX Licensing': 'fcxlic.md'
         - 'ICX6450 Licensing': '6450.md'
