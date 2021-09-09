@@ -248,7 +248,7 @@ Brocade does not restrict the use of optics by manufacturer, they'll take anythi
 So if you want to see information like this :
 
 ```
-telnet@Route2(config)#sh optic 5
+telnet@Route2(config)#sh optic 1/3/1
  Port  Temperature   Tx Power     Rx Power       Tx Bias Current
 +----+-----------+--------------+--------------+---------------+
 5       32.7460 C  -002.6688 dBm -002.8091 dBm    5.472 mA
