@@ -1,3 +1,4 @@
+
 This page assumes you've already followed the update/config guide for your specific switch model. You should now have an updated switch configured with an IP address, and one of the **regular switch ports** (not the dedicated management port) plugged into your network to access said IP. It's also assumed you're at the `configure terminal` CLI level.
 
 Nothing here is necessary for your switch to continue operating as a "dumb" unmanaged switch, but the steps here are highly recommended nonetheless to set up remote management, configuration, and advanced features you might find useful.
@@ -84,6 +85,12 @@ server 216.239.35.0
 server 216.239.35.4
 exit
 ```
+Now you can monitor the NTP sync status with the following commands:
+```
+show ntp associations
+show ntp status
+```
+
 ### SNMP
 
 To quickly enable SNMPv2 (read only), follow the below. SNMP v3 is available but you'll have to refer to the included documentation:
@@ -130,7 +137,7 @@ show inline power detail
 #or show details for just one port:
 show inline power 1/1/5
 ```
-Most ICX6xxx series switches also have something called `legacy inline power` on by default, which detects and powers very old legacy PoE devices that rely on a specific resistance for detection. Devices like this are exceptionally rare and this can occasionally erronously detect regular devices as legacy PoE units, so let's disable it:
+ICX6xxx switches also have something called `legacy inline power` on by default, which detects and powers very old legacy PoE devices that rely on a specific resistance for detection. Devices like this are exceptionally rare and this can occasionally erroneously detect regular devices as legacy PoE units, so let's disable it:
 ```
 stack unit 1
 no legacy-inline-power
@@ -139,9 +146,9 @@ exit
 If you have a switch that does not support stacking like the ICX6430, you'll need to run `no legacy-inline-power` at the global configure terminal level instead. If you have a switch stack built, don't forget to run the above for stack unit 2 as well (or however many units you have).
 
 ### Link Aggregation (802.3ad LACP)
-If you'd like to configure an LACP bond on the switch to aggregate 2 or more ports to a server for example, it's pretty easy under FastIron. First you need to meet some basic criteria before creating the bond:
-* all switch ports in the bond must be the same port type / speed
-* all switch ports being added to the bond cannot have an existing configuration on them (no IPs set etc)
+If you'd like to configure an LACP bond on the switch to aggregate 2 or more ports to a server for example, it's pretty easy under FastIron. First you need to meet some basic criteria before creating the bond:  
+* all switch ports in the bond must be the same port type / speed  
+* all switch ports being added to the bond cannot have an existing configuration on them (no IPs set etc)  
 
 Now create the dynamic (802.3ad) lag, giving it a name of your choice:
 ```
