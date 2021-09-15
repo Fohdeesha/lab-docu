@@ -19,7 +19,7 @@ ip ssh permit-empty-passwd yes
 ```
 
 ### If Access Protection IS Required (or Web UI Access)
-If you *do* want to secure access to the switch, or use the (limited) web UI, follow this section. If not, skip it.
+If you **do** want to secure access to the switch, or use the (limited) web UI, follow this section. If not, skip it.
 
 To secure the switch, we need to create an account - "root" can be any username string you wish:
 ```
