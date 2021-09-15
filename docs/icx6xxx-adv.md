@@ -147,8 +147,9 @@ If you have a switch that does not support stacking like the ICX6430, you'll nee
 
 ### Link Aggregation (802.3ad LACP)
 If you'd like to configure an LACP bond on the switch to aggregate 2 or more ports to a server for example, it's pretty easy under FastIron. First you need to meet some basic criteria before creating the bond:  
-* all switch ports in the bond must be the same port type / speed  
-* all switch ports being added to the bond cannot have an existing configuration on them (no IPs set etc)  
+- all switch ports in the bond must be the same port type / speed  
+- all switch ports being added to the bond cannot have an existing configuration on them (no IPs set etc)  
+- all switch ports must have the same VLAN membership  
 
 Now create the dynamic (802.3ad) lag, giving it a name of your choice:
 ```
