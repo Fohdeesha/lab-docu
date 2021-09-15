@@ -1,6 +1,9 @@
 site_name: Fohdeesha Docs
+
+#below options required for offline version
 site_url: ""
 use_directory_urls: false
+
 theme:
   name: 'material'
   custom_dir: overrides
@@ -36,7 +39,6 @@ nav:
         - 'Accessing Linux': 'linux.md'
         - 'Extracting Firmware': 'firmware.md'
         - 'Extracting Licenses': 'extract.md'
-        - 'ICX6610 Stack Ports': 'stack-ports.md'
         - 'EEPROM Unlocks': 'eeprom.md'
     - PERC Mini:
         - 'Introduction': 'perc.md'

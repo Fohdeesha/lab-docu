@@ -97,6 +97,48 @@ configure terminal
 ```
 Now you have the latest PoE firmware, and can continue on.
 
+
+## ICX6610 Stack Ports
+This optional section outlines how to use the ICX6610 rear "stacking only" QSFP+ ports as regular data ports instead. Note that two of the QSFP+ ports are 40gbE only, and the remaining two are 4x 10gbE breakout only. You must be on the latest FastIron release for this to work (so, follow the above update instructions if you haven't).
+
+### Removing Stack Configuration
+There are going to be some stacking commands automatically put in your configuration, so we need to remove them. To see what you need to remove, show the config:
+```
+show run
+```
+Towards the top you should see a stacking related block similar to the below:
+```
+stack unit 1
+  module 1 icx6610-48-port-management-module
+  module 2 icx6610-qsfp-10-port-160g-module
+  module 3 icx6610-8-port-10g-dual-mode-module
+  stack-trunk 1/2/1 to 1/2/2
+  stack-trunk 1/2/6 to 1/2/7
+```
+
+We need to remove the two ```stack-trunk``` lines. Notice that they are under the ```stack unit 1``` level, so you need to enter that CLI level first. While we're in there, we'll also disable stacking:
+```
+enable
+conf t
+stack unit 1
+no stack-trunk 1/2/1 to 1/2/2
+no stack-trunk 1/2/6 to 1/2/7
+stack disable
+exit
+write mem
+```
+Now show the config:
+```
+show run
+```
+There should no longer be any ```stack-trunk``` commands, or any commands referencing stack ports. That's pretty much it! You can now use the ports on the rear as normal. However, see the next section on how they are laid out.
+
+### Port Layout
+Keep in mind two of the rear ports are 4x 10gbE breakout only, and the remaining two are 40gbE only. The two 40gbE-only ports will NOT run at 10gbE (for instance with a QSFP to SFP+ adapter), so use these two for 40gbE links only. The extremely professional diagram below shows the port config and their associated port numbers in the OS:
+
+![Port Diagram](store/icx-ports.png)
+
+
 ## Noise Info (ICX6610)
 The ICX66610 power supply bricks came in 3 revisions: A, B, and C. These will have an affect on how loud the switch is. Generally with an A revision PSU anywhere, even combined with a B or C revision in the other PSU slot, the PSU fans will run louder.
 
