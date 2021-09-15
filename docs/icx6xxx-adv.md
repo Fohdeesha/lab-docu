@@ -1,26 +1,14 @@
 
 This page assumes you've already followed the update/config guide for your specific switch model. You should now have an updated switch configured with an IP address, and one of the **regular switch ports** (not the dedicated management port) plugged into your network to access said IP. It's also assumed you're at the `configure terminal` CLI level.
 
-Nothing here is necessary for your switch to continue operating as a "dumb" unmanaged switch, but the steps here are highly recommended nonetheless to set up remote management, configuration, and advanced features you might find useful.
+Nothing here is necessary for your switch to continue operating as a "dumb" unmanaged switch, but the steps here are highly recommended nonetheless to set up basic security, management, and advanced features you might find useful.
 
-## Key Generation & Security
+## Key Generation, Security, & Web UI
 Before we can do things like SSH to the switch or access the web UI, we need to do a couple things. First, tell it to generate an RSA keypair - this is the first step to enabling SSH access:
 ```
 crypto key zeroize
 crypto key generate rsa modulus 2048
 ```
-
-
-### If Access Protection Is NOT Required
-If you do **not** want to password protect access to the switch (you're using it in a lab), follow this section. If you'd like to password protect it, skip this section.
-
-Allow SSH login with no passwords configured:
-```
-ip ssh permit-empty-passwd yes
-```
-
-### If Access Protection IS Required (or Web UI Access)
-If you **do** want to secure access to the switch, or use the (limited) web UI, follow this section. If not, skip it.
 
 To secure the switch, we need to create an account - "root" can be any username string you wish:
 ```
@@ -31,9 +19,19 @@ We also need to tell it to use our new local user account(s) to authorize attemp
 aaa authentication login default local
 aaa authentication web default local
 ```
-If you wanted to use the web UI, you can now log into it using the credentials you created above.
+If you wanted to use the web UI (I don't recommend using it, really), you can now log into it using the credentials you created above. By default, the web server is http only. If you want to disable the web server, just run:
+```
+no web-management http
+```
+If you would like to then turn on the web server over  `https`  instead, run the following (skip this if you just want the webserver off totally):
+```
+crypto-ssl certificate generate
+web-management https
+```
 
-You should enable authentication for telnet access as well:
+Once you get an  `ssl-certificate creation is successful`  message in the console, you'll be able to access the web UI via  `https`.
+
+You should enable authentication for telnet access:
 ```
 enable telnet authentication
 ```
@@ -160,7 +158,7 @@ Now you should be at the LAG configuration CLI level for this new LAG. Here's th
 ```
 ports ethernet 1/3/1 ethernet 1/3/2
 ```
-Now we need to specify the primary port. This is the port member of the bond that will act as the single port that controls all bond members. For instance, if your primary port is 1/3/1, then to add your LAG to a vlan, you'd use `tag int eth 1/3/1` - the switch then do the same for all the other bond members. Same with any port config, if you want to configure the LACP group, you use the primary port. This is almost always the first port in the LAG, but typically doesn't matter:
+Now we need to specify the primary port. This is the port member of the bond that will act as the single port that controls all bond members in your config. For instance, if your primary port is 1/3/1, then to add your LAG to a VLAN, you'd use `tag int eth 1/3/1` - the switch will then do the same for all the other bond members. Same with any port config, if you want to configure the LACP group, you use the primary port. This is almost always the first port in the LAG, but typically it doesn't matter:
 ```
 primary-port 1/3/8
 ```
