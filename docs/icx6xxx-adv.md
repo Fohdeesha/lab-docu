@@ -102,7 +102,6 @@ Whenever you make changes (like above) they take effect immediately, however the
 write memory
 ```
 
-
 To exit the CLI level you are at, use `exit`. So assuming you are still at the ```configure terminal``` level, type the following to exit back to the ```enable``` level:
 ```
 exit
@@ -120,6 +119,7 @@ no hostname beefbox
 
 ## Advanced Features
 This section will outline some of the more advanced configurations you may want to explore. If you use any of them, don't forget to `write mem` when done to actually save your changes. 
+
 ### PoE
 If you have a PoE enabled model you'll need to enable power on the ports you have PoE devices plugged into. For example, let's say you've plugged a PoE camera into port 5. Lets enable PoE power to turn it on:
 ```
@@ -203,6 +203,12 @@ Coming Soon
 Coming Soon
 
 ### ACLs
+Coming Soon
+
+### Inter-VLAN Routing
+Coming Soon
+
+### Config Management
 Coming Soon
 
 ## Useful Commands
