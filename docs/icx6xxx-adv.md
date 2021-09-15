@@ -43,7 +43,7 @@ If your switch is outside of your home, or accessible by others, telnet should b
 no telnet server
 enable aaa console
 ```
-#### OPTIONAL: Key Based SSH Access
+### Optional: Key Based SSH Access
 If you have followed the above to set up authentication, and also wish to disable password-based SSH login and set up a key pair instead, follow this section. If not, skip it. Enable key login, and disable password login:
 ```
 ip ssh key-authentication yes
@@ -259,15 +259,16 @@ show run
 ```
 
 ## SFP/Optics Information
-Brocade does not restrict the use of optics by manufacturer, they'll take anything given it's the right protocol. However optical monitoring information is disabled unless it sees Brocade or Foundry optics.
 
-So if you want to see information like this :
+Brocade does not restrict the use of optics or DACs by manufacturer, they'll take anything given it's the right protocol. However by default, optical monitoring information is disabled unless it sees Brocade or Foundry optics.
+
+So if you want to see information like this:
 
 ```
-telnet@Route2(config)#sh optic 1/3/1
+telnet@Route2(config)#show optic 1/3/1
  Port  Temperature   Tx Power     Rx Power       Tx Bias Current
 +----+-----------+--------------+--------------+---------------+
 5       32.7460 C  -002.6688 dBm -002.8091 dBm    5.472 mA
         Normal      Normal        Normal         Normal
 ```
-You'll need to pick up some official Brocade or Foundry optics on ebay, or buy some flashed optics from FiberStore.  
+You'll need to pick up some official Brocade or Foundry optics. Regardless of what optics you have, you'll first need to enable optic monitoring in general by running  `optical-monitor`  at the  `configure terminal`  level. 
