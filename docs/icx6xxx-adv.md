@@ -108,12 +108,13 @@ conf t
 ```
 There is also tab help and completion. To see all the commands available at the current CLI level, just hit tab. To see the options available for a certain command, just type that command (like ```ip```) then hit tab a couple times.
 
-## Useful Commands
-
 If you ever need to remove a configuration option you've added, put a ```no``` in front of them at the appropriate CLI level. For example, if you've set the switch name to `beefbox` and have since changed your mind:
 ```
 no hostname beefbox
 ```
+
+## Useful Commands
+
 Show chassis information like fan and temperature status:
 ```
 show chassis
@@ -156,6 +157,22 @@ Show the running configuration:
 ```
 show run
 ```
+## Advanced Configurations
+### PoE
+If you have a PoE enabled model you'll need to enable PoE power on the ports you have PoE devices plugged into. For example, let's say you've plugged a PoE camera into port 5. Assuming you're at the `configure terminal` CLI level, lets enable PoE power to turn it on:
+```
+interface ethernet 1/1/5
+inline power
+```
+That's it, you should see the device power on now. You can monitor PoE status such as power level, which ports are enabled, and how much power they're using by running the following:
+```
+show inline power
+#or show even more details:
+show inline power detail
+#or show details for just one port:
+show inline power 1/1/5
+```
+
 
 ## SFP/Optics Information
 Brocade does not restrict the use of optics by manufacturer, they'll take anything given it's the right protocol. However optical monitoring information is disabled unless it sees Brocade or Foundry optics.
