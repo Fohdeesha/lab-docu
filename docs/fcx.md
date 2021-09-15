@@ -98,7 +98,7 @@ configure terminal
 Now you have the latest PoE firmware, and can continue on.
 
 ## Further Configuration
-You now have a bare minimum setup on your switch, and the latest firmware. To continue with further configuration including securing and naming the switch, setting up SSH and Web UI access, PoE commands etc, please continue to the [ICX6xxx Series Config Page](icx6xxx-adv.md). Don't forget to return here when you're finished for the stack port and licensing info below, if you need them.
+You now have a bare minimum setup on your switch, and the latest firmware. To continue with further configuration including securing and naming the switch, setting up SSH and Web UI access, PoE commands etc, please continue to the [ICX6xxx Series Config Page](icx6xxx-adv.md). Don't forget to return here when you're finished for the stack port, noise, and licensing info below if you need them.
 
 
 ## ICX6610 Stack Ports
