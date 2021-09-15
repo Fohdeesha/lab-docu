@@ -3,6 +3,8 @@ This page assumes you've already followed the update/config guide for your speci
 
 Nothing here is necessary for your switch to continue operating as a "dumb" unmanaged switch, but the steps here are highly recommended nonetheless to set up basic security, management, and advanced features you might find useful.
 
+>**Note:** This page is for the ICX6xxx series, anything running FastIron v8030
+
 ## Key Generation, Security, & Web UI
 Before we can do things like SSH to the switch or access the web UI, we need to do a couple things. First, tell it to generate an RSA keypair - this is the first step to enabling SSH access:
 ```
