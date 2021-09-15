@@ -97,6 +97,9 @@ configure terminal
 ```
 Now you have the latest PoE firmware, and can continue on.
 
+## Further Configuration
+You now have a bare minimum setup on your switch, and the latest firmware. To continue with further configuration including securing and naming the switch, setting up SSH and Web UI access, PoE commands etc, please continue to the [ICX6xxx Series Config Page](icx6xxx-adv.md). Don't forget to return here when you're finished for the stack port and licensing info below, if you need them.
+
 
 ## ICX6610 Stack Ports
 This optional section outlines how to use the ICX6610 rear "stacking only" QSFP+ ports as regular data ports instead. Note that two of the QSFP+ ports are 40gbE only, and the remaining two are 4x 10gbE breakout only. You must be on the latest FastIron release for this to work (so, follow the above update instructions if you haven't).
