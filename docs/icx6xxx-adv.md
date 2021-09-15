@@ -1,7 +1,11 @@
-## Basic Configuration Continued 
-You should now have an updated switch configured with an IP address, and one of the **regular switch ports** (not the dedicated management port) plugged into your network to access said IP. We can now continue some basic configuration steps. First, give the switch a name:
+This page assumes you've already followed the update/config guide for your specific switch model. You should now have an updated switch configured with an IP address, and one of the **regular switch ports** (not the dedicated management port) plugged into your network to access said IP. 
+
+Nothing here is necessary for your switch to continue operating as a "dumb" unmanaged switch, but the steps here are highly recommended nonetheless to set up remote management, configuration, and advanced features you might find useful.
+
+## Naming & Key Generation
+First, we can give the switch a name of your choice:
 ```
-hostname intertubes
+hostname beefchunk
 ```
 Now tell it to generate an RSA keypair - this is the first step to enable SSH access:
 ```
@@ -57,73 +61,20 @@ ip ssh pub-key-file tftp 192.168.1.8 public.key
 ```
 You shouldn't need to be told basic key management if you're following this section, but just in case - copy your private key to the proper location on the *nix machine you'll be SSH'ing from, or if you're on windows, load it using [pageant](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Now when you SSH to the switch, it will authenticate using your private key.
 
-## Saving & Conclusions
-Whenever you make changes (like above) they take effect immediately, however they are not saved to onboard flash. So if you reboot the switch, they will be lost. To permanently save them to onboard flash, use the following command:
-```
-write memory
-```
-Your switch now has a basic configuration, as well as an IP address you can telnet or SSH to for further configuration.
+## Ditching The Serial Cable
+Your switch now has a name, an IP address, and telnet or SSH access enabled. You should now be able to get rid of the serial cable and use a program like Putty to SSH or telnet to the switch IP. Then you can continue the guide from that CLI.
 
-Some more useful general commands:
+## Network Configuration
 
-Show chassis information like fan and temperature status:
-```
-show chassis
-```
-
-Show a table of all interfaces:
-```
-show interface brief
-```
-To show one interface in detail:
-```
-show interfaces ethernet 1/1/1
-#Also works for virtual interfaces:
-show interfaces ve 1
-```
-Give a port a friendly name:
-```
-interface ethernet 1/1/1
-port-name freenas
-show interfaces brief ethernet 1/1/1
-exit
-```
-Show the running configuration:
-```
-show run
-```
-Show the system log:
-```
-show log
-```
-
-To remove configuration options, put a ```no``` in front of them at the appropriate CLI level:
-```
-no hostname beefbox
-```
-
-
-## Tips
-To exit the CLI level you are at, use `exit`. So assuming you are still at the ```configure terminal``` level, type the following to exit back to the ```enable``` level:
-```
-exit
-```
-Commands can also be shortened, as long as they are still unique. So to re-enter the configure terminal level, Instead of typing the entirety of ```configure terminal```, the following will also work:
-```
-conf t
-```
-There is also tab help and completion. To see all the commands available at the current CLI level, just hit tab. To see the options available for a certain command, just type that command (like ```ip```) then hit tab a couple times.
-
-## Advanced Configuration
 ### Default Route & DNS
-To give the switch a default route and a DNS server so it can reach external hostnames and IP's (to ping external servers or to update time via NTP etc), do the following. replace the IP with the IP of your gateway/router/etc. Assuming you are still at the ```configure terminal``` level:
+If you want your switch OS to be able to reach networks outside of your subnet, as well as resolve hostnames (for instance, to contact NTP servers, or talk to an SNMP server outside your immediate network), we need to give the switch a default route and a DNS server. Replace the IP with the IP of your gateway/router/etc. Assuming you are still at the ```configure terminal``` level:
 
 ```
 ip dns server-address 192.168.1.1
 ip route 0.0.0.0/0 192.168.1.1
 ```
 ### NTP
-To have the switch keep its time synced via NTP (so its logs make more sense), use the following. If you live in an area that doesn't use Daylight Savings, skip the ```clock summer-time``` command. Use tab completion for the timezone command to see what's available. The IP's in the following example are google's NTP servers and work well for most cases:
+To have the switch keep its time synced via NTP (so its logs make more sense), use the following. If you live in an area that doesn't use Daylight Savings, skip the ```clock summer-time``` command. Use tab completion for the timezone command to see what's available. The IPs in the following example are Google's NTP servers and work well for most cases:
 ```
 clock summer-time
 clock timezone gmt GMT-05
@@ -140,10 +91,70 @@ To quickly enable SNMPv2 (read only), follow the below. SNMP v3 is available but
 snmp-server community public ro
 ```
 
-### Saving
-If you made any of the above extra changes, remember they have not been saved to onboard flash yet. Do so:
+## Writing The Config & Tips
+Whenever you make changes (like above) they take effect immediately, however they are not saved to onboard flash. So if you reboot the switch, they will be lost. To permanently save them to onboard flash, use the following command:
 ```
 write memory
+```
+
+
+To exit the CLI level you are at, use `exit`. So assuming you are still at the ```configure terminal``` level, type the following to exit back to the ```enable``` level:
+```
+exit
+```
+Commands can also be shortened, as long as they are still unique. So to re-enter the configure terminal level, Instead of typing the entirety of ```configure terminal```, the following will also work:
+```
+conf t
+```
+There is also tab help and completion. To see all the commands available at the current CLI level, just hit tab. To see the options available for a certain command, just type that command (like ```ip```) then hit tab a couple times.
+
+## Useful Commands
+
+If you ever need to remove a configuration option you've added, put a ```no``` in front of them at the appropriate CLI level. For example, if you've set the switch name to `beefbox` and have since changed your mind:
+```
+no hostname beefbox
+```
+Show chassis information like fan and temperature status:
+```
+show chassis
+```
+Show the system log, which is handy for tracking down port flaps or other events:
+```
+show log
+```
+Clear the system log if it's cluttered and you want to empty old entries:
+```
+clear log
+```
+Give a port a friendly name:
+```
+interface ethernet 1/1/1
+port-name freenas
+show interfaces brief ethernet 1/1/1
+exit
+```
+
+Show a table of all interfaces:
+```
+show interface brief
+```
+Show one interface in detail:
+```
+show interfaces ethernet 1/1/1
+#Also works for virtual interfaces:
+show interfaces ve 1
+```
+Show statistics like bandwidth and utilization for a port:
+```
+show statistics ethernet 1/1/1
+```
+Clear all stats in the switch to start the statistics and interface counters from 0 again:
+```
+clear statistics
+```
+Show the running configuration:
+```
+show run
 ```
 
 ## SFP/Optics Information
