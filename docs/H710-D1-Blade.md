@@ -1,5 +1,11 @@
 # H710 D1 For Blades IT Mode Flashing
-Continued instructions for flashing the H710 Mini Mono (D1 Revision) for blade servers (M620 etc). You should only continue here after following the [Introduction Page](perc.md). If you haven't done so already, go back.
+Continued instructions for flashing the H710 Mini Mono (D1 Revision) for blade servers (M620 etc). You should only continue here after following the [Introduction Page](perc.md). If you haven't done so already, go back.  
+
+**NOTE: This section is for Blade Servers only! M620, M820, etc. They look like this:**
+
+ ![blade](store/perc/blade.jpg)
+
+They are large chassis with multiple server blades inside of them. If you have a regular rackmount server, like an R620 or R720, **do not follow this section**. Go back to the [Introduction Page](perc.md) and follow the appropriate regular guide.
 
 ## Verify & SAS
 You should still be in the FreeDOS live boot image. Double check you are on the right guide by running the following command again:
@@ -12,7 +18,6 @@ Product Name : PERC H710 Mini
 ChipRevision : D1
 SAS Address  : xxxx (will differ)
 ```
-**Note:** The system you are using & flashing should also be a blade model! For instance PERC Minis in an M420, M620, M820 etc. If you're not sure what that means, stop and go back to the [introduction page](perc.md) and get on the right guide.
 
 Next, you need to note the SAS address of the card from the above output so we can program it back later. Take a screenshot of the console, or otherwise note down the address so you can write it back at the end of the guide. It's not a huge deal if you lose it, but it's easiest to program back the original address instead of generating a new one.
 
