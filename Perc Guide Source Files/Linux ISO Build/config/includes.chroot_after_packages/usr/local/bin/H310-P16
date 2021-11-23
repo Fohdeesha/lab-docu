@@ -1,0 +1,32 @@
+#!/bin/sh
+# H310 Flashing (Old P16 firmware for BTRFS users)
+addr=$(lspci -nnv | grep LSI | cut -b -7)
+rmmod megaraid_sas mpt3sas mptctl mptbase
+echo "Errors above are normal!"
+echo "Preparing to flash old P16 firmware"
+sleep 2
+echo 16 > /proc/sys/vm/nr_hugepages
+sleep 2
+#free the card, get it into rawdog mode
+/root/lsirec/lsirec 0000:$addr unbind
+sleep 2
+/root/lsirec/lsirec 0000:$addr halt
+sleep 2
+##write IT mode SBR
+/root/lsirec/lsirec 0000:$addr writesbr /root/H310/H310-Modded.sbr
+sleep 5
+#hostboot the card from RAM
+#must always RAM-boot using P20, older firmwares do not RAM-boot correctly
+/root/lsirec/lsirec 0000:$addr hostboot /root/H310/2118it.bin
+sleep 5
+/root/lsirec/lsirec 0000:$addr rescan
+sleep 1
+echo "Pausing for 20 seconds to allow the card to boot"
+sleep 30
+# erase FW again now from lsiutil to be sure it's dell-free
+/root/lsiutil/lsiutil -p1 -a 3,8, 33
+sleep 5
+# flash FW to onboard flash
+/root/lsiutil/lsiutil -p1 -f /root/H310/p16-h310-2118it.bin -y 2
+sleep 1
+echo "All Done! Continue following the guide to set SAS addr"
