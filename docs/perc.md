@@ -27,9 +27,9 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 ## Preparation
 Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! You also need to disable a few BIOS settings. This step is not optional. In your server BIOS, disable all of the following:  
 
-- Processor Settings > Virtualization Technology  
-- Integrated Devices > SR-IOV Global Enable  
-- Integrated Devices > I/OAT DMA Engine  
+* Processor Settings > Virtualization Technology
+* Integrated Devices > SR-IOV Global Enable
+* Integrated Devices > I/OAT DMA Engine
 
 >Note: If you're flashing a full size card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them
 
