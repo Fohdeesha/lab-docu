@@ -25,7 +25,7 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 **Different Driver:** The stock Dell firmware (MegaRAID-based) uses the MegaRAID driver in Linux/FreeBSD/etc. In some distributions this can cause issues, for example FreeNAS has issues pulling SMART data from drives connected to a MegaRAID controller. After crossflashing to IT mode, the card is used by the OS via the much simpler mpt3sas driver.
 
 ## Preparation
-Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! You also need to disable a few BIOS settings. This step is not optional. In your server BIOS, disable all of the following:  
+Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! You also need to disable a few BIOS settings. This step is not optional. In your server BIOS, **disable** all of the following:  
 
 * Processor Settings > Virtualization Technology
 * Integrated Devices > SR-IOV Global Enable
