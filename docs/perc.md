@@ -25,15 +25,21 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 **Different Driver:** The stock Dell firmware (MegaRAID-based) uses the MegaRAID driver in Linux/FreeBSD/etc. In some distributions this can cause issues, for example FreeNAS has issues pulling SMART data from drives connected to a MegaRAID controller. After crossflashing to IT mode, the card is used by the OS via the much simpler mpt3sas driver.
 
 ## Preparation
-Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! Also in the server BIOS settings, under Integrated Devices, ensure both `SR-IOV Global Enable` and `I/OAT DMA Engine` are **disabled**. They are disabled by default, so unless you've changed them in the past you should be good.
+Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! You also need to disable a few BIOS settings. This step is not optional. In your server BIOS, disable all of the following:
+- Processor Settings > Virtualization Technology
+- Integrated Devices > SR-IOV Global Enable
+- Integrated Devices > I/OAT DMA Engine
+>Note: If you're flashing a full size card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them
+
+When you're finished with this guide, don't forget to go back and enable Virtualization, as well as SR-IOV if you plan to use it.
 
 **Remove the RAID battery** from the adapter. The IT firmware has no cache for the battery to back, in fact the IT firmware will have no clue the battery is there if you leave it connected. To make matters worse, in rare cases some people observed the battery holding old Dell code in the card's RAM and it made their crossflash process a pain. Just unplug/remove the battery and store it somewhere in case you return to Dell firmware.
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.
 
-[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v1.8.zip)  
-```Version: v1.8```  
-```ZIP Updated: 07-23-2021```  
+[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.0.zip)  
+```Version: v2.0```  
+```ZIP Updated: 11-23-2021```  
 ```MD5: 577cef6f3969f04475d50ceb71d8f52d```  
 
 >Note: If you **know** you have an H310 Mini or H310 Full Size (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](H310.md). Otherwise, continue below.
@@ -46,7 +52,7 @@ info
 ```
 ![percflash1](store/perc/percinfo.png)
 
->WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" guide for your specific card model below. For example, the **H710 Mini (D1) Blade Guide**. Following any of the "normal" guides on a blade server will brick the PERC
+>WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" section for your card model below. For example, the **H710 Mini (D1) Blade Guide**. Following any of the "normal" guides on a blade server will brick the PERC. Blade servers are the M620 and M820 for instance. Standard rackmount models like the R620 and R720 are **not** blade servers!
 
 If it displays an **H310 Mini** or **H310 Adapter**, proceed to the [H310 Guide](H310.md)  
 If it displays an **H710 Mini B0** revision, proceed to the [H710 Mini (B0) Guide](H710-B0.md)  
