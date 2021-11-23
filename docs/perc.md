@@ -25,10 +25,10 @@ There's two main reasons to do this, assuming you don't need the hardware RAID f
 **Different Driver:** The stock Dell firmware (MegaRAID-based) uses the MegaRAID driver in Linux/FreeBSD/etc. In some distributions this can cause issues, for example FreeNAS has issues pulling SMART data from drives connected to a MegaRAID controller. After crossflashing to IT mode, the card is used by the OS via the much simpler mpt3sas driver.
 
 ## Preparation
-Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! You also need to disable a few BIOS settings. This step is not optional. In your server BIOS, disable all of the following:
-- Processor Settings > Virtualization Technology
-- Integrated Devices > SR-IOV Global Enable
-- Integrated Devices > I/OAT DMA Engine
+Ensure there is only one LSI-based adapter in your system. If there are others besides the adapter you intend to flash, remove them! You also need to disable a few BIOS settings. This step is not optional. In your server BIOS, disable all of the following:  
+- Processor Settings > Virtualization Technology  
+- Integrated Devices > SR-IOV Global Enable  
+- Integrated Devices > I/OAT DMA Engine  
 >Note: If you're flashing a full size card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them
 
 When you're finished with this guide, don't forget to go back and enable Virtualization, as well as SR-IOV if you plan to use it.
@@ -40,7 +40,7 @@ Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the
 [```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.0.zip)  
 ```Version: v2.0```  
 ```ZIP Updated: 11-23-2021```  
-```MD5: 577cef6f3969f04475d50ceb71d8f52d```  
+```MD5: 697916c247695f1046e651d7465cd517```  
 
 >Note: If you **know** you have an H310 Mini or H310 Full Size (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](H310.md). Otherwise, continue below.
 
