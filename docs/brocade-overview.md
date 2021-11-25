@@ -3,11 +3,11 @@
 ## Master ZIP (Firmware, Manuals, Licenses)
 Download the ZIP below which contains all the firmware, licenses, and documentation you'll need for the guides on this site.
 
-[```Brocade Master ZIP```](store/brocade-10-19-2021.zip)  
+[```Brocade Master ZIP```](store/brocade-11-25-2021.zip)  
 ```ICX6xxx SW version: 08030u```  
-```ICX7xxx SW version: 08095d```  
-```ZIP Updated: 10-19-2021```  
-```MD5: 55cf241c4daf5fd8f3df7020f70a01ed```  
+```ICX7xxx SW version: 08095e```  
+```ZIP Updated: 11-25-2021```  
+```MD5: 354bd76858c1c763b2aa5ea459e3ca15```  
 
 Inside this archive you'll see a folder titled `brocade-(date)` - extract this entire folder somewhere on your PC. Then, you need to get a TFTP server up and running temporarily, serving files out of the `TFTP Content` subfolder. If you're already familiar with how to do this, point your TFTP server at `TFTP Content` so it's the root folder, then navigate to your switch model under the **Brocade Setup** menu on the left. If you need some pointers getting TFTP running, continue below.
 
