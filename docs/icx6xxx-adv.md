@@ -48,6 +48,7 @@ If you have followed the above to set up authentication, and also wish to disabl
 ```
 ip ssh key-authentication yes
 ip ssh password-authentication no
+ip ssh interactive-authentication no
 ```
 Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.  
 >The ICX6xxx series do *not* support 4096 bit keys - when using `ssh-keygen` or `puttygen` etc, you must create 2048 bit keys.
