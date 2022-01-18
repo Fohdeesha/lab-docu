@@ -145,6 +145,7 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 - These full size cards are still $$$ for some reason  
 - Unless you already have one just buy an actual LSI card for half the price  
 - 07GCGT  
+- 0XDHXT  
 
 **H810 B0 Full Size Part Numbers:**  
 - These full size cards are still $$$ for some reason  
