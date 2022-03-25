@@ -61,5 +61,8 @@ nav:
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
 
-google_analytics: ['UA-2400722-7', 'fohdeesha.com']
+extra:
+  analytics:
+    provider: google
+    property: UA-2400722-7
 
