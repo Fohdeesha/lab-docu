@@ -31,9 +31,13 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 * Integrated Devices > SR-IOV Global Enable
 * Integrated Devices > I/OAT DMA Engine
 
->Note: If you're flashing a full size card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them
+>Note: If you're flashing a full size card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them  
 
-When you're finished with this guide, don't forget to go back and enable Virtualization, as well as SR-IOV if you plan to use it.
+You also **must** set the server boot mode to BIOS, not UEFI:
+* Boot Settings > Boot Mode > Set to **BIOS**
+
+
+When you're finished with this guide, don't forget to go back and enable Virtualization, as well as SR-IOV if you plan to use it. Switch boot mode back to UEFI as well if you were using it previously. But only once you've finished the guide!
 
 **Remove the RAID battery** from the adapter. The IT firmware has no cache for the battery to back, in fact the IT firmware will have no clue the battery is there if you leave it connected. To make matters worse, in rare cases some people observed the battery holding old Dell code in the card's RAM and it made their crossflash process a pain. Just unplug/remove the battery and store it somewhere in case you return to Dell firmware.
 
