@@ -33,7 +33,8 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 
 >Note: If you're flashing a full size card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them  
 
-You also **must** set the server boot mode to BIOS, not UEFI:
+You also **must** set the server boot mode to BIOS, not UEFI:  
+
 * Boot Settings > Boot Mode > Set to **BIOS**
 
 
