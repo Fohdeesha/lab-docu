@@ -44,10 +44,10 @@ When you're finished with this guide, don't forget to go back and enable Virtual
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.
 
-[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.0.zip)  
-```Version: v2.0```  
-```ZIP Updated: 11-23-2021```  
-```MD5: 697916c247695f1046e651d7465cd517```  
+[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.1.zip)  
+```Version: v2.1```  
+```ZIP Updated: 04-08-2022```  
+```MD5: 42a87bd496f6d2e3aa1d8f2afe3cc699```  
 
 >Note: If you **know** you have an H310 Mini or H310 Full Size (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](H310.md). Otherwise, continue below.
 
