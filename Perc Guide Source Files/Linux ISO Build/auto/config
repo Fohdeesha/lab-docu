@@ -8,8 +8,8 @@ lb config noauto \
     --debian-installer none \
     --archive-areas "main contrib non-free" \
     --apt-indices false \
-    --bootappend-live "boot=live components iomem=relaxed iommu=off amd_iommu=off" \
-    --bootappend-live-failsafe "boot=live components iomem=relaxed iommu=off amd_iommu=off" \
+    --bootappend-live "boot=live components iomem=relaxed intel_iommu=off amd_iommu=off" \
+    --bootappend-live-failsafe "boot=live components iomem=relaxed intel_iommu=off amd_iommu=off" \
     --binary-image iso-hybrid \
     --memtest none \
     "${@}"
