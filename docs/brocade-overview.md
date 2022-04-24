@@ -3,16 +3,16 @@
 ## Master ZIP (Firmware, Manuals, Licenses)
 Download the ZIP below which contains all the firmware, licenses, and documentation you'll need for the guides on this site.
 
-[```Brocade Master ZIP```](store/brocade-12-20-2021.zip)  
+[```Brocade Master ZIP```](store/brocade-04-24-2022.zip)  
 ```ICX6xxx SW version: 08030u```  
 ```ICX7xxx SW version: 08095f```  
-```ZIP Updated: 12-20-2021```  
-```MD5: a31ea53302ec1e43dbab32ebabece9b0```  
+```ZIP Updated: 04-24-2022```  
+```MD5: 3aa743715f0136fe1dfbe2ec8cbe82b6```  
 
-Inside this archive you'll see a folder titled `brocade-(date)` - extract this entire folder somewhere on your PC. Then, you need to get a TFTP server up and running temporarily, serving files out of the `TFTP Content` subfolder. If you're already familiar with how to do this, point your TFTP server at `TFTP Content` so it's the root folder, then navigate to your switch model under the **Brocade Setup** menu on the left. If you need some pointers getting TFTP running, continue below.
+Inside this archive you'll see a folder titled `brocade-(date)` - extract this entire folder somewhere on your PC. Then, you need to get a TFTP server up and running temporarily, serving files out of the `TFTP-Content` subfolder. If you're already familiar with how to do this, point your TFTP server at `TFTP-Content` so it's the root folder, then navigate to your switch model under the **Brocade Setup** menu on the left. If you need some pointers getting TFTP running, continue below.
 
 ### Setting up TFTP (Windows)
-For a simple temporary TFTP server under Windows, I highly recommend Tftpd64. In the brocade ZIP above, a portable copy that requires no installation is included under the `Tftpd64` folder - just launch the `tftpd64.exe` executable inside - it should already be configured with the appropriate settings, and set to serve the correct folder (`..\TFTP Content\`).
+For a simple temporary TFTP server under Windows, I highly recommend Tftpd64. In the brocade ZIP above, a portable copy that requires no installation is included under the `Tftpd64` folder - just launch the `tftpd64.exe` executable inside - it should already be configured with the appropriate settings, and set to serve the correct folder (`..\TFTP-Content\`).
 
 That's it! You're now serving all the files via TFTP so your switch can grab them. When you're done with the guide, just exit the program. If you don't want to trust an executable from a random site, you can also just [download Tftpd64](https://pjo2.github.io/tftpd64/) from the official site and configure it yourself (granted, if you `diff` it with mine, you'll see they're identical).
 >**Note:** On any modern version of Windows, the Windows Firewall will probably block TFTP connections by default - if you get TFTP issues and the switch can't download files, just completely disable the windows firewall temporarily 
@@ -31,10 +31,12 @@ Now you need to edit the config located at `/etc/default/tftpd-hpa` to match the
 # /etc/default/tftpd-hpa
 
 TFTP_USERNAME="nobody"
-TFTP_DIRECTORY="/home/jon/brocade-08-11-2021/TFTP Content"
+TFTP_DIRECTORY="/home/jon/brocade-04-24-2022/TFTP-Content"
 TFTP_ADDRESS="0.0.0.0:69"
 TFTP_OPTIONS="--secure -vvvv"
 ```
+>Note: tftpd-hpa does *not* like spaces in the directory path  
+
 Save the config file and now reboot the matt daemon:
 
 ```
