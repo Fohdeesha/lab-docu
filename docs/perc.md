@@ -114,7 +114,7 @@ racadm set system.thermalsettings.ThirdPartyPCIFanResponse 0
 
 To verify if the option is enabled or not, run this command via the SSH client:
 ```
-racadm getsystem.thermalsettings.ThirdPartyPCIFanResponse
+racadm get system.thermalsettings.ThirdPartyPCIFanResponse
 ```
 
 If you need to enable the feature again, run this command via the SSH client:
