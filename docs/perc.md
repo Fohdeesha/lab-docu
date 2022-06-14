@@ -31,12 +31,10 @@ Ensure there is only one LSI-based adapter in your system. If there are others b
 * Integrated Devices > SR-IOV Global Enable
 * Integrated Devices > I/OAT DMA Engine
 
->Note: If you're flashing a full size card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them  
-
 You also **must** set the server boot mode to BIOS, not UEFI:  
 
-* Boot Settings > Boot Mode > Set to **BIOS**
-
+* Boot Settings > Boot Mode > Set to **BIOS**  
+>Note: If you're flashing a card on a non-Dell system, such as an AMD based desktop or server, make sure you find any BIOS settings related to IOMMU and Virtualization, and disable them   
 
 When you're finished with this guide, don't forget to go back and enable Virtualization, as well as SR-IOV if you plan to use it. Switch boot mode back to UEFI as well if you were using it previously. But only once you've finished the guide!
 
@@ -49,30 +47,29 @@ Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the
 ```ZIP Updated: 04-08-2022```  
 ```MD5: 42a87bd496f6d2e3aa1d8f2afe3cc699```  
 
->Note: If you **know** you have an H310 Mini or H310 Full Size (**not** an H710), skip all of the below and jump right to the [H310 Mini Guide](H310.md). Otherwise, continue below.
-
 ## Finding Your Card Revision
 
-Boot the server off the FreeDOS ISO. Once it's booted, just run the following command, which will spit out the name and revision of your card:
+Boot the server off the FreeDOS ISO. Once it's booted just run the following command It will spit out the name and revision of your card:
 ```
 info
 ```
 ![percflash1](store/perc/percinfo.png)
 
->WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" section for your card model below. For example, the **H710 Mini (D1) Blade Guide**. Following any of the "normal" guides on a blade server will brick the PERC. Blade servers are the M620 and M820 for instance. Standard rackmount models like the R620 and R720 are **not** blade servers!
+>WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" section for your card model below. Blade servers are the M620 and M820 for instance. Standard rackmount models like the R620 and R720 are **not** blade servers!
 
-If it displays an **H310 Mini** or **H310 Adapter**, proceed to the [H310 Guide](H310.md)  
-If it displays an **H710 Mini B0** revision, proceed to the [H710 Mini (B0) Guide](H710-B0.md)  
-If it displays an **H710 Mini D1** revision, proceed to the [H710 Mini (D1) Guide](H710-D1.md)  
-If it displays an **H710 Mini D1** revision **and it's in a blade server**, proceed to the [H710 Mini (D1) Blade Guide](H710-D1-Blade.md)  
-If it displays an **H710P Mini B0** revision, proceed to the [H710P Mini (B0) Guide](H710P-B0.md)  
-If it displays an **H710P Mini D1** revision, proceed to the [H710P Mini (D1) Guide](H710P-D1.md)  
-If it displays an **H710 Adapter B0** revision, proceed to the [H710 Full Size (B0) Guide](H710-B0-full.md)  
-If it displays an **H710 Adapter D1** revision, proceed to the [H710 Full Size (D1) Guide](H710-D1-full.md)  
-If it displays an **H710P Adapter B0** revision, proceed to the [H710P Full Size (B0) Guide](H710P-B0-full.md)  
-If it displays an **H710P Adapter D1** revision, proceed to the [H710P Full Size (D1) Guide](H710P-D1-full.md)  
-If it displays an **H810 Adapter B0** revision, proceed to the [H810 Full Size (B0) Guide](H810-B0-full.md)  
-If it displays an **H810 Adapter D1** revision, proceed to the [H810 Full Size (D1) Guide](H810-D1-full.md)  
+If it displays an **H310 Mini**, proceed to the [H310 Mini Guide](H310.md)  
+If it displays an **H310 Adapter**, proceed to the [H310 Full Size Guide](H310-full.md)  
+If it displays an **H710 Mini B0**, proceed to the [H710 Mini (B0) Guide](H710-B0.md)  
+If it displays an **H710 Mini D1**, proceed to the [H710 Mini (D1) Guide](H710-D1.md)  
+If it displays an **H710 Mini D1** ***and it's in a blade server***, proceed to the [H710 Mini (D1) Blade Guide](H710-D1-Blade.md)  
+If it displays an **H710P Mini B0**, proceed to the [H710P Mini (B0) Guide](H710P-B0.md)  
+If it displays an **H710P Mini D1**, proceed to the [H710P Mini (D1) Guide](H710P-D1.md)  
+If it displays an **H710 Adapter B0**, proceed to the [H710 Full Size (B0) Guide](H710-B0-full.md)  
+If it displays an **H710 Adapter D1**, proceed to the [H710 Full Size (D1) Guide](H710-D1-full.md)  
+If it displays an **H710P Adapter B0**, proceed to the [H710P Full Size (B0) Guide](H710P-B0-full.md)  
+If it displays an **H710P Adapter D1**, proceed to the [H710P Full Size (D1) Guide](H710P-D1-full.md)  
+If it displays an **H810 Adapter B0**, proceed to the [H810 Full Size (B0) Guide](H810-B0-full.md)  
+If it displays an **H810 Adapter D1**, proceed to the [H810 Full Size (D1) Guide](H810-D1-full.md)  
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
 
@@ -125,7 +122,7 @@ racadm set system.thermalsettings.ThirdPartyPCIFanResponse 1
 >Note: The above commands were pulled from the following Dell White Paper: [Disabling a Third-Party PCIe Card Cooling Response with Dell PowerEdge Servers](store/perc/ThirdPartyPCIFanResponse.pdf)
 
 ## Extra: Revision Info & Part Numbers
-The main difference between the B0 and D1 revisions is the D1 will link at PCIe 3.0 speeds, instead of PCIe 2.0. This will almost certainly never cause a bottleneck unless you have every SAS port on the card connected to very fast SSDs that all get hammered at the same time. Even then, you're likely to reach the card's processor limitations before the bus bandwidth limit. The difference with the *P* cards (H710P) is more cache (1GB vs 512MB), but this is totally irrelevant when running the card flashed to IT mode as the cache is not used.
+The main difference between the B0 and D1 revisions are link speeds: D1 will link at PCIe 3.0 instead of PCIe 2.0. This will almost certainly never cause a bottleneck, as you'll hit the processing limits of the SAS chipset before you run into the 20gbps full duplex bandwidth of a 4x PCIe 2.0 slot. The difference with the *P* cards (H710P) is more cache (1GB vs 512MB), but this is totally irrelevant when running the card flashed to IT mode as the cache is not used.
 
 Regardless, since they're the same price used, you may as well grab the D1 revision. Note that many ebay sellers just stick popular part numbers in the listing title, so try to verify in the actual auction images that the label states the correct part number. Note that most sellers omit the leading `0` so you'll get more results doing the same:
 
