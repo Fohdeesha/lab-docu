@@ -1,0 +1,82 @@
+# H310 Full Size IT Mode Flashing
+Instructions for flashing the H310 Full Size. Full credits for this guide go to [fourlynx](mailto:fourlynx@phoxden.net) and his original [H310 guide](https://doku.phoxden.net/pages/viewpage.action?pageId=7208964). As we were working on these H710 guides together and building a convenient live ISO, we figured we might as well add an easy H310 script to it.
+
+## Linux Time
+Boot into the Linux ISO from the ZIP. Use the following credentials to login: **user/live**
+
+We highly recommend SSH'ing to the live ISO so you can copy/paste commands and not have to use the iDRAC virtual console. To do so, run the following to find the IP of the install:
+```
+ipinfo
+```
+It should spit out an IP. SSH to it, using the same **user/live** credentials. This is not required and you can continue on using the iDRAC (or physical) console, but it will be slightly more inconvenient.
+
+## Flashing IT Firmware
+Now, still in Linux, we need to change to the root user:
+```
+sudo su -
+```
+Now we need to note down the SAS address of the adapter so we can program it back later. Run the following and save the output somewhere:
+```
+sas-mega
+```
+Once you have the address saved, run the flashing script. This will program the appropriate IT mode SBR, then flash the card with IT firmware:
+
+```
+H310-Full
+```
+It should automatically do everything required to flash the card. If you don't get any unexpected errors and it completes, we need to reboot and program the SAS address back to finish. See the following note.
+
+**Note:** For some reason, the very first boot after crossflashing the card will cause a kernel panic - I believe it's iDRAC not letting go of something (I was able to see the card put in a fault state via the debug UART when this happens). This only happens the first reboot after crossflashing. When you boot back into the live ISO and get the panic, either let it reboot itself, or use iDRAC to force a reboot. After that boot back into the live ISO again and all will be well.
+
+## Programming SAS Address Back
+
+Now rebooted back into the live Linux image, just run the following commands, filling in the example address with your own, that you noted down earlier:
+```
+sudo su -
+setsas 500605b123456777
+```
+It should succeed without errors. That's it! You can run the following command to get some info about your new card. You should be able to see your SAS address and the same firmware version:
+```
+info
+```
+
+```
+        Controller Number              : 0
+        Controller                     : SAS2008(B2)
+        PCI Address                    : 00:02:00:00
+        SAS Address                    : 5b8ca3a-0-f37a-4500
+        NVDATA Version (Default)       : 14.01.00.08
+        NVDATA Version (Persistent)    : 14.01.00.08
+        Firmware Product ID            : 0x2213 (IT)
+        Firmware Version               : 20.00.07.00
+        NVDATA Vendor                  : LSI
+        NVDATA Product ID              : SAS9211-8i
+        BIOS Version                   : N/A
+        UEFI BSD Version               : N/A
+        FCODE Version                  : N/A
+        Board Name                     : SAS9211-8i
+        Board Assembly                 : N/A
+        Board Tracer Number            : N/A
+```
+Unless you also need to flash boot images for booting off the card, you can now ditch all the live images and reboot back into your normal system, and enjoy your IT mode card.
+
+## Optional: Boot Images
+>Note: flashing these can add up to 2 minutes to server boot time if you have a lot of drives. Be sure you need them!
+
+If you need to boot from drives connected to this adapter, you'll need to flash a boot image to it. Otherwise, skip it. This is what gives you the "press blahblah to enter the LSI boot configuration utility" text when the server boots. To flash the regular BIOS boot image:
+```
+flashboot /root/Bootloaders/mptsas2.rom
+```
+If you want to UEFI boot from drives connected to this adapter, you need to flash the UEFI boot image (the card can have both UEFI and BIOS boot images flashed):
+```
+flashboot /root/Bootloaders/x64sas2.rom
+```
+You can now ditch the live images and boot back into your normal system.
+
+## Optional: Reverting
+If for some reason you need to revert back to the stock Dell PERC firmware, that's easy. Boot into the FreeDOS live image, and run the following command:
+```
+310FLRVT
+```
+That's it! When it finishes, just reboot back to your normal system with the `reboot` command.
+>Note: This uses the unmodified latest Dell firmware `20.13.3-0001,A11` extracted from the update EXE found [here](https://www.dell.com/support/home/en-in/drivers/driversdetails?driverid=r09pj).
