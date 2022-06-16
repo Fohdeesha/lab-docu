@@ -42,10 +42,10 @@ When you're finished with this guide, don't forget to go back and enable Virtual
 
 Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.
 
-[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.1.zip)  
-```Version: v2.1```  
-```ZIP Updated: 04-08-2022```  
-```MD5: 42a87bd496f6d2e3aa1d8f2afe3cc699```  
+[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.2.zip)  
+```Version: v2.2```  
+```ZIP Updated: 06-16-2022```  
+```MD5: 2a85aef52bf8eb6ccae7eb25ffd2714c```  
 
 ## Finding Your Card Revision
 
