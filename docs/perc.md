@@ -49,7 +49,7 @@ Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the
 
 ## Finding Your Card Revision
 
-Boot the server off the FreeDOS ISO. Once it's booted just run the following command It will spit out the name and revision of your card:
+Boot the server off the FreeDOS ISO. Once it's booted just run the following command, it will spit out the name and revision of your card:
 ```
 info
 ```
