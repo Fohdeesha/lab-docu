@@ -57,19 +57,19 @@ info
 
 >WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" section for your card model below. Blade servers are the M620 and M820 for instance. Standard rackmount models like the R620 and R720 are **not** blade servers!
 
-If it displays an **H310 Mini**, proceed to the [H310 Mini Guide](H310.md)  
-If it displays an **H310 Adapter**, proceed to the [H310 Full Size Guide](H310-full.md)  
-If it displays an **H710 Mini B0**, proceed to the [H710 Mini (B0) Guide](H710-B0.md)  
-If it displays an **H710 Mini D1**, proceed to the [H710 Mini (D1) Guide](H710-D1.md)  
-If it displays an **H710 Mini D1** ***and it's in a blade server***, proceed to the [H710 Mini (D1) Blade Guide](H710-D1-Blade.md)  
-If it displays an **H710P Mini B0**, proceed to the [H710P Mini (B0) Guide](H710P-B0.md)  
-If it displays an **H710P Mini D1**, proceed to the [H710P Mini (D1) Guide](H710P-D1.md)  
-If it displays an **H710 Adapter B0**, proceed to the [H710 Full Size (B0) Guide](H710-B0-full.md)  
-If it displays an **H710 Adapter D1**, proceed to the [H710 Full Size (D1) Guide](H710-D1-full.md)  
-If it displays an **H710P Adapter B0**, proceed to the [H710P Full Size (B0) Guide](H710P-B0-full.md)  
-If it displays an **H710P Adapter D1**, proceed to the [H710P Full Size (D1) Guide](H710P-D1-full.md)  
-If it displays an **H810 Adapter B0**, proceed to the [H810 Full Size (B0) Guide](H810-B0-full.md)  
-If it displays an **H810 Adapter D1**, proceed to the [H810 Full Size (D1) Guide](H810-D1-full.md)  
+If it displays an **H310 Mini** proceed to the [H310 Mini Guide](H310.md)  
+If it displays an **H310 Adapter** proceed to the [H310 Full Size Guide](H310-full.md)  
+If it displays an **H710 Mini B0** proceed to the [H710 Mini (B0) Guide](H710-B0.md)  
+If it displays an **H710 Mini D1** proceed to the [H710 Mini (D1) Guide](H710-D1.md)  
+If it displays an **H710 Mini D1** and it's in a blade server, proceed to the [H710 Mini (D1) Blade Guide](H710-D1-Blade.md)  
+If it displays an **H710P Mini B0** proceed to the [H710P Mini (B0) Guide](H710P-B0.md)  
+If it displays an **H710P Mini D1** proceed to the [H710P Mini (D1) Guide](H710P-D1.md)  
+If it displays an **H710 Adapter B0** proceed to the [H710 Full Size (B0) Guide](H710-B0-full.md)  
+If it displays an **H710 Adapter D1** proceed to the [H710 Full Size (D1) Guide](H710-D1-full.md)  
+If it displays an **H710P Adapter B0** proceed to the [H710P Full Size (B0) Guide](H710P-B0-full.md)  
+If it displays an **H710P Adapter D1** proceed to the [H710P Full Size (D1) Guide](H710P-D1-full.md)  
+If it displays an **H810 Adapter B0** proceed to the [H810 Full Size (B0) Guide](H810-B0-full.md)  
+If it displays an **H810 Adapter D1** proceed to the [H810 Full Size (D1) Guide](H810-D1-full.md)  
 
 If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
 
