@@ -33,6 +33,73 @@ web-management https
 
 Once you get an  `ssl-certificate creation is successful`  message in the console, you'll be able to access the web UI via  `https`.
 
+If you want to use your own certificate that is also possible. It's important to remember that the switch [doesn't support PKCS #8](https://community.ruckuswireless.com/t5/Switches/Can-t-import-SSL-certificates-quot-Could-not-parse-the-PEM/m-p/18554/highlight/true#M686) and this isn't actually [documented anywhere](https://docs.ruckuswireless.com/fastiron/08.0.60/fastiron-08060-securityguide/GUID-E83AC70A-9F89-4209-B6C4-ED5725D4F487.html). You must create certificates using the PKCS #1 format. If you try to use PKCS #8 (the default for openssl), you'll get certificate parsing errors.
+
+The ICX6610 again doesn't support keys larger than 2048 bits. This example assumes you want to create your own CA and sign with it.
+
+1. Create new Root CA
+```
+pass='{{ pass }}' \
+name='{{ name }}' \
+openssl req \
+    -newkey rsa:4096 \
+    -sha512 \
+    -passin pass:"${pass}" \
+    -x509 \
+    -nodes \
+    -keyout "$name"Root.pem \
+    -new \
+    -out "$name"Root.crt \
+    -subj "/CN="$name" Root CA" \
+    -days 3650
+```
+
+2. Generate key in PKCS#1 format. Use the `-traditional`, see [openssl-genrsa](https://www.openssl.org/docs/manmaster/man1/openssl-genrsa.html) for more details.
+```
+openssl genrsa -traditional -out keyfile 2048
+```
+
+3. Create certificate sign request
+```
+name='{{ name }}' \
+C='{{ country }}' \
+ST='{{ state/province }}' \
+openssl req \
+    -new \
+    -sha512 \
+    -key keyfile \
+    -subj "/C="$C"/ST="$ST"/O="$name" Network, Inc./CN=sw1.home.arpa" \
+    -out certsignreq.csr \
+    -reqexts SAN \
+    -extensions SAN \
+    -config <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
+```
+
+4. Sign certificate request
+```
+name='{{ name }}' \
+openssl x509 \
+    -req \
+    -in certsignreq.csr \
+    -CA "$name"Root.crt \
+    -CAkey "$name"Root.pem \
+    -CAcreateserial \
+    -out certfile \
+    -days 3650 \
+    -sha512 \
+    -extensions v3_ext \
+    -extensions SAN \
+    -extfile <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
+```
+
+5. Install your own certificate via tftp
+```
+ip ssl cert-key-size 2048
+ip ssl certificate-data-file tftp 192.168.1.51 certfile
+ip ssl private-key-file tftp 192.168.1.51 keyfile
+web-management https
+```
+
 You should enable authentication for telnet access:
 ```
 enable telnet authentication
@@ -50,7 +117,7 @@ ip ssh key-authentication yes
 ip ssh password-authentication no
 ip ssh interactive-authentication no
 ```
-Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.  
+Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.
 >The ICX6xxx series do *not* support 4096 bit keys - when using `ssh-keygen` or `puttygen` etc, you must create 2048 bit keys.
 
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
@@ -121,7 +188,7 @@ no hostname beefbox
 ```
 
 ## Advanced Features
-This section will outline some of the more advanced configurations you may want to explore. If you use any of them, don't forget to `write mem` when done to actually save your changes. 
+This section will outline some of the more advanced configurations you may want to explore. If you use any of them, don't forget to `write mem` when done to actually save your changes.
 
 ### PoE
 If you have a PoE enabled model you'll need to enable power on the ports you have PoE devices plugged into. For example, let's say you've plugged a PoE camera into port 5. Lets enable PoE power to turn it on:
@@ -147,7 +214,7 @@ exit
 If you have a switch that does not support stacking like the ICX6430, you'll need to run `no legacy-inline-power` at the global configure terminal level instead. If you have a switch stack built, don't forget to run the above for stack unit 2 as well (or however many units you have).
 
 ### Link Aggregation (802.3ad LACP)
-If you'd like to configure an LACP bond on the switch to aggregate 2 or more ports to a server for example, it's pretty easy under FastIron. First you need to meet some basic criteria before creating the bond:  
+If you'd like to configure an LACP bond on the switch to aggregate 2 or more ports to a server for example, it's pretty easy under FastIron. First you need to meet some basic criteria before creating the bond:
 
 * all switch ports in the bond must be the same port type / speed
 * all switch ports being added to the bond cannot have an existing configuration on them (no IPs set etc)
@@ -272,4 +339,4 @@ telnet@Route2(config)#show optic 1/3/1
 5       32.7460 C  -002.6688 dBm -002.8091 dBm    5.472 mA
         Normal      Normal        Normal         Normal
 ```
-You'll need to pick up some official Brocade or Foundry optics. Regardless of what optics you have, you'll first need to enable optic monitoring in general by running  `optical-monitor`  at the  `configure terminal`  level. 
+You'll need to pick up some official Brocade or Foundry optics. Regardless of what optics you have, you'll first need to enable optic monitoring in general by running  `optical-monitor`  at the  `configure terminal`  level.
