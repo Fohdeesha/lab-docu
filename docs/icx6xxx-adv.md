@@ -33,8 +33,8 @@ web-management https
 
 Once you get an  `ssl-certificate creation is successful`  message in the console, you'll be able to access the web UI via  `https`.
 
-??? info
-    If you want to use your own certificate that is also possible. It's important to remember that the switch [doesn't support PKCS #8](https://community.ruckuswireless.com/t5/Switches/Can-t-import-SSL-certificates-quot-Could-not-parse-the-PEM/m-p/18554/highlight/true#M686) and this isn't actually [documented anywhere](https://docs.ruckuswireless.com/fastiron/08.0.60/fastiron-08060-securityguide/GUID-E83AC70A-9F89-4209-B6C4-ED5725D4F487.html). You must create certificates using the PKCS #1 format. If you try to use PKCS #8 (the default for openssl), you'll get certificate parsing errors.
+??? info "Using custom HTTPS certificates"
+    If you'd like the switch web UI to use your own custom HTTPS certificates, that's possible as well. It's important to remember that the switch [doesn't support PKCS #8](https://community.ruckuswireless.com/t5/Switches/Can-t-import-SSL-certificates-quot-Could-not-parse-the-PEM/m-p/18554/highlight/true#M686) and this isn't actually [documented anywhere](https://docs.ruckuswireless.com/fastiron/08.0.60/fastiron-08060-securityguide/GUID-E83AC70A-9F89-4209-B6C4-ED5725D4F487.html). You must create certificates using the PKCS #1 format. If you try to use PKCS #8 (the default for openssl), you'll get certificate parsing errors.
 
     The ICX6xxx series doesn't support keys larger than 2048 bits. This example assumes you want to create your own CA and sign with it.
 
