@@ -39,13 +39,14 @@ reset
     ```
     Let the switch boot fully and move to the next section
 
-**Note:** If your switch says that it is part of a stack even after doing the above, then you will need to unstack it before being able to configure and update it. You'll see several prompts when booting that it is a stack member and the command menu will show stack specific commands (ex: stack, simulate-non-stacking-unit). You can unstack your switch by running the following command:
-```
-stack unconfigure clean
-# hit y at the prompt
-```
-You can then continue on to the below.
-
+??? info "If your switch still claims to be a stack member after booting"
+    If your switch says that it's part of a stack even after the above factory reset, you'll need to unstack it before being able to configure and update it. You'll see several prompts when booting that it's a stack member. You can unstack your switch by running the following command:
+    ```
+    enable
+    stack unconfigure clean
+    # hit y at the prompt
+    ```
+    You can then continue the guide as normal when it finishes resetting
 
 ## Initial Configuration
 
