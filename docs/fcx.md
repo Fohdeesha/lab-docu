@@ -27,16 +27,17 @@ It will take a little longer. When it finishes, we need to erase the current con
 factory set-default
 reset
 ```
-**Note:** If you get an error stating `factory set-default` is not a valid command, this means your switch has a very old bootloader. In that case since we just flashed the latest bootloader, we just have to tell the switch to reset. Then it will load the new bootloader, and the command will work:
-```
-#only follow this section if factory set-default did not work
-reset
-#hit b a bunch so it drops into the bootloader again
-#now it's booted the latest bootloader, so the command will work:
-factory set-default
-reset
-#let it fully boot like normal and move to the next section
-```
+??? info "If you get "factory set-default is not a valid command""
+    If you get an error stating `factory set-default` is not a valid command, this means your switch has a very old bootloader. In that case since we just flashed the latest bootloader already, we just have to tell the switch to reset to load it. Then in the new bootloader the command will work:
+
+    ```
+    reset
+    #hit b a bunch so it drops into the bootloader again
+    #now it's booted the latest bootloader, so the command will work:
+    factory set-default
+    reset
+    ```
+    Let the switch boot fully and move to the next section
 
 **Note:** If your switch says that it is part of a stack even after doing the above, then you will need to unstack it before being able to configure and update it. You'll see several prompts when booting that it is a stack member and the command menu will show stack specific commands (ex: stack, simulate-non-stacking-unit). You can unstack your switch by running the following command:
 ```
