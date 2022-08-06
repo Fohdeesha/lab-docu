@@ -17,10 +17,12 @@ By default, the switch has the `super` user that you set a password for previous
 aaa authentication login default local
 aaa authentication web default local
 ```
-We should also disable telnet as it's quite insecure:
+We should also disable telnet as it's quite insecure. If the switch is located outside your home, password protect the serial console port as well:
 
 ```
 no telnet server
+#optional: password protect the serial port:
+enable aaa console
 ```
 If you wanted to use the web UI (I don't recommend using it, really), you can now log into it using the credentials you created above. By default, the web server is http only. If you want to disable the web server, just run:
 ```
