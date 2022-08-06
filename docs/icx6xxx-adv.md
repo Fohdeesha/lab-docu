@@ -33,72 +33,73 @@ web-management https
 
 Once you get an  `ssl-certificate creation is successful`  message in the console, you'll be able to access the web UI via  `https`.
 
-If you want to use your own certificate that is also possible. It's important to remember that the switch [doesn't support PKCS #8](https://community.ruckuswireless.com/t5/Switches/Can-t-import-SSL-certificates-quot-Could-not-parse-the-PEM/m-p/18554/highlight/true#M686) and this isn't actually [documented anywhere](https://docs.ruckuswireless.com/fastiron/08.0.60/fastiron-08060-securityguide/GUID-E83AC70A-9F89-4209-B6C4-ED5725D4F487.html). You must create certificates using the PKCS #1 format. If you try to use PKCS #8 (the default for openssl), you'll get certificate parsing errors.
+??? info
+    If you want to use your own certificate that is also possible. It's important to remember that the switch [doesn't support PKCS #8](https://community.ruckuswireless.com/t5/Switches/Can-t-import-SSL-certificates-quot-Could-not-parse-the-PEM/m-p/18554/highlight/true#M686) and this isn't actually [documented anywhere](https://docs.ruckuswireless.com/fastiron/08.0.60/fastiron-08060-securityguide/GUID-E83AC70A-9F89-4209-B6C4-ED5725D4F487.html). You must create certificates using the PKCS #1 format. If you try to use PKCS #8 (the default for openssl), you'll get certificate parsing errors.
 
-The ICX6610 again doesn't support keys larger than 2048 bits. This example assumes you want to create your own CA and sign with it.
+    The ICX6610 again doesn't support keys larger than 2048 bits. This example assumes you want to create your own CA and sign with it.
 
-1. Create new Root CA
-```
-pass='{{ pass }}' \
-name='{{ name }}' \
-openssl req \
-    -newkey rsa:4096 \
-    -sha512 \
-    -passin pass:"${pass}" \
-    -x509 \
-    -nodes \
-    -keyout "$name"Root.pem \
-    -new \
-    -out "$name"Root.crt \
-    -subj "/CN="$name" Root CA" \
-    -days 3650
-```
+    1. Create new Root CA
+    ```
+    pass='{{ pass }}' \
+    name='{{ name }}' \
+    openssl req \
+        -newkey rsa:4096 \
+        -sha512 \
+        -passin pass:"${pass}" \
+        -x509 \
+        -nodes \
+        -keyout "$name"Root.pem \
+        -new \
+        -out "$name"Root.crt \
+        -subj "/CN="$name" Root CA" \
+        -days 3650
+    ```
 
-2. Generate key in PKCS#1 format. Use the `-traditional`, see [openssl-genrsa](https://www.openssl.org/docs/manmaster/man1/openssl-genrsa.html) for more details.
-```
-openssl genrsa -traditional -out keyfile 2048
-```
+    2. Generate key in PKCS#1 format. Use the `-traditional`, see [openssl-genrsa](https://www.openssl.org/docs/manmaster/man1/openssl-genrsa.html) for more details.
+    ```
+    openssl genrsa -traditional -out keyfile 2048
+    ```
 
-3. Create certificate sign request
-```
-name='{{ name }}' \
-C='{{ country }}' \
-ST='{{ state/province }}' \
-openssl req \
-    -new \
-    -sha512 \
-    -key keyfile \
-    -subj "/C="$C"/ST="$ST"/O="$name" Network, Inc./CN=sw1.home.arpa" \
-    -out certsignreq.csr \
-    -reqexts SAN \
-    -extensions SAN \
-    -config <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
-```
+    3. Create certificate sign request
+    ```
+    name='{{ name }}' \
+    C='{{ country }}' \
+    ST='{{ state/province }}' \
+    openssl req \
+        -new \
+        -sha512 \
+        -key keyfile \
+        -subj "/C="$C"/ST="$ST"/O="$name" Network, Inc./CN=sw1.home.arpa" \
+        -out certsignreq.csr \
+        -reqexts SAN \
+        -extensions SAN \
+        -config <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
+    ```
 
-4. Sign certificate request
-```
-name='{{ name }}' \
-openssl x509 \
-    -req \
-    -in certsignreq.csr \
-    -CA "$name"Root.crt \
-    -CAkey "$name"Root.pem \
-    -CAcreateserial \
-    -out certfile \
-    -days 3650 \
-    -sha512 \
-    -extensions v3_ext \
-    -extensions SAN \
-    -extfile <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
-```
+    4. Sign certificate request
+    ```
+    name='{{ name }}' \
+    openssl x509 \
+        -req \
+        -in certsignreq.csr \
+        -CA "$name"Root.crt \
+        -CAkey "$name"Root.pem \
+        -CAcreateserial \
+        -out certfile \
+        -days 3650 \
+        -sha512 \
+        -extensions v3_ext \
+        -extensions SAN \
+        -extfile <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
+    ```
 
-5. Install your own certificate via tftp
-```
-ip ssl cert-key-size 2048
-ip ssl certificate-data-file tftp 192.168.1.51 certfile
-ip ssl private-key-file tftp 192.168.1.51 keyfile
-web-management https
-```
+    5. Install your own certificate via tftp
+    ```
+    ip ssl cert-key-size 2048
+    ip ssl certificate-data-file tftp 192.168.1.51 certfile
+    ip ssl private-key-file tftp 192.168.1.51 keyfile
+    web-management https
+    ```
 
 You should enable authentication for telnet access:
 ```
