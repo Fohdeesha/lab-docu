@@ -33,6 +33,75 @@ web-management https
 ```
 Once you get an  `ssl-certificate creation is successful`  message in the console, you'll be able to access the web UI via  `https`.
 
+??? info "Using custom HTTPS certificates"
+    If you'd like the switch web UI to use your own custom HTTPS certificates, that's possible as well. It's important to remember that the switch [doesn't support PKCS #8](https://community.ruckuswireless.com/t5/Switches/Can-t-import-SSL-certificates-quot-Could-not-parse-the-PEM/m-p/18554/highlight/true#M686) and this isn't actually [documented anywhere](https://docs.ruckuswireless.com/fastiron/08.0.60/fastiron-08060-securityguide/GUID-E83AC70A-9F89-4209-B6C4-ED5725D4F487.html). You must create certificates using the PKCS #1 format. If you try to use PKCS #8 (the default for openssl), you'll get certificate parsing errors.
+
+    This example assumes you want to create your own CA and sign with it.
+
+    Create a new Root CA:
+    ```
+    pass='{{ pass }}' \
+    name='{{ name }}' \
+    openssl req \
+        -newkey rsa:4096 \
+        -sha512 \
+        -passin pass:"${pass}" \
+        -x509 \
+        -nodes \
+        -keyout "$name"Root.pem \
+        -new \
+        -out "$name"Root.crt \
+        -subj "/CN="$name" Root CA" \
+        -days 3650
+    ```
+
+    Generate a key in PKCS #1 format using the `-traditional` flag (see [openssl-genrsa](https://www.openssl.org/docs/manmaster/man1/openssl-genrsa.html) for more details):
+    ```
+    openssl genrsa -traditional -out keyfile 4096
+    ```
+
+    Create the certificate signing request:
+    ```
+    name='{{ name }}' \
+    C='{{ country }}' \
+    ST='{{ state/province }}' \
+    openssl req \
+        -new \
+        -sha512 \
+        -key keyfile \
+        -subj "/C="$C"/ST="$ST"/O="$name" Network, Inc./CN=sw1.home.arpa" \
+        -out certsignreq.csr \
+        -reqexts SAN \
+        -extensions SAN \
+        -config <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
+    ```
+
+    Sign the certificate request:
+    ```
+    name='{{ name }}' \
+    openssl x509 \
+        -req \
+        -in certsignreq.csr \
+        -CA "$name"Root.crt \
+        -CAkey "$name"Root.pem \
+        -CAcreateserial \
+        -out certfile \
+        -days 3650 \
+        -sha512 \
+        -extensions v3_ext \
+        -extensions SAN \
+        -extfile <(cat /etc/ssl/openssl.cnf ; printf "[SAN]\nsubjectAltName=DNS:%s" "sw1.home.arpa")
+    ```
+
+    Install your custom certificate on the switch via TFTP:
+    ```
+    ip ssl cert-key-size 4096
+    ip ssl certificate-data-file tftp 192.168.1.51 certfile
+    ip ssl private-key-file tftp 192.168.1.51 keyfile
+    web-management https
+    ```
+    That's it! the web UI should now use your cert when loaded via HTTPS
+
 ### Optional: Changing the default user account
 If you don't like the default  `super`  username that comes with the switch, you can remove it and create your own user account instead. Just replace  `customname`  and  `yourpasshere`  with your own values:
 
