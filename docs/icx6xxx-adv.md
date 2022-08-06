@@ -21,6 +21,15 @@ We also need to tell it to use our new local user account(s) to authorize attemp
 aaa authentication login default local
 aaa authentication web default local
 ```
+
+We should also disable telnet as it's quite insecure. If the switch is located outside your home, password protect the serial console port as well:
+
+```
+no telnet server
+#optional: password protect the serial port:
+enable aaa console
+```
+
 If you wanted to use the web UI (I don't recommend using it, really), you can now log into it using the credentials you created above. By default, the web server is http only. If you want to disable the web server, just run:
 ```
 no web-management http
@@ -102,16 +111,6 @@ Once you get an  `ssl-certificate creation is successful`  message in the consol
     ```
     That's it! the web UI should now use your cert when loaded via HTTPS
 
-You should enable authentication for telnet access:
-```
-enable telnet authentication
-```
-If your switch is outside of your home, or accessible by others, telnet should be disabled entirely, and access to the serial console should also be password protected. Otherwise skip this step at your discretion:
-
-```
-no telnet server
-enable aaa console
-```
 ### Optional: Key Based SSH Access
 If you have followed the above to set up authentication, and also wish to disable password-based SSH login and set up a key pair instead, follow this section. If not, skip it. Enable key login, and disable password login:
 ```
