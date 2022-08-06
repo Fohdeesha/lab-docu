@@ -62,6 +62,11 @@ nav:
     - Other:
         - 'Multiple /64s *nix': '64nix.md'
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
 extra:
   analytics:
     provider: google
