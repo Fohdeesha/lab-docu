@@ -1,8 +1,33 @@
 # H310 Full Size IT Mode Flashing
-Instructions for flashing the H310 Full Size. Full credits for this guide go to [fourlynx](mailto:fourlynx@phoxden.net) and his original [H310 guide](https://doku.phoxden.net/pages/viewpage.action?pageId=7208964). As we were working on these H710 guides together and building a convenient live ISO, we figured we might as well add an easy H310 script to it.
+Continued instructions for flashing the H310 Full Size. You should only continue here after following the [Introduction Page](perc.md). If you haven't done so already, go back.
+
+## Verify & SAS
+You should still be in the FreeDOS live boot image. Double check you are on the right guide by running the following command again:
+```
+info
+```
+Your output should exactly match the below:
+```
+Product Name : H310 Adapter
+ChipRevision : B2
+SAS Address  : xxxx (will differ)
+```
+If so, continue on! If not, stop and go back to the [introduction page](perc.md) and get on the right guide.
+
+You also need to note the SAS address of the card from the above output so we can program it back later. Take a screenshot of the console, or otherwise note down the address so you can write it back at the end of the guide. It's not a huge deal if you lose it, but it's easiest to program back the original address instead of generating a new one.
+
+## Cleaning The Card
+Still in FreeDOS, run the following command to wipe the flash on the card and get rid of all Dell firmware. This will also flash the required SBR:
+```
+310FLCRS
+```
+Follow the prompts. If it finishes without error, it's time to reboot into Linux. Get the Linux live ISO from the ZIP ready to boot from, then tell FreeDOS to reboot:
+```
+reboot
+```
 
 ## Linux Time
-Boot into the Linux ISO from the ZIP. Use the following credentials to login: **user/live**
+You should now be booted into the Linux ISO from the ZIP. Use the following credentials to login: **user/live**
 
 We highly recommend SSH'ing to the live ISO so you can copy/paste commands and not have to use the iDRAC virtual console. To do so, run the following to find the IP of the install:
 ```
@@ -15,19 +40,13 @@ Now, still in Linux, we need to change to the root user:
 ```
 sudo su -
 ```
-Now we need to note down the SAS address of the adapter so we can program it back later. Run the following and save the output somewhere:
+Now we run the flashing script. Issue the following command to begin the process:
 ```
-sas-mega
-```
-Once you have the address saved, run the flashing script. This will program the appropriate IT mode SBR, then flash the card with IT firmware:
-
-```
-H310-Full
+H310
 ```
 It should automatically do everything required to flash the card. If you don't get any unexpected errors and it completes, we need to reboot and program the SAS address back to finish. See the following note.
 
 **Note:** For some reason, the very first boot after crossflashing the card will cause a kernel panic - I believe it's iDRAC not letting go of something (I was able to see the card put in a fault state via the debug UART when this happens). This only happens the first reboot after crossflashing. When you boot back into the live ISO and get the panic, either let it reboot itself, or use iDRAC to force a reboot. After that boot back into the live ISO again and all will be well.
-
 ## Programming SAS Address Back
 
 Now rebooted back into the live Linux image, just run the following commands, filling in the example address with your own, that you noted down earlier:
@@ -57,6 +76,7 @@ info
         Board Name                     : SAS9211-8i
         Board Assembly                 : N/A
         Board Tracer Number            : N/A
+
 ```
 Unless you also need to flash boot images for booting off the card, you can now ditch all the live images and reboot back into your normal system, and enjoy your IT mode card.
 
@@ -72,6 +92,7 @@ If you want to UEFI boot from drives connected to this adapter, you need to flas
 flashboot /root/Bootloaders/x64sas2.rom
 ```
 You can now ditch the live images and boot back into your normal system.
+
 
 ## Optional: Reverting
 If for some reason you need to revert back to the stock Dell PERC firmware, that's easy. Boot into the FreeDOS live image, and run the following command:

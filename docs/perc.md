@@ -40,12 +40,14 @@ When you're finished with this guide, don't forget to go back and enable Virtual
 
 **Remove the RAID battery** from the adapter. The IT firmware has no cache for the battery to back, in fact the IT firmware will have no clue the battery is there if you leave it connected. To make matters worse, in rare cases some people observed the battery holding old Dell code in the card's RAM and it made their crossflash process a pain. Just unplug/remove the battery and store it somewhere in case you return to Dell firmware.
 
-Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/), using `dd`, or your favorite flashing utility - up to you.
+**Remove all drives connected to the PERC.** This typically means any drives in the front of the server in the hot swap bays. If you forget to do this, the flashing process won't touch them or alter them, but having them connected can cause the flash process to fail and you'll be left wondering why. So pull the caddies for now!
 
-[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.2.zip)  
-```Version: v2.2```  
-```ZIP Updated: 06-16-2022```  
-```MD5: 2a85aef52bf8eb6ccae7eb25ffd2714c```  
+Download the ZIP below which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) in WIndows, using `dd` in Linux, or your favorite flashing utility - up to you.
+
+[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.3.zip)  
+```Version: v2.3```  
+```ZIP Updated: 01-12-2023```  
+```MD5: d0f15f46112762f16fe32832cd9a7492```  
 
 ## Finding Your Card Revision
 
