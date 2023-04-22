@@ -48,5 +48,32 @@ systemctl stop tftpd-hpa
 ##optionally remove it completely
 apt remove tftpd-hpa
 ```
+
+### Setting up TFTP (macOS)
+Fortunately macOS has a built in tftp server, all you have to do is enable it. First, load the service:
+
+```
+sudo launchctl load -F /System/Library/LaunchDaemons/tftp.plist
+```
+Start the service:
+```
+sudo launchctl start com.apple.tftpd
+```
+By default, the tftp directory is at `/private/tftpboot`. Be sure to grant permissions:
+```
+sudo chmod 777 /private/tftpboot
+```
+Move the contents of `TFTP-Content` to the `/private/tftpboot` directory.
+
+Once complete, you can stop and disable the service:
+```
+sudo launchctl stop com.apple.tftpd
+sudo launchctl unload -F /System/Library/LaunchDaemons/tftp.plist
+
+##optionally to be double sure tftp is no longer running, ensure theres no output from the following:
+sudo lsof -i :69
+```
+
+
 ## Begin
 You're now serving the required files over TFTP. Just navigate to the left-hand menu, underneath the **Brocade Setup** section - click on the section for your switch model and begin.

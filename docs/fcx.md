@@ -3,7 +3,7 @@
 ## Preparation
 If you haven't already, visit the [Brocade Overview](brocade-overview.md) page to download the latest guide package and get it ready to be served via TFTP - this unified package includes all the latest firmware, licenses, and documentation.  
 
-**Connect** to the serial/console port using a program like Putty (9600 8N1), then connect the **management ethernet port** to your network (do NOT use any of the regular switch ports yet).
+**Connect** to the serial/console port using a program like Putty (9600 8N1) or screen (`screen /dev/<device> 9600`), then connect the **management ethernet port** to your network (do NOT use any of the regular switch ports yet).
 
 Power on the switch while watching your serial terminal - it will have a prompt saying ```Hit b to enter the boot monitor``` - press ```b``` quickly and you'll be dropped into the bootloader prompt, now we can upgrade the software. If you missed the prompt and it boots the OS instead, pull power and try again.
 
