@@ -42,7 +42,7 @@ When you're finished with this guide, don't forget to go back and enable Virtual
 
 **Remove all drives connected to the PERC.** This typically means any drives in the front of the server in the hot swap bays. If you forget to do this, the flashing process won't touch them or alter them, but having them connected can cause the flash process to fail and you'll be left wondering why. So pull the caddies for now!
 
-**Download the ZIP below** which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) in WIndows, using `dd` in Linux, or your favorite flashing utility - up to you. When using Ventoy, make sure to boot the FreeDOS image in memdisk mode.
+**Download the ZIP below** which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) in WIndows, using `dd` in Linux, or your favorite flashing utility - up to you. If you use Ventoy, make sure to boot the FreeDOS image in memdisk mode.
 
 [```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.3.zip)  
 ```Version: v2.3```  
