@@ -40,7 +40,7 @@ nav:
         - 'Extracting Firmware': 'firmware.md'
         - 'Extracting Licenses': 'extract.md'
         - 'EEPROM Unlocks': 'eeprom.md'
-    - PERC Mini:
+    - PERC Crossflash:
         - 'Introduction': 'perc.md'
         - 'H310 Mini': 'H310.md'
         - 'H710 B0 Mini': 'H710-B0.md'
