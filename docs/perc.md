@@ -44,10 +44,10 @@ When you're finished with this guide, don't forget to go back and enable Virtual
 
 **Download the ZIP below** which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) in WIndows, using `dd` in Linux, or your favorite flashing utility - up to you. If you use Ventoy, make sure to boot the FreeDOS image in memdisk mode.
 
-[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.3.zip)  
-```Version: v2.3```  
-```ZIP Updated: 01-12-2023```  
-```MD5: d0f15f46112762f16fe32832cd9a7492```  
+[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.4.zip)  
+```Version: v2.4```  
+```ZIP Updated: 09-01-2023```  
+```MD5: f2b335c471a305b935eafd1031faade2```  
 
 ## Finding Your Card Revision
 
@@ -65,6 +65,7 @@ If it displays an **H710 Mini B0** proceed to the [H710 Mini (B0) Guide](H710-B0
 If it displays an **H710 Mini D1** proceed to the [H710 Mini (D1) Guide](H710-D1.md)  
 If it displays an **H710 Mini D1** and it's in a blade server, proceed to the [H710 Mini (D1) Blade Guide](H710-D1-Blade.md)  
 If it displays an **H710P Mini B0** proceed to the [H710P Mini (B0) Guide](H710P-B0.md)  
+If it displays an **H710P Mini B0** and it's in a blade server, proceed to the [H710P Mini (B0) Blade Guide](H710P-B0-Blade.md)  
 If it displays an **H710P Mini D1** proceed to the [H710P Mini (D1) Guide](H710P-D1.md)  
 If it displays an **H710 Adapter B0** proceed to the [H710 Full Size (B0) Guide](H710-B0-full.md)  
 If it displays an **H710 Adapter D1** proceed to the [H710 Full Size (D1) Guide](H710-D1-full.md)  
@@ -73,7 +74,7 @@ If it displays an **H710P Adapter D1** proceed to the [H710P Full Size (D1) Guid
 If it displays an **H810 Adapter B0** proceed to the [H810 Full Size (B0) Guide](H810-B0-full.md)  
 If it displays an **H810 Adapter D1** proceed to the [H810 Full Size (D1) Guide](H810-D1-full.md)  
 
-If it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
+On your screen, the output will probably have **Perc** before the names listed above - that's normal. After **Perc**, if it displays anything that doesn't exactly match the above choices, [contact me](mailto:jon@fohdeesha.com?subject=PERC-Unknown) with a screenshot. If you're impatient and pick the "closest one" instead, you'll brick your card.
 
 ## Extra: Disable ThirdPartyPCIFanResponse
 
@@ -170,6 +171,9 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 
 **H710 D1 Mini For Blades Part Numbers:**  
 - 062P9H  
+
+**H710P B0 Mini For Blades Part Numbers:**  
+- 081J2H
 
 **H710P B0 Mini Part Numbers:**  
 - 0TTVVV  
