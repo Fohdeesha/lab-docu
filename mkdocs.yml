@@ -8,8 +8,8 @@ theme:
   name: 'material'
   custom_dir: overrides
   palette:
-    primary: 'green'
-    accent: 'orange'
+    primary: 'orange'
+    accent: 'green'
 
 dev_addr: 192.168.1.27:8000
 nav:
@@ -33,6 +33,7 @@ nav:
         - 'ADX Licensing': 'adx.md'
         - 'CES Licensing': 'ces.md'
         - 'CER Licensing': 'cer.md'
+        - 'MLX Licensing': 'mlx.md'
         - 'JTAG LB6M': 'jtag.md'
         - 'JTAG ICX6610': 'jtag6610.md'
         - 'Hidden Dev Stuff': 'hidden.md'
