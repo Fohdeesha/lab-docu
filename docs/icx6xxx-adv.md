@@ -121,7 +121,7 @@ ip ssh interactive-authentication no
 Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.
 >The ICX6xxx series do *not* support 4096 bit keys - when using `ssh-keygen` or `puttygen` etc, you must create 2048 bit keys.
 
-For the Brocade to accept your public key file it should start with:
+For the switch to accept your public key file it should start with:
 ```
 ---- BEGIN SSH2 PUBLIC KEY ----
 ```
@@ -129,7 +129,7 @@ and end with:
 ```
 ---- END SSH2 PUBLIC KEY ----
 ```
-Add those manually if it doesn't.
+Add those manually if it doesn't.  
 
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
 ```
@@ -137,7 +137,7 @@ ip ssh pub-key-file tftp 192.168.1.8 public.key
 ```
 You shouldn't need to be told basic key management if you're following this section, but just in case - copy your private key to the proper location on the *nix machine you'll be SSH'ing from, or if you're on windows, load it using [pageant](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Now when you SSH to the switch, it will authenticate using your private key.
 
-On linux and Mac Os X you'll want to add these lines to your ```~\.ssh\config``` file. IdentitiesOnly is to prevent ssh-agent from offering any other bigger (> 2048) keys first that will terminate the connection negotiation early. IdentityFile will use only this key for this connection. KexAlgorithms sets a key exchange algorithm both systems support.
+On linux and macOS you'll want to add these lines to your ```~\.ssh\config``` file. IdentitiesOnly is to prevent ssh-agent from offering any other bigger (> 2048) keys first that will terminate the connection negotiation early. IdentityFile will use only this key for this connection. KexAlgorithms sets a key exchange algorithm that the older ICX6xxx series accepts:
 
 ```
 Host <switch-ip>
