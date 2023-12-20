@@ -141,13 +141,11 @@ On linux and macOS you'll want to add these lines to your ```~\.ssh\config``` fi
 
 ```
 Host <switch-ip>
-   User root
    IdentitiesOnly yes
    IdentityFile ~/.ssh/private_key
    KexAlgorithms +diffie-hellman-group1-sha1
    PubkeyAcceptedKeyTypes=+ssh-rsa
    HostKeyAlgorithms=+ssh-rsa
-   PreferredAuthentications publickey
 ```
 
 
