@@ -137,7 +137,7 @@ ip ssh pub-key-file tftp 192.168.1.8 public.key
 ```
 You shouldn't need to be told basic key management if you're following this section, but just in case - copy your private key to the proper location on the *nix machine you'll be SSH'ing from, or if you're on windows, load it using [pageant](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Now when you SSH to the switch, it will authenticate using your private key.
 
-On linux and macOS you'll want to add these lines to your ```~\.ssh\config``` file. IdentitiesOnly is to prevent ssh-agent from offering any other bigger (> 2048) keys first that will terminate the connection negotiation early. IdentityFile will use only this key for this connection. KexAlgorithms sets a key exchange algorithm that the older ICX6xxx series accepts.  The PubkeyAcceptedKeyTypes must be set as the algorithm is off by default more frequently, along with the HostKeyAlgorithm, to match what the ICX6xxx can offer:
+On linux and macOS you'll want to add these lines to your ```~\.ssh\config``` file. IdentitiesOnly is to prevent ssh-agent from offering any other bigger (> 2048) keys first that will terminate the connection negotiation early. IdentityFile will use only this key for this connection. KexAlgorithms sets a key exchange algorithm that the older ICX6xxx series accepts. PubkeyAcceptedKeyTypes and HostKeyAlgorithm must be set as well, to match what the older ICX6xxx can offer:
 
 ```
 Host <switch-ip>
