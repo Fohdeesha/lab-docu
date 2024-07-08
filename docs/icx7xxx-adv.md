@@ -128,10 +128,18 @@ ip ssh interactive-authentication no
 ```
 Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.  
 
+> ICX7xxx series switches support Fastiron 9, which offers up to 4096 bit RSA keys and ECDSA keys of 256 of 384 bits.
+
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
 ```
 ip ssh pub-key-file tftp 192.168.1.8 public.key
 ```
+
+> The public key must be in RFC4716 format.
+> The following should convert to the appropriate format directly:
+>
+> `ssh-keygen -ef path/to/pubkey -mRFC4716 > public.key`
+
 You shouldn't need to be told basic key management if you're following this section, but just in case - copy your private key to the proper location on the *nix machine you'll be SSH'ing from, or if you're on windows, load it using [pageant](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Now when you SSH to the switch, it will authenticate using your private key.
 
 ## Name & Ditching The Serial Cable
