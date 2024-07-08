@@ -362,6 +362,17 @@ Show the running configuration:
 ```
 show run
 ```
+List the files in flash memory:
+```
+show files
+``` 
+Send files from flash memory to tftp server: 
+```
+copy flash tftp <address> <filename> file
+```
+> One use of the above two commands is to grab the switch host public keys directly,
+> avoiding insecure "save on first use" known_host entries.
+
 
 
 ## SFP/Optics Information
