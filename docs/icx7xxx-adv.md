@@ -12,6 +12,10 @@ Before we can do things like SSH to the switch or access the web UI, we need to 
 crypto key zeroize
 crypto key generate rsa modulus 2048
 ```
+
+> ICX7xxx series switches support Fastiron 9, which offers up to 4096 bit RSA keys and ECDSA keys of 256 or 384 bits,
+> as well as accepting the same for client keys.
+
 By default, the switch has the `super` user that you set a password for previously. We need to configure the switch to use this account to authenticate logins and web UI access:
 ```
 aaa authentication login default local
@@ -127,8 +131,6 @@ ip ssh password-authentication no
 ip ssh interactive-authentication no
 ```
 Now we have to generate our key pair with [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) on windows or ```ssh-keygen -t rsa``` on linux. The default settings of RSA @ 2048 bits works without issue. Generate the pair and save out both the public and private key.  
-
-> ICX7xxx series switches support Fastiron 9, which offers up to 4096 bit RSA keys and ECDSA keys of 256 of 384 bits.
 
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
 ```
