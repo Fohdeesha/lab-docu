@@ -131,6 +131,10 @@ and end with:
 ```
 Add those manually if it doesn't.  
 
+> The following should convert to the appropriate format directly:
+>
+> `ssh-keygen -ef path/to/pubkey -mRFC4716 > public.key`
+
 Copy the public key file to your TFTP server. Then use the following command to import it into your switch:
 ```
 ip ssh pub-key-file tftp 192.168.1.8 public.key
@@ -348,6 +352,16 @@ Show the running configuration:
 ```
 show run
 ```
+List the files in flash memory:
+```
+show files
+``` 
+Send files from flash memory to tftp server: 
+```
+copy flash tftp <address> <filename> file
+```
+> One use of the above two commands is to grab the switch host public keys directly,
+> avoiding insecure "save on first use" known_host entries.
 
 ## SFP/Optics Information
 

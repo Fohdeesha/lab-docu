@@ -12,6 +12,10 @@ Before we can do things like SSH to the switch or access the web UI, we need to 
 crypto key zeroize
 crypto key generate rsa modulus 2048
 ```
+
+> ICX7xxx series switches support Fastiron 9, which offers up to 4096 bit RSA keys and ECDSA keys of 256 or 384 bits,
+> as well as accepting the same for client keys.
+
 By default, the switch has the `super` user that you set a password for previously. We need to configure the switch to use this account to authenticate logins and web UI access:
 ```
 aaa authentication login default local
@@ -132,6 +136,12 @@ Copy the public key file to your TFTP server. Then use the following command to 
 ```
 ip ssh pub-key-file tftp 192.168.1.8 public.key
 ```
+
+> The public key must be in RFC4716 format.
+> The following should convert to the appropriate format directly:
+>
+> `ssh-keygen -ef path/to/pubkey -mRFC4716 > public.key`
+
 You shouldn't need to be told basic key management if you're following this section, but just in case - copy your private key to the proper location on the *nix machine you'll be SSH'ing from, or if you're on windows, load it using [pageant](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Now when you SSH to the switch, it will authenticate using your private key.
 
 ## Name & Ditching The Serial Cable
@@ -354,6 +364,17 @@ Show the running configuration:
 ```
 show run
 ```
+List the files in flash memory:
+```
+show files
+``` 
+Send files from flash memory to tftp server: 
+```
+copy flash tftp <address> <filename> file
+```
+> One use of the above two commands is to grab the switch host public keys directly,
+> avoiding insecure "save on first use" known_host entries.
+
 
 
 ## SFP/Optics Information
