@@ -1,0 +1,74 @@
+site_name: Fohdeesha Docs
+
+#below options required for offline version
+site_url: ""
+use_directory_urls: false
+
+theme:
+  name: 'material'
+  custom_dir: overrides
+  palette:
+    primary: 'deep orange'
+    accent: 'green'
+
+dev_addr: 192.168.1.27:8000
+nav:
+    - 'Home': 'index.md'
+    - 'S4810-ON': 'S4810.md'
+    - 'Brocade Overview': 'brocade-overview.md'
+    - Brocade Setup:
+        - 'FCX / ICX6610': 'fcx.md'
+        - 'ICX6430': 'icx6430.md'
+        - 'ICX6450': 'icx6450.md'
+        - 'ICX6650': 'icx6650.md'
+        - 'ICX7150': 'icx7150.md'
+        - 'ICX7250 / ICX7450': 'icx7250.md'
+        - 'ICX6xxx Advanced': 'icx6xxx-adv.md'
+        - 'ICX7xxx Advanced': 'icx7xxx-adv.md'
+    - Brocade Fun:
+        - 'FCX Licensing': 'fcxlic.md'
+        - 'ICX6450 Licensing': '6450.md'
+        - 'ICX6610 Licensing': '6610.md'
+        - 'ICX6650 Licensing': '6650.md'
+        - 'ICX7xxx Licensing': '7xxx.md'
+        - 'JTAG LB6M': 'jtag.md'
+        - 'JTAG ICX6610': 'jtag6610.md'
+        - 'Hidden Dev Stuff': 'hidden.md'
+        - 'Accessing Linux': 'linux.md'
+        - 'Extracting Firmware': 'firmware.md'
+        - 'Extracting Licenses': 'extract.md'
+        - 'EEPROM Unlocks': 'eeprom.md'
+    - PERC Crossflash:
+        - 'Introduction': 'perc.md'
+        - 'H310 Mini': 'H310.md'
+        - 'H710 B0 Mini': 'H710-B0.md'
+        - 'H710 D1 Mini': 'H710-D1.md'
+        - 'H710 D1 Mini Blade': 'H710-D1-Blade.md'
+        - 'H710P B0 Mini': 'H710P-B0.md'
+        - 'H710P B0 Mini Blade': 'H710P-B0-Blade.md'
+        - 'H710P D1 Mini': 'H710P-D1.md'
+        - 'H710P D1 Mini Blade': 'H710P-D1-Blade.md'
+        - 'H310 Full Size': 'H310-full.md'
+        - 'H710 B0 Full Size': 'H710-B0-full.md'
+        - 'H710 D1 Full Size': 'H710-D1-full.md'
+        - 'H710P B0 Full Size': 'H710P-B0-full.md'
+        - 'H710P D1 Full Size': 'H710P-D1-full.md'
+        - 'H810 B0 Full Size': 'H810-B0-full.md'
+        - 'H810 D1 Full Size': 'H810-D1-full.md'
+    - Dell DAS:
+        - 'MD1200/MD1220': 'md1200.md'
+        - 'SC200/SC220': 'sc200.md'
+
+    - Other:
+        - 'Multiple /64s *nix': '64nix.md'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+extra:
+  analytics:
+    provider: google
+    property: G-TWCQDB0N70
+
