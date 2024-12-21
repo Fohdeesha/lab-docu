@@ -10,7 +10,7 @@ Your output should exactly match the below:
 ```
 Product Name : PERC H710 Adapter
 ChipRevision : B0
-SAS Address  : xxxx (will differ)
+SAS Address  : xxxx (will differ, write this down or screenshot, you will need it later.)
 ```
 If so, continue on! If not, stop and go back to the [introduction page](perc.md) and get on the right guide.
 
