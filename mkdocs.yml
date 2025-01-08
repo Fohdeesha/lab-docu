@@ -8,8 +8,8 @@ theme:
   name: 'material'
   custom_dir: overrides
   palette:
-    primary: 'deep orange'
-    accent: 'green'
+    primary: 'green'
+    accent: 'orange'
 
 dev_addr: 192.168.1.27:8000
 nav:
