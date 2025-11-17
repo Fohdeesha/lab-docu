@@ -170,6 +170,9 @@ Regardless, since they're the same price used, you may as well grab the D1 revis
 **H710 D1 Mini Part Numbers:**  
 - 05CT6D  
 
+**H710 B0 Mini For Blades Part Numbers:**  
+- 0WR9NT  
+
 **H710 D1 Mini For Blades Part Numbers:**  
 - 062P9H  
 
