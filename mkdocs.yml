@@ -42,6 +42,7 @@ nav:
         - 'Introduction': 'perc.md'
         - 'H310 Mini': 'H310.md'
         - 'H710 B0 Mini': 'H710-B0.md'
+        - 'H710 B0 Mini Blade': 'H710-B0-Blade.md'
         - 'H710 D1 Mini': 'H710-D1.md'
         - 'H710 D1 Mini Blade': 'H710-D1-Blade.md'
         - 'H710P B0 Mini': 'H710P-B0.md'

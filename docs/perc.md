@@ -44,10 +44,10 @@ When you're finished with this guide, don't forget to go back and enable Virtual
 
 **Download the ZIP below** which contains two ISOs. One is a FreeDOS live image, the other is a Debian live image. Both come prepackaged with all the required tools and files, and they can be booted either via iDRAC virtual media or by burning them to a flash drive via [Rufus](https://rufus.ie/) in WIndows, using `dd` in Linux, or your favorite flashing utility - up to you. If you use Ventoy, make sure to boot the FreeDOS image in memdisk mode.
 
-[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.5.zip)  
-```Version: v2.5```  
-```ZIP Updated: 09-28-2023```  
-```MD5: d7f5f926626b295f7005c4c927158569```  
+[```Dell Perc Flashing ZIP```](store/perc/perc-crossflash-v2.6.zip)  
+```Version: v2.6```  
+```ZIP Updated: 11-17-2025```  
+```MD5: 3fa29fe46b879058b3a8db9181cb519e```  
 
 ## Finding Your Card Revision
 
@@ -62,6 +62,7 @@ info
 If it displays an **H310 Mini** proceed to the [H310 Mini Guide](H310.md)  
 If it displays an **H310 Adapter** proceed to the [H310 Full Size Guide](H310-full.md)  
 If it displays an **H710 Mini B0** proceed to the [H710 Mini (B0) Guide](H710-B0.md)  
+If it displays an **H710 Mini B0** and it's in a blade server, proceed to the [H710 Mini (B0) Blade Guide](H710-B0-Blade.md)  
 If it displays an **H710 Mini D1** proceed to the [H710 Mini (D1) Guide](H710-D1.md)  
 If it displays an **H710 Mini D1** and it's in a blade server, proceed to the [H710 Mini (D1) Blade Guide](H710-D1-Blade.md)  
 If it displays an **H710P Mini B0** proceed to the [H710P Mini (B0) Guide](H710P-B0.md)  
