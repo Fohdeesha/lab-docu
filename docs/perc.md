@@ -57,7 +57,7 @@ info
 ```
 ![percflash1](store/perc/percinfo.png)
 
->WARNING: If you are flashing a card in a blade chassis (like an M620 or M820), only use the "for blades" section for your card model below. Blade servers are the M620 and M820 for instance. Standard rackmount models like the R620 and R720 are **not** blade servers!
+>WARNING: If you are flashing a card in a blade chassis, only use the "for blades" section for your card model below. Blade servers are the M620 and M820 for instance. Standard rackmount models like the R620 and R720 are **not** blade servers!
 
 If it displays an **H310 Mini** proceed to the [H310 Mini Guide](H310.md)  
 If it displays an **H310 Adapter** proceed to the [H310 Full Size Guide](H310-full.md)  
