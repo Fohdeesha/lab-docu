@@ -290,8 +290,36 @@ write mem
 Whatever ports you add must have the same VLAN membership as the existing LAG, or you'll get an error about `tag type` not matching.
 
 ### VLANs
-Coming Soon
+To create a VLAN/access VLAN config mode:
+```
+(config)# vlan 2 name VLAN_NAME
+```
+To add a VLAN to a trunk/tagged port:
+```
+(config-vlan-2)# tagged ethernet 1/1/1
+```
+To add a native vlan to a port with tagged trafic(also known as dual-mode):
+```
+(config)# interface ethernet 1/1/1
+(config-if-e1000-1/1/1)# dual-mode 2
+```
+#### Adding an access/untagged port to VLAN
+These examples will have the following VLANs: 1 (default VLAN), 2(A), 3(B)
 
+When the port(in this example e 1/1/1) is still only assigned to VLAN 1 and we want to move it to VLAN 2:
+```
+(config)# vlan 2 name A
+(config-vlan-2)# untagged ethernet 1/1/1
+Added untagged port(s) ethe 1/1/1 to port-vlan 2.
+```
+Now if we want to move the same port from A to B. We first need to remove it from VLAN A:
+```
+(config)# vlan 2 name A
+(config-vlan-2)# no untagged ethernet 1/1/1
+(config-vlan-2)# vlan 3 name B
+(config-vlan-3)# untagged ethernet 1/1/1
+Added untagged port(s) ethe 1/1/1 to port-vlan 3.
+```
 ### Stacking
 Coming Soon
 
